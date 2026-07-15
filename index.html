@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EatSee - policz kalorie jednym zdjęciem</title>
+<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Skanuj kody kreskowe bez limitu. Po polsku, dla polskich produktów.">
+<meta property="og:title" content="EatSee - policz kalorie jednym zdjęciem">
+<meta property="og:description" content="Licznik kalorii z AI: zdjęcie posiłku zamienia w kalorie i makroskładniki w kilka sekund. Kody kreskowe bez limitu, dziennik z celami, statystyki tygodnia.">
+<!-- TODO: podmień og:image na docelowy obraz 1200x630 po publikacji -->
+<meta property="og:image" content="/og.png">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/png" href="img/logo-128.png">
+<link rel="apple-touch-icon" href="img/logo.png">
+<style>
+  :root{
+    --bg:#F5F1E9;
+    --surface:#FFFFFF;
+    --bg-alt:#F0EDE6;
+    --accent:#A76843;
+    --accent-dark:#714525;
+    --accent-light:#F6ECE4;
+    --text:#1B1A17;
+    --text-2:#57534C;
+    --green:#516835;
+    --green-light:#E4EBD8;
+    --amber:#8A6115;
+    --amber-light:#F1E7CE;
+    --red:#B23A2E;
+    --red-light:#F6E2DF;
+    --protein:#516835;
+    --carbs:#9D5936;
+    --fat:#C08A2C;
+    --radius:20px;
+    --radius-sm:16px;
+    --shadow:0 6px 24px rgba(27,26,23,.07);
+    --shadow-soft:0 2px 10px rgba(27,26,23,.05);
+    --border:1px solid rgba(27,26,23,.09);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  @media (prefers-reduced-motion:no-preference){
+    html{scroll-behavior:smooth}
+  }
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    line-height:1.55;
+    font-size:16px;
+  }
+  img,svg{display:block;max-width:100%}
+  a{color:inherit}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  .visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+  /* ===== Nagłówek ===== */
+  .site-header{
+    position:sticky;top:0;z-index:50;
+    background:rgba(245,241,233,.92);
+    -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(27,26,23,.07);
+  }
+  .site-header .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:60px;gap:16px;
+  }
+  .logo{
+    font-size:1.35rem;font-weight:800;letter-spacing:-.02em;
+    text-decoration:none;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .logo .dot{color:var(--accent)}
+  .logo img{width:32px;height:32px;flex:none}
+  .main-nav{display:flex;gap:6px}
+  .main-nav a{
+    text-decoration:none;color:var(--text-2);font-weight:600;font-size:.92rem;
+    padding:8px 12px;border-radius:999px;transition:background .18s,color .18s;
+  }
+  .main-nav a:hover{background:var(--accent-light);color:var(--accent-dark)}
+  .header-cta{
+    display:none;
+    text-decoration:none;background:var(--accent);color:#fff;font-weight:700;
+    font-size:.9rem;padding:8px 16px;border-radius:999px;transition:background .18s;
+  }
+  .header-cta:hover{background:var(--accent-dark)}
+  @media (max-width:719px){
+    .main-nav{display:none}
+    .header-cta{display:inline-block}
+  }
+
+  /* ===== Hero ===== */
+  .hero{padding:56px 0 40px;overflow:hidden}
+  .hero .wrap{
+    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;
+  }
+  .hero h1{
+    font-size:clamp(2rem,5.4vw,3.1rem);line-height:1.12;letter-spacing:-.025em;
+    font-weight:800;
+  }
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .hero .sub{
+    margin-top:16px;color:var(--text-2);font-size:1.08rem;max-width:32em;
+  }
+  .hero-note{
+    margin-top:14px;display:inline-flex;align-items:center;gap:8px;
+    background:var(--accent-light);color:var(--accent-dark);
+    font-size:.85rem;font-weight:600;padding:6px 14px;border-radius:999px;
+  }
+  .hero-note svg{width:14px;height:14px;flex:none}
+  .hero-copy .hero-note{margin-top:0;margin-bottom:18px}
+
+  /* Badge sklepów (placeholdery) */
+  .store-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+  .store-badge{
+    display:inline-flex;align-items:center;gap:11px;
+    background:#1B1A17;color:#fff;text-decoration:none;
+    padding:10px 20px 10px 16px;border-radius:999px;
+    transition:transform .18s,box-shadow .18s;
+    box-shadow:var(--shadow-soft);
+  }
+  .store-badge:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
+  .store-badge svg{width:24px;height:24px;flex:none;fill:#fff}
+  .store-badge .txt{display:flex;flex-direction:column;line-height:1.15;text-align:left}
+  .store-badge .txt small{font-size:.66rem;font-weight:500;opacity:.85;letter-spacing:.02em}
+  .store-badge .txt strong{font-size:1.02rem;font-weight:700;letter-spacing:-.01em}
+
+  /* ===== Demo skanu (makieta telefonu) ===== */
+  .demo-col{display:flex;flex-direction:column;align-items:center;gap:18px}
+  .phone{
+    width:min(310px,86vw);
+    background:#1B1A17;
+    border-radius:44px;
+    padding:12px;
+    box-shadow:0 22px 50px rgba(27,26,23,.18);
+  }
+  .screen{
+    background:var(--bg);
+    border-radius:34px;
+    padding:44px 14px 18px;
+    position:relative;
+    min-height:540px;
+    overflow:hidden;
+  }
+  .notch{
+    position:absolute;top:12px;left:50%;transform:translateX(-50%);
+    width:96px;height:22px;background:#1B1A17;border-radius:999px;
+  }
+  .app-bar{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:0 4px 12px;
+  }
+  .app-bar .app-logo{font-weight:800;font-size:1rem;display:inline-flex;align-items:center;gap:6px}
+  .app-bar .app-logo .dot{color:var(--accent)}
+  .app-bar .app-logo img{width:20px;height:20px;flex:none}
+  .app-bar .app-date{font-size:.72rem;color:var(--text-2);font-weight:600}
+
+  .photo-card{
+    position:relative;
+    background:var(--surface);
+    border:var(--border);
+    border-radius:var(--radius-sm);
+    height:210px;
+    overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  /* "zdjęcie" posiłku: talerz + emoji */
+  .plate{
+    width:160px;height:160px;border-radius:50%;
+    background:radial-gradient(circle at 34% 30%,#FFFFFF 0%,#F4F0E8 62%,#E8E2D6 100%);
+    box-shadow:inset 0 0 0 10px rgba(27,26,23,.045),0 10px 22px rgba(27,26,23,.12);
+    display:flex;align-items:center;justify-content:center;
+  }
+  .plate .food{display:flex;align-items:center;justify-content:center}
+  .plate .food span{font-size:44px;line-height:1}
+  .plate .food span:nth-child(2){transform:rotate(-10deg) translateY(-4px)}
+  .plate .food span:nth-child(3){transform:rotate(12deg) translateY(3px)}
+  /* narożniki wizjera */
+  .corner{position:absolute;width:22px;height:22px;border:3px solid var(--accent);opacity:.85}
+  .corner.tl{top:10px;left:10px;border-right:none;border-bottom:none;border-radius:8px 0 0 0}
+  .corner.tr{top:10px;right:10px;border-left:none;border-bottom:none;border-radius:0 8px 0 0}
+  .corner.bl{bottom:10px;left:10px;border-right:none;border-top:none;border-radius:0 0 0 8px}
+  .corner.br{bottom:10px;right:10px;border-left:none;border-top:none;border-radius:0 0 8px 0}
+  /* linia skanująca */
+  .scanline{
+    position:absolute;left:6px;right:6px;top:0;height:3px;
+    background:linear-gradient(90deg,transparent,var(--accent) 18%,var(--accent) 82%,transparent);
+    border-radius:999px;
+    box-shadow:0 0 14px 4px rgba(167,104,67,.35);
+    opacity:0;
+  }
+  .photo-card.scanning .scanline{
+    opacity:1;
+    animation:scan-sweep 2.1s ease-in-out forwards;
+  }
+  @keyframes scan-sweep{
+    0%{top:6px}
+    55%{top:calc(100% - 9px)}
+    100%{top:6px}
+  }
+  .scan-status{
+    position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+    background:rgba(27,26,23,.78);color:#fff;
+    font-size:.7rem;font-weight:600;padding:4px 12px;border-radius:999px;
+    opacity:0;transition:opacity .25s;white-space:nowrap;
+  }
+  .photo-card.scanning .scan-status{opacity:1}
+
+  /* karta wyniku w stylu aplikacji */
+  .result-card{
+    margin-top:12px;
+    background:var(--surface);
+    border:var(--border);
+    border-radius:var(--radius-sm);
+    padding:16px 14px 14px;
+    box-shadow:var(--shadow-soft);
+    opacity:0;transform:translateY(14px) scale(.97);
+    transition:opacity .4s ease,transform .4s cubic-bezier(.2,.9,.3,1.2);
+  }
+  .result-card.show{opacity:1;transform:none}
+  .result-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .dish-name{font-weight:700;font-size:.98rem;letter-spacing:-.01em}
+  .ai-tag{
+    flex:none;font-size:.62rem;font-weight:700;letter-spacing:.05em;
+    color:var(--accent-dark);background:var(--accent-light);
+    padding:3px 9px;border-radius:999px;text-transform:uppercase;
+  }
+  .kcal-row{display:flex;align-items:baseline;gap:6px;margin-top:8px}
+  .kcal-value{font-size:2.35rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+  .kcal-unit{font-size:.95rem;color:var(--text-2);font-weight:600}
+  .macro-row{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}
+  .macro-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    border-radius:999px;padding:5px 11px 5px 8px;
+    font-size:.76rem;font-weight:600;color:var(--text-2);
+    border:var(--border);background:var(--bg);
+    opacity:0;transform:translateY(6px);
+    transition:opacity .3s ease,transform .3s ease;
+  }
+  .result-card.show .macro-pill{opacity:1;transform:none}
+  .result-card.show .macro-pill:nth-child(1){transition-delay:.15s}
+  .result-card.show .macro-pill:nth-child(2){transition-delay:.27s}
+  .result-card.show .macro-pill:nth-child(3){transition-delay:.39s}
+  .macro-pill .mdot{width:9px;height:9px;border-radius:50%;flex:none}
+  .macro-pill strong{color:var(--text);font-weight:700}
+  .mdot.protein{background:var(--protein)}
+  .mdot.carbs{background:var(--carbs)}
+  .mdot.fat{background:var(--fat)}
+  .score-pill{
+    display:inline-flex;align-items:center;gap:7px;
+    margin-top:12px;padding:6px 13px;border-radius:999px;
+    font-size:.8rem;font-weight:700;
+    opacity:0;transform:translateY(6px);
+    transition:opacity .3s ease .5s,transform .3s ease .5s;
+  }
+  .result-card.show .score-pill{opacity:1;transform:none}
+  .score-pill.good{background:var(--green-light);color:var(--green)}
+  .score-pill.mid{background:var(--amber-light);color:var(--amber)}
+  .score-pill.low{background:var(--red-light);color:var(--red)}
+  .score-pill svg{width:13px;height:13px;flex:none}
+
+  .rescan-btn{
+    display:inline-flex;align-items:center;gap:9px;
+    background:var(--accent);color:#fff;border:none;cursor:pointer;
+    font:inherit;font-weight:700;font-size:.95rem;
+    padding:12px 24px;border-radius:999px;
+    transition:background .18s,transform .18s;
+    box-shadow:var(--shadow-soft);
+  }
+  .rescan-btn:hover{background:var(--accent-dark)}
+  .rescan-btn:active{transform:scale(.97)}
+  .rescan-btn:disabled{opacity:.55;cursor:default}
+  .rescan-btn svg{width:16px;height:16px;flex:none}
+
+  /* ===== Pasek zaufania ===== */
+  .trust{padding:28px 0 8px}
+  .trust .wrap{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
+  }
+  .trust-item{
+    background:var(--surface);border:var(--border);border-radius:var(--radius-sm);
+    padding:18px 20px;text-align:center;box-shadow:var(--shadow-soft);
+  }
+  .trust-item strong{display:block;font-size:1.25rem;letter-spacing:-.02em;color:var(--accent-dark)}
+  .trust-item span{font-size:.86rem;color:var(--text-2)}
+
+  /* ===== Sekcje wspólne ===== */
+  section{padding:72px 0}
+  .section-alt{background:var(--bg-alt)}
+  .section-head{max-width:34em;margin:0 auto 44px;text-align:center}
+  .section-head h2{font-size:clamp(1.6rem,3.6vw,2.2rem);letter-spacing:-.02em;font-weight:800}
+  .section-head p{margin-top:10px;color:var(--text-2)}
+  .kicker{
+    display:inline-block;font-size:.76rem;font-weight:700;letter-spacing:.08em;
+    text-transform:uppercase;color:var(--accent);margin-bottom:10px;
+  }
+
+  /* ===== Funkcje ===== */
+  .features-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+  }
+  .feature-card{
+    background:var(--surface);border:var(--border);border-radius:var(--radius);
+    padding:26px 24px;box-shadow:var(--shadow-soft);
+    transition:transform .2s,box-shadow .2s;
+  }
+  .feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  .feature-icon{
+    width:46px;height:46px;border-radius:14px;
+    background:var(--accent-light);color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+  }
+  .feature-icon svg{width:24px;height:24px}
+  .feature-card h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
+  .feature-card p{margin-top:7px;font-size:.92rem;color:var(--text-2)}
+
+  /* ===== Jak to działa ===== */
+  .steps{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
+    position:relative;counter-reset:step;
+  }
+  /* oś-pasek postępu łącząca kroki */
+  .steps::before{
+    content:"";position:absolute;top:31px;left:16%;right:16%;height:4px;
+    background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 55%,rgba(167,104,67,.25) 100%);
+    border-radius:999px;
+  }
+  .step{position:relative;text-align:center;padding:0 10px}
+  .step-num{
+    counter-increment:step;
+    width:62px;height:62px;margin:0 auto 18px;border-radius:50%;
+    background:var(--surface);border:3px solid var(--accent);
+    color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.15rem;position:relative;z-index:1;
+    box-shadow:var(--shadow-soft);
+  }
+  .step-num::after{content:counter(step)}
+  .step h3{font-size:1.05rem;font-weight:700}
+  .step p{margin-top:7px;font-size:.92rem;color:var(--text-2);max-width:22em;margin-left:auto;margin-right:auto}
+  .step .step-emoji{font-size:1.5rem;display:block;margin-bottom:6px}
+
+  /* ===== Cennik ===== */
+  .pricing-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;
+  }
+  .price-card{
+    background:var(--surface);border:var(--border);border-radius:var(--radius);
+    padding:28px 24px;display:flex;flex-direction:column;
+    box-shadow:var(--shadow-soft);position:relative;
+  }
+  .price-card.featured{
+    border:2px solid var(--accent);
+    box-shadow:var(--shadow);
+  }
+  .best-tag{
+    position:absolute;top:-13px;left:50%;transform:translateX(-50%);
+    background:var(--accent);color:#fff;font-size:.72rem;font-weight:700;
+    padding:4px 14px;border-radius:999px;letter-spacing:.03em;white-space:nowrap;
+  }
+  .plan-name{font-size:.95rem;font-weight:700;color:var(--text-2)}
+  .plan-price{margin-top:10px;display:flex;align-items:baseline;gap:5px}
+  .plan-price strong{font-size:2rem;font-weight:800;letter-spacing:-.03em}
+  .plan-price span{color:var(--text-2);font-size:.9rem}
+  .plan-pills{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;min-height:30px}
+  .plan-pill{
+    font-size:.74rem;font-weight:700;padding:4px 11px;border-radius:999px;
+  }
+  .plan-pill.green{background:var(--green-light);color:var(--green)}
+  .plan-pill.accent{background:var(--accent-light);color:var(--accent-dark)}
+  .plan-desc{margin-top:12px;font-size:.88rem;color:var(--text-2);flex:1}
+  .plan-cta{
+    margin-top:20px;display:block;text-align:center;text-decoration:none;
+    font-weight:700;font-size:.95rem;padding:12px 18px;border-radius:999px;
+    transition:background .18s,color .18s;
+  }
+  .plan-cta.primary{background:var(--accent);color:#fff}
+  .plan-cta.primary:hover{background:var(--accent-dark)}
+  .plan-cta.ghost{background:var(--accent-light);color:var(--accent-dark)}
+  .plan-cta.ghost:hover{background:var(--accent);color:#fff}
+  .pricing-note{
+    margin-top:26px;text-align:center;color:var(--text-2);font-size:.9rem;
+    max-width:38em;margin-left:auto;margin-right:auto;
+  }
+  .pricing-note strong{color:var(--text)}
+
+  /* ===== FAQ ===== */
+  .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+  .faq-item{
+    background:var(--surface);border:var(--border);border-radius:var(--radius-sm);
+    box-shadow:var(--shadow-soft);overflow:hidden;
+  }
+  .faq-item summary{
+    list-style:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:space-between;gap:14px;
+    padding:17px 20px;font-weight:700;font-size:.98rem;
+  }
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary .chev{
+    flex:none;width:26px;height:26px;border-radius:50%;
+    background:var(--accent-light);color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;
+    transition:transform .25s;
+  }
+  .faq-item summary .chev svg{width:13px;height:13px}
+  .faq-item[open] summary .chev{transform:rotate(180deg)}
+  .faq-item .faq-body{padding:0 20px 18px;color:var(--text-2);font-size:.93rem}
+  .faq-item .faq-body a{color:var(--accent-dark);font-weight:600}
+
+  /* ===== CTA końcowe + stopka ===== */
+  .final-cta{text-align:center}
+  .final-cta .store-badges{justify-content:center}
+  .site-footer{
+    background:#1B1A17;color:#D8D3CA;padding:44px 0 36px;font-size:.9rem;
+  }
+  .site-footer .wrap{display:flex;flex-direction:column;gap:26px}
+  .footer-top{
+    display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;
+  }
+  .site-footer .logo{color:#fff}
+  .site-footer .store-badge{
+    background:#2B2925;border:1px solid rgba(255,255,255,.14);box-shadow:none;
+  }
+  .footer-links{display:flex;flex-wrap:wrap;gap:8px 22px}
+  .footer-links a{color:#D8D3CA;text-decoration:none;font-weight:600}
+  .footer-links a:hover{color:#fff;text-decoration:underline}
+  .footer-bottom{
+    border-top:1px solid rgba(255,255,255,.12);padding-top:20px;
+    display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
+    color:#A8A29A;font-size:.82rem;
+  }
+
+  /* ===== Animacje wejścia ===== */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .5s ease,transform .5s ease}
+  .reveal.visible{opacity:1;transform:none}
+
+  /* ===== Responsywność ===== */
+  @media (max-width:900px){
+    .features-grid{grid-template-columns:repeat(2,1fr)}
+    .pricing-grid{grid-template-columns:1fr;max-width:440px;margin:0 auto}
+    .price-card.featured{order:-1}
+  }
+  @media (max-width:820px){
+    .hero .wrap{grid-template-columns:1fr;gap:40px;text-align:center}
+    .hero .sub{margin-left:auto;margin-right:auto}
+    .store-badges{justify-content:center}
+    .steps{grid-template-columns:1fr;gap:34px;max-width:420px;margin:0 auto}
+    .steps::before{
+      left:50%;right:auto;top:8%;bottom:8%;height:auto;width:4px;
+      transform:translateX(-50%);
+      background:linear-gradient(180deg,var(--accent) 0%,var(--accent) 55%,rgba(167,104,67,.25) 100%);
+    }
+  }
+  @media (max-width:640px){
+    section{padding:56px 0}
+    .trust .wrap{grid-template-columns:1fr;gap:10px}
+    .trust-item{display:flex;align-items:baseline;justify-content:center;gap:10px;text-align:left;padding:14px 18px}
+    .features-grid{grid-template-columns:1fr}
+    .hero{padding-top:40px}
+  }
+
+  /* ===== Ograniczony ruch ===== */
+  @media (prefers-reduced-motion:reduce){
+    *,*::before,*::after{
+      animation-duration:.01ms !important;
+      animation-iteration-count:1 !important;
+      transition-duration:.01ms !important;
+    }
+    .reveal{opacity:1;transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="#" aria-label="EatSee – strona główna"><img src="img/logo-128.png" alt="" width="32" height="32">EatSee<span class="dot">.</span></a>
+    <nav class="main-nav" aria-label="Nawigacja główna">
+      <a href="#funkcje">Funkcje</a>
+      <a href="#jak-dziala">Jak działa</a>
+      <a href="#cennik">Cennik</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="header-cta" href="#pobierz">Pobierz</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="pobierz" aria-label="EatSee – licznik kalorii z AI">
+    <div class="wrap">
+      <div class="hero-copy">
+        <span class="hero-note">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.2L20 10l-5.8 1.8L12 18l-2.2-6.2L4 10l5.8-1.8L12 2zM19 15l1.1 3 3 1.1-3 1.1L19 23l-1.1-2.8-3-1.1 3-1.1L19 15z"/></svg>
+          Licznik kalorii z AI · iOS i Android
+        </span>
+        <h1>Policz kalorie <em>jednym zdjęciem</em></h1>
+        <p class="sub">Zrób zdjęcie posiłku, a AI w kilka sekund rozpozna danie i poda kalorie, białko, węglowodany i tłuszcze - razem z oceną, jak zdrowy jest Twój talerz.</p>
+        <div class="store-badges">
+          <!-- TODO: podmień href na link do sklepu po publikacji -->
+          <a href="#" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.1 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14.6 4.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+            <span class="txt"><small>Pobierz w</small><strong>App Store</strong></span>
+          </a>
+          <!-- TODO: podmień href na link do sklepu po publikacji -->
+          <a href="#" data-store="googleplay" class="store-badge" aria-label="Pobierz EatSee z Google Play">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1 9.5-9.6v-.4L4.5 2.2l-.1.1zm12.8 6.4L14 11.8l3.2 3.2 3.7-2.1c1.1-.6 1.1-1.6 0-2.2l-3.7-2zM5.2 21.7c.4.2.9.2 1.5-.1l10-5.7-3-3-8.5 8.8zm0-19.4l8.5 8.7 3-3-10-5.6c-.6-.3-1.1-.4-1.5-.1z"/></svg>
+            <span class="txt"><small>Pobierz z</small><strong>Google Play</strong></span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Interaktywne demo skanu -->
+      <div class="demo-col">
+        <div class="phone" aria-label="Demo aplikacji EatSee: skanowanie posiłku ze zdjęcia i wynik analizy AI">
+          <div class="screen">
+            <div class="notch" aria-hidden="true"></div>
+            <div class="app-bar" aria-hidden="true">
+              <span class="app-logo"><img src="img/logo-128.png" alt="">EatSee<span class="dot">.</span></span>
+              <span class="app-date">Dziś · Obiad</span>
+            </div>
+            <div class="photo-card" id="photoCard">
+              <div class="plate">
+                <div class="food" id="plateFood" aria-hidden="true"></div>
+              </div>
+              <span class="corner tl" aria-hidden="true"></span>
+              <span class="corner tr" aria-hidden="true"></span>
+              <span class="corner bl" aria-hidden="true"></span>
+              <span class="corner br" aria-hidden="true"></span>
+              <div class="scanline" id="scanline" aria-hidden="true"></div>
+              <div class="scan-status" aria-hidden="true">Analizuję zdjęcie…</div>
+            </div>
+            <div class="result-card" id="resultCard" aria-live="polite">
+              <div class="result-head">
+                <span class="dish-name" id="dishName">&nbsp;</span>
+                <span class="ai-tag">AI · 3 s</span>
+              </div>
+              <div class="kcal-row">
+                <span class="kcal-value" id="kcalValue" aria-hidden="true">0</span>
+                <span class="visually-hidden" id="kcalSr"></span>
+                <span class="kcal-unit">kcal</span>
+              </div>
+              <div class="macro-row">
+                <span class="macro-pill"><span class="mdot protein"></span>Białko <strong id="mProtein"></strong></span>
+                <span class="macro-pill"><span class="mdot carbs"></span>Węgle <strong id="mCarbs"></strong></span>
+                <span class="macro-pill"><span class="mdot fat"></span>Tłuszcze <strong id="mFat"></strong></span>
+              </div>
+              <span class="score-pill" id="scorePill">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.9-9.5-9.2C.9 8.4 3 5 6.4 5c2 0 3.5 1.1 4.3 2.4h2.6C14.1 6.1 15.6 5 17.6 5 21 5 23.1 8.4 21.5 11.8 19.5 16.1 12 21 12 21z"/></svg>
+                <span id="scoreText"></span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <button class="rescan-btn" id="rescanBtn" type="button" aria-label="Zeskanuj ponownie inne danie w demie">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v5h-5"/></svg>
+          Zeskanuj ponownie
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PASEK ZAUFANIA ===== -->
+  <div class="trust" aria-label="Najważniejsze fakty o EatSee">
+    <div class="wrap">
+      <div class="trust-item reveal"><strong>3 sekundy</strong><span>od zdjęcia do wyniku</span></div>
+      <div class="trust-item reveal"><strong>Bez limitu</strong><span>skanowania kodów kreskowych</span></div>
+      <div class="trust-item reveal"><strong>Po polsku</strong><span>i dla polskich produktów</span></div>
+    </div>
+  </div>
+
+  <!-- ===== FUNKCJE ===== -->
+  <section id="funkcje">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Funkcje</span>
+        <h2>Wszystko, czego potrzebujesz, żeby jeść świadomie</h2>
+        <p>Bez ważenia każdego składnika i ręcznego wpisywania tabelek. EatSee robi robotę za Ciebie.</p>
+      </div>
+      <div class="features-grid">
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8a2 2 0 0 1 2-2h2l1.5-2h7L17 6h2a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8z"/><circle cx="12" cy="13" r="3.5"/></svg>
+          </div>
+          <h3>Skan AI ze zdjęcia</h3>
+          <p>Sfotografuj talerz, a AI rozpozna danie i policzy kalorie oraz makroskładniki w kilka sekund.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7V5a1 1 0 0 1 1-1h2M17 4h2a1 1 0 0 1 1 1v2M20 17v2a1 1 0 0 1-1 1h-2M7 20H5a1 1 0 0 1-1-1v-2"/><path d="M7.5 8v8M10.5 8v8M13.5 8v8M16.5 8v8"/></svg>
+          </div>
+          <h3>Kody kreskowe bez limitu</h3>
+          <p>Zeskanuj kod produktu ze sklepu i dodaj go do dziennika. Zawsze za darmo, bez żadnych limitów.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3h10a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><path d="M9 7h6M9 10.5h6M9 14h6M9 17.5h3.5"/></svg>
+          </div>
+          <h3>Etykiety wartości odżywczych</h3>
+          <p>Zdjęcie tabeli z opakowania wystarczy. Wybierz porcję, a EatSee przeliczy wartości za Ciebie.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20s-7-4.6-8.8-8.6C1.9 8.2 3.9 5 7 5c1.9 0 3.2 1 4 2.2C11.8 6 13.1 5 15 5c3.1 0 5.1 3.2 3.8 6.4C17 15.4 12 20 12 20z"/><path d="M12 10v4M10 12h4" stroke-width="2"/></svg>
+          </div>
+          <h3>Ulubione jednym tapnięciem</h3>
+          <p>Jesz często to samo? Zapisz posiłek w ulubionych i dodawaj go do dziennika jednym dotknięciem.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.3" fill="currentColor"/></svg>
+          </div>
+          <h3>Dziennik z celami</h3>
+          <p>Ustaw dzienny cel kalorii i makro, a EatSee pokaże na bieżąco, ile jeszcze możesz dziś zjeść.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M9.5 20V4M15 20v-9M20.5 20V7"/><path d="M2.5 20h19"/></svg>
+          </div>
+          <h3>Statystyki tygodnia</h3>
+          <p>Zobacz trendy z ostatnich dni: średnie kalorie, rozkład makro i to, jak idzie Ci realizacja celu.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== JAK TO DZIAŁA ===== -->
+  <section id="jak-dziala" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Jak to działa</span>
+        <h2>Trzy kroki i posiłek jest w dzienniku</h2>
+        <p>Cały proces trwa krócej niż zamieszanie łyżeczką w herbacie.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true"></div>
+          <span class="step-emoji" aria-hidden="true">📸</span>
+          <h3>Zrób zdjęcie</h3>
+          <p>Wyceluj telefon w talerz i tapnij. Nie musisz nic ważyć ani niczego wpisywać.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true"></div>
+          <span class="step-emoji" aria-hidden="true">✨</span>
+          <h3>AI analizuje</h3>
+          <p>W kilka sekund dostajesz kalorie, białko, węglowodany, tłuszcze i health score dania.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step-num" aria-hidden="true"></div>
+          <span class="step-emoji" aria-hidden="true">📒</span>
+          <h3>Zapisz do dziennika</h3>
+          <p>Jedno tapnięcie i posiłek ląduje w dzienniku, a Twoje dzienne cele aktualizują się same.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CENNIK ===== -->
+  <section id="cennik">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Cennik</span>
+        <h2>Zacznij za darmo, przyspiesz z Premium</h2>
+        <p>EatSee Premium znosi dzienny limit analiz AI. Wybierz plan, który Ci pasuje.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card reveal">
+          <h3 class="plan-name">Miesięcznie</h3>
+          <p class="plan-price"><strong>19,99 zł</strong><span>/ miesiąc</span></p>
+          <div class="plan-pills"></div>
+          <p class="plan-desc">Pełne EatSee Premium bez zobowiązań. Anulujesz w każdej chwili w ustawieniach sklepu.</p>
+          <a class="plan-cta ghost" href="#pobierz">Wybieram miesięczny</a>
+        </article>
+        <article class="price-card featured reveal">
+          <span class="best-tag">Najczęściej wybierany</span>
+          <h3 class="plan-name">Rocznie</h3>
+          <p class="plan-price"><strong>99,99 zł</strong><span>/ rok</span></p>
+          <div class="plan-pills">
+            <span class="plan-pill green">7 dni za darmo</span>
+            <span class="plan-pill accent">Oszczędzasz 58%</span>
+          </div>
+          <p class="plan-desc">To około 8,33 zł miesięcznie. Zacznij od darmowego tygodnia próbnego i sprawdź wszystko bez ryzyka.</p>
+          <a class="plan-cta primary" href="#pobierz">Wypróbuj 7 dni za darmo</a>
+        </article>
+        <article class="price-card reveal">
+          <h3 class="plan-name">Na zawsze</h3>
+          <p class="plan-price"><strong>299 zł</strong><span>jednorazowo</span></p>
+          <div class="plan-pills">
+            <span class="plan-pill accent">Bez subskrypcji</span>
+          </div>
+          <p class="plan-desc">Płacisz raz i masz Premium na zawsze. Dla tych, którzy wiedzą, że liczenie kalorii zostaje z nimi na dłużej.</p>
+          <a class="plan-cta ghost" href="#pobierz">Kupuję raz na zawsze</a>
+        </article>
+      </div>
+      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI dziennie, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section id="faq" class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">FAQ</span>
+        <h2>Częste pytania</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>Skąd aplikacja zna kalorie z samego zdjęcia?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">AI rozpoznaje na zdjęciu danie i jego składniki, szacuje wielkość porcji i na tej podstawie wylicza kalorie oraz makroskładniki. Wynik możesz zawsze skorygować ręcznie, np. zmieniając wielkość porcji.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy EatSee działa z polskimi produktami i daniami?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Cała aplikacja jest po polsku.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Co się stanie, gdy wykorzystam darmowy limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Darmowe konto ma 3 analizy AI dziennie - limit odnawia się każdego dnia. Po jego wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium znosi limit analiz AI całkowicie.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy skanowanie kodów kreskowych też jest limitowane?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Nie. Skanowanie kodów kreskowych i korzystanie z bazy produktów jest zawsze bezpłatne i bez limitu - na darmowym koncie i w Premium.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Jak anulować subskrypcję?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Subskrypcją zarządza sklep, w którym ją kupiono: na iPhonie wejdź w Ustawienia → swoje konto Apple → Subskrypcje, a na Androidzie w Google Play → Płatności i subskrypcje. Anulowanie działa do końca opłaconego okresu, bez dodatkowych opłat.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy mogę usunąć konto i swoje dane?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Tak. W ustawieniach aplikacji znajdziesz opcję usunięcia konta razem ze wszystkimi danymi. Szczegóły opisuje nasza <a href="https://screech115.github.io/eatsee-legal/">polityka prywatności</a>, a w razie pytań napisz na <a href="mailto:kontakt@astroware.pl">kontakt@astroware.pl</a>.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA KOŃCOWE ===== -->
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="section-head" style="margin-bottom:24px">
+        <h2>Następny posiłek policz zdjęciem</h2>
+        <p>Pobierz EatSee i przekonaj się, jak proste może być liczenie kalorii.</p>
+      </div>
+      <div class="store-badges">
+        <!-- TODO: podmień href na link do sklepu po publikacji -->
+        <a href="#" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.1 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14.6 4.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+          <span class="txt"><small>Pobierz w</small><strong>App Store</strong></span>
+        </a>
+        <!-- TODO: podmień href na link do sklepu po publikacji -->
+        <a href="#" data-store="googleplay" class="store-badge" aria-label="Pobierz EatSee z Google Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1 9.5-9.6v-.4L4.5 2.2l-.1.1zm12.8 6.4L14 11.8l3.2 3.2 3.7-2.1c1.1-.6 1.1-1.6 0-2.2l-3.7-2zM5.2 21.7c.4.2.9.2 1.5-.1l10-5.7-3-3-8.5 8.8zm0-19.4l8.5 8.7 3-3-10-5.6c-.6-.3-1.1-.4-1.5-.1z"/></svg>
+          <span class="txt"><small>Pobierz z</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== STOPKA ===== -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <a class="logo" href="#" aria-label="EatSee – początek strony"><img src="img/logo-128.png" alt="" width="32" height="32">EatSee<span class="dot">.</span></a>
+      <div class="store-badges" style="margin-top:0">
+        <!-- TODO: podmień href na link do sklepu po publikacji -->
+        <a href="#" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.1 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14.6 4.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
+          <span class="txt"><small>Pobierz w</small><strong>App Store</strong></span>
+        </a>
+        <!-- TODO: podmień href na link do sklepu po publikacji -->
+        <a href="#" data-store="googleplay" class="store-badge" aria-label="Pobierz EatSee z Google Play">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1 9.5-9.6v-.4L4.5 2.2l-.1.1zm12.8 6.4L14 11.8l3.2 3.2 3.7-2.1c1.1-.6 1.1-1.6 0-2.2l-3.7-2zM5.2 21.7c.4.2.9.2 1.5-.1l10-5.7-3-3-8.5 8.8zm0-19.4l8.5 8.7 3-3-10-5.6c-.6-.3-1.1-.4-1.5-.1z"/></svg>
+          <span class="txt"><small>Pobierz z</small><strong>Google Play</strong></span>
+        </a>
+      </div>
+    </div>
+    <nav class="footer-links" aria-label="Linki prawne i kontakt">
+      <a href="https://screech115.github.io/eatsee-legal/">Polityka prywatności</a>
+      <a href="https://screech115.github.io/eatsee-legal/en.html">Privacy Policy (EN)</a>
+      <a href="mailto:kontakt@astroware.pl">kontakt@astroware.pl</a>
+    </nav>
+    <div class="footer-bottom">
+      <span>© 2026 ASTROWARE Arkadiusz Woźniak</span>
+      <span>EatSee - licznik kalorii z AI</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* Dane demo: 5 dań losowanych przy każdym skanie */
+  var DISHES = [
+    { name:"Pierogi ruskie",          emoji:"🥟🥟🥟", kcal:540, protein:16, carbs:78, fat:18, score:58 },
+    { name:"Jajecznica z pomidorami", emoji:"🍳🍅",   kcal:320, protein:20, carbs:6,  fat:24, score:72 },
+    { name:"Kurczak z ryżem",         emoji:"🍗🍚🥦", kcal:610, protein:42, carbs:65, fat:16, score:84 },
+    { name:"Owsianka z borówkami",    emoji:"🥣🫐🍌", kcal:380, protein:12, carbs:58, fat:11, score:88 },
+    { name:"Pizza margherita",        emoji:"🍕🍕",   kcal:560, protein:22, carbs:66, fat:22, score:45 }
+  ];
+
+  var photoCard  = document.getElementById("photoCard");
+  var scanline   = document.getElementById("scanline");
+  var plateFood  = document.getElementById("plateFood");
+  var resultCard = document.getElementById("resultCard");
+  var dishName   = document.getElementById("dishName");
+  var kcalValue  = document.getElementById("kcalValue");
+  var kcalSr     = document.getElementById("kcalSr");
+  var mProtein   = document.getElementById("mProtein");
+  var mCarbs     = document.getElementById("mCarbs");
+  var mFat       = document.getElementById("mFat");
+  var scorePill  = document.getElementById("scorePill");
+  var scoreText  = document.getElementById("scoreText");
+  var rescanBtn  = document.getElementById("rescanBtn");
+
+  var lastIndex = -1;
+  var scanning = false;
+
+  function pickDish(){
+    var i;
+    do { i = Math.floor(Math.random() * DISHES.length); }
+    while (i === lastIndex && DISHES.length > 1);
+    lastIndex = i;
+    return DISHES[i];
+  }
+
+  function scoreLabel(score){
+    if (score >= 70) return { text:"Dobre",       cls:"good" };
+    if (score >= 50) return { text:"Umiarkowane", cls:"mid"  };
+    return { text:"Niskie", cls:"low" };
+  }
+
+  function setPlate(dish){
+    plateFood.innerHTML = "";
+    Array.from(dish.emoji).forEach(function(ch){
+      var s = document.createElement("span");
+      s.textContent = ch;
+      plateFood.appendChild(s);
+    });
+  }
+
+  function animateCount(el, target, duration){
+    if (reduceMotion){ el.textContent = target; return; }
+    var start = null;
+    function tick(ts){
+      if (start === null) start = ts;
+      var p = Math.min(1, (ts - start) / duration);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased);
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  function showResults(dish){
+    dishName.textContent = dish.name;
+    mProtein.textContent = dish.protein + " g";
+    mCarbs.textContent   = dish.carbs + " g";
+    mFat.textContent     = dish.fat + " g";
+    kcalSr.textContent   = dish.kcal + " kilokalorii";
+
+    var label = scoreLabel(dish.score);
+    scorePill.className = "score-pill " + label.cls;
+    scoreText.textContent = dish.score + " · " + label.text;
+
+    resultCard.classList.add("show");
+    kcalValue.textContent = "0";
+    animateCount(kcalValue, dish.kcal, 900);
+
+    scanning = false;
+    rescanBtn.disabled = false;
+  }
+
+  function runScan(){
+    if (scanning) return;
+    scanning = true;
+    rescanBtn.disabled = true;
+
+    var dish = pickDish();
+    setPlate(dish);
+    resultCard.classList.remove("show");
+
+    if (reduceMotion){
+      showResults(dish);
+      return;
+    }
+
+    // restart animacji linii skanującej
+    photoCard.classList.remove("scanning");
+    void scanline.offsetWidth;
+    photoCard.classList.add("scanning");
+
+    var done = false;
+    var finish = function(){
+      if (done) return;
+      done = true;
+      photoCard.classList.remove("scanning");
+      showResults(dish);
+    };
+    scanline.addEventListener("animationend", finish, { once:true });
+    setTimeout(finish, 2600); // zabezpieczenie, gdyby animationend nie odpalił
+  }
+
+  rescanBtn.addEventListener("click", runScan);
+  window.addEventListener("load", function(){ setTimeout(runScan, reduceMotion ? 0 : 450); });
+
+  /* Subtelne pojawianie się sekcji przy przewijaniu */
+  if (!reduceMotion && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (e.isIntersecting){
+          e.target.classList.add("visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold:.12 });
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("visible"); });
+  }
+})();
+</script>
+</body>
+</html>
