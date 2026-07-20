@@ -4,10 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>EatSee - policz kalorie jednym zdjęciem</title>
-<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Skanuj kody kreskowe bez limitu. Po polsku, dla polskich produktów.">
+<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Woda, waga, synchronizacja z Apple Health i Health Connect, statystyki z wnioskami. Po polsku i w 13 innych językach.">
 <link rel="canonical" href="https://eatsee.pl/">
 <meta property="og:title" content="EatSee - policz kalorie jednym zdjęciem">
-<meta property="og:description" content="Licznik kalorii z AI: zdjęcie posiłku zamienia w kalorie i makroskładniki w kilka sekund. Kody kreskowe bez limitu, dziennik z celami, statystyki tygodnia.">
+<meta property="og:description" content="Licznik kalorii z AI: zdjęcie posiłku zamienia w kalorie i makroskładniki w kilka sekund. Kody kreskowe bez limitu, woda i waga, Apple Health i Health Connect, statystyki z wnioskami.">
 <meta property="og:url" content="https://eatsee.pl/">
 <meta property="og:image" content="https://eatsee.pl/og.png">
 <meta property="og:image:width" content="1200">
@@ -25,10 +25,10 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "EatSee",
-  "description": "Licznik kalorii oparty na AI: zdjęcie posiłku zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Skanowanie kodów kreskowych bez limitu, dziennik z celami i statystyki tygodniowe.",
+  "description": "Licznik kalorii oparty na AI: zdjęcie posiłku zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Skanowanie kodów kreskowych bez limitu, dziennik z celami, śledzenie wody i wagi, synchronizacja z Apple Health i Health Connect oraz statystyki z automatycznymi wnioskami.",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "iOS, Android",
-  "inLanguage": "pl",
+  "inLanguage": ["pl", "en", "de", "fr", "es", "it", "pt", "uk", "cs", "sk", "nl", "tr", "ro", "hu"],
   "url": "https://eatsee.pl/",
   "image": "https://eatsee.pl/og.png",
   "author": {
@@ -69,7 +69,7 @@
       "name": "Czy EatSee działa z polskimi produktami i daniami?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tak — EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Cała aplikacja jest po polsku."
+        "text": "Tak — EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków."
       }
     },
     {
@@ -86,6 +86,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Nie. Skanowanie kodów kreskowych i korzystanie z bazy produktów jest zawsze bezpłatne i bez limitu — na darmowym koncie i w Premium."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy EatSee łączy się z Apple Health lub Health Connect?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie, a w aplikacji zobaczysz też swoje dzisiejsze kroki."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "W jakich językach działa aplikacja?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "EatSee działa w 14 językach — m.in. po polsku, angielsku, niemiecku, francusku, hiszpańsku, ukraińsku i czesku. Język zmienisz w ustawieniach aplikacji, niezależnie od języka telefonu."
       }
     },
     {
@@ -711,10 +727,31 @@
         </article>
         <article class="feature-card reveal">
           <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3s6 6.6 6 10.6a6 6 0 0 1-12 0C6 9.6 12 3 12 3z"/></svg>
+          </div>
+          <h3>Woda pod kontrolą</h3>
+          <p>Dodawaj wodę jednym tapnięciem - z dziennika albo szybkiego przycisku. Cel nawodnienia wylicza się sam z Twojej wagi.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 19h16"/><path d="M6 15l3.5-4.5 3 2.5L17.5 7"/><circle cx="17.5" cy="7" r="1.4"/></svg>
+          </div>
+          <h3>Waga i trend 30 dni</h3>
+          <p>Zapisuj pomiary i obserwuj wykres trendu, a dzienne cele kalorii same nadążają za Twoją aktualną wagą.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>
+          </div>
+          <h3>Apple Health i Health Connect</h3>
+          <p>Posiłki i waga synchronizują się z aplikacją Zdrowie na iPhonie i Health Connect na Androidzie, a kroki widzisz prosto w EatSee.</p>
+        </article>
+        <article class="feature-card reveal">
+          <div class="feature-icon">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M9.5 20V4M15 20v-9M20.5 20V7"/><path d="M2.5 20h19"/></svg>
           </div>
-          <h3>Statystyki tygodnia</h3>
-          <p>Zobacz trendy z ostatnich dni: średnie kalorie, rozkład makro i to, jak idzie Ci realizacja celu.</p>
+          <h3>Statystyki i ciekawostki</h3>
+          <p>Tydzień lub miesiąc: wykresy kalorii, wody i wagi oraz sekcja „W skrócie”, która sama wyłapuje dla Ciebie wnioski.</p>
         </article>
       </div>
     </div>
@@ -757,7 +794,7 @@
       <div class="section-head">
         <span class="kicker">Cennik</span>
         <h2>Zacznij za darmo, przyspiesz z Premium</h2>
-        <p>EatSee Premium znosi dzienny limit analiz AI. Wybierz plan, który Ci pasuje.</p>
+        <p>EatSee Premium znosi dzienny limit analiz AI i odblokowuje statystyki miesięczne. Wybierz plan, który Ci pasuje.</p>
       </div>
       <div class="pricing-grid">
         <article class="price-card reveal">
@@ -806,7 +843,7 @@
         </details>
         <details class="faq-item reveal">
           <summary>Czy EatSee działa z polskimi produktami i daniami?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Cała aplikacja jest po polsku.</div>
+          <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Co się stanie, gdy wykorzystam darmowy limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -815,6 +852,14 @@
         <details class="faq-item reveal">
           <summary>Czy skanowanie kodów kreskowych też jest limitowane?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
           <div class="faq-body">Nie. Skanowanie kodów kreskowych i korzystanie z bazy produktów jest zawsze bezpłatne i bez limitu - na darmowym koncie i w Premium.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy EatSee łączy się z Apple Health lub Health Connect?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie, a w aplikacji zobaczysz też swoje dzisiejsze kroki.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>W jakich językach działa aplikacja?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">EatSee działa w 14 językach - m.in. po polsku, angielsku, niemiecku, francusku, hiszpańsku, ukraińsku i czesku. Język zmienisz w ustawieniach aplikacji, niezależnie od języka telefonu.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Jak anulować subskrypcję?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
