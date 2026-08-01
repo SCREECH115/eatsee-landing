@@ -169,6 +169,8 @@
     --border:1px solid rgba(27,26,23,.09);
     --header-bg:rgba(245,241,233,.92);
     --header-border:rgba(27,26,23,.07);
+    --spot:rgba(167,104,67,.10);
+    --card-hover-border:rgba(167,104,67,.34);
     color-scheme:light;
   }
 
@@ -196,6 +198,8 @@
     --border:1px solid rgba(255,255,255,.08);
     --header-bg:rgba(22,18,13,.92);
     --header-border:rgba(255,255,255,.08);
+    --spot:rgba(201,144,95,.16);
+    --card-hover-border:rgba(201,144,95,.40);
     color-scheme:dark;
   }
 
@@ -462,19 +466,54 @@
     display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
   }
   .feature-card{
+    position:relative;isolation:isolate;overflow:hidden;
     background:var(--surface);border:var(--border);border-radius:var(--radius);
     padding:26px 24px;box-shadow:var(--shadow-soft);
-    transition:transform .2s,box-shadow .2s;
+    transition:transform .28s cubic-bezier(.2,.7,.3,1),box-shadow .28s ease,border-color .28s ease;
   }
-  .feature-card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+  /* delikatna poswiata podazajaca za kursorem */
+  .feature-card::before{
+    content:"";position:absolute;inset:0;z-index:-1;opacity:0;
+    background:radial-gradient(320px circle at var(--mx,50%) var(--my,0%),var(--spot),transparent 66%);
+    transition:opacity .32s ease;pointer-events:none;
+  }
+  /* cienka linia akcentu wjezdzajaca od lewej */
+  .feature-card::after{
+    content:"";position:absolute;left:0;top:0;height:3px;width:100%;
+    background:linear-gradient(90deg,var(--accent),var(--accent-dark));
+    transform:scaleX(0);transform-origin:left;transition:transform .34s cubic-bezier(.2,.7,.3,1);
+  }
+  .feature-card:hover{
+    transform:translateY(-5px);box-shadow:var(--shadow);
+    border-color:var(--card-hover-border);
+  }
+  .feature-card:hover::before{opacity:1}
+  .feature-card:hover::after{transform:scaleX(1)}
+
   .feature-icon{
-    width:46px;height:46px;border-radius:14px;
+    position:relative;
+    width:50px;height:50px;border-radius:16px;
     background:var(--accent-light);color:var(--accent-dark);
     display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+    transition:background .28s ease,color .28s ease,transform .28s cubic-bezier(.2,.7,.3,1);
   }
-  .feature-icon svg{width:24px;height:24px}
+  .feature-card:hover .feature-icon{
+    background:linear-gradient(135deg,var(--accent),var(--accent-dark));
+    color:#fff;transform:scale(1.06) rotate(-3deg);
+  }
+  .feature-icon svg{width:25px;height:25px}
   .feature-card h3{font-size:1.05rem;font-weight:700;letter-spacing:-.01em}
   .feature-card p{margin-top:7px;font-size:.92rem;color:var(--text-2)}
+
+  /* kafelki wchodza kaskadowo, a nie wszystkie naraz */
+  .features-grid .reveal:nth-child(3n+2){transition-delay:.08s}
+  .features-grid .reveal:nth-child(3n+3){transition-delay:.16s}
+
+  @media (prefers-reduced-motion:reduce){
+    .feature-card,.feature-icon,.feature-card::before,.feature-card::after{transition:none}
+    .feature-card:hover{transform:none}
+    .features-grid .reveal{transition-delay:0s !important}
+  }
 
   /* ===== Jak to działa ===== */
   .steps{
@@ -1385,6 +1424,17 @@
   }
 
   rescanBtn.addEventListener("click", runScan);
+
+  /* Poswiata na kafelkach funkcji podaza za kursorem (tylko myszka, bez dotyku) */
+  if (!reduceMotion && window.matchMedia("(hover:hover)").matches){
+    document.querySelectorAll(".feature-card").forEach(function(card){
+      card.addEventListener("pointermove", function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty("--mx", ((e.clientX - r.left) / r.width * 100) + "%");
+        card.style.setProperty("--my", ((e.clientY - r.top) / r.height * 100) + "%");
+      });
+    });
+  }
 
   /* Przelaczanie ekranow w makiecie telefonu */
   (function(){
