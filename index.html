@@ -394,24 +394,16 @@
   .kcal-row{display:flex;align-items:baseline;gap:6px;margin-top:8px}
   .kcal-value{font-size:2.35rem;font-weight:800;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
   .kcal-unit{font-size:.95rem;color:var(--text-2);font-weight:600}
-  .macro-row{display:flex;gap:7px;margin-top:12px;flex-wrap:wrap}
-  .macro-pill{
-    display:inline-flex;align-items:center;gap:6px;
-    border-radius:999px;padding:5px 11px 5px 8px;
-    font-size:.76rem;font-weight:600;color:var(--text-2);
-    border:var(--border);background:var(--bg);
-    opacity:0;transform:translateY(6px);
-    transition:opacity .3s ease,transform .3s ease;
+  /* kolumny makro z etykietami, jak w aplikacji */
+  .macro-row{
+    display:flex;gap:6px;margin-top:12px;
+    border-top:var(--border);border-bottom:var(--border);padding:10px 0;
   }
-  .result-card.show .macro-pill{opacity:1;transform:none}
-  .result-card.show .macro-pill:nth-child(1){transition-delay:.15s}
-  .result-card.show .macro-pill:nth-child(2){transition-delay:.27s}
-  .result-card.show .macro-pill:nth-child(3){transition-delay:.39s}
-  .macro-pill .mdot{width:9px;height:9px;border-radius:50%;flex:none}
-  .macro-pill strong{color:var(--text);font-weight:700}
-  .mdot.protein{background:var(--protein)}
-  .mdot.carbs{background:var(--carbs)}
-  .mdot.fat{background:var(--fat)}
+  .macro-col{opacity:0;transform:translateY(6px);transition:opacity .3s ease,transform .3s ease}
+  .result-card.show .macro-col{opacity:1;transform:none}
+  .result-card.show .macro-col:nth-child(1){transition-delay:.15s}
+  .result-card.show .macro-col:nth-child(2){transition-delay:.27s}
+  .result-card.show .macro-col:nth-child(3){transition-delay:.39s}
   .score-pill{
     display:inline-flex;align-items:center;gap:7px;
     margin-top:12px;padding:6px 13px;border-radius:999px;
@@ -908,6 +900,90 @@
   }
   .d-row i{margin-left:auto;color:var(--text-2);font-style:normal;font-size:1rem}
 
+  /* --- dopasowanie do rzeczywistych ekranow aplikacji --- */
+  .d-summary{padding:14px 12px 13px;display:flex;flex-direction:column;gap:10px}
+  .d-sum-top{position:relative;display:flex;align-items:center;gap:12px}
+  .d-summary .d-ring{width:96px;height:96px;flex:none;transform:rotate(-90deg)}
+  .d-summary .d-ring-text{position:absolute;left:0;width:96px;top:32px;align-items:center}
+  .d-summary .d-ring-text strong{font-size:1.3rem}
+  .d-summary .d-ring-text small{font-size:.62rem}
+  .d-sum-copy{display:flex;flex-direction:column;gap:2px;min-width:0}
+  .d-sum-copy small{font-size:.68rem;color:var(--text-2);font-weight:600}
+  .d-sum-copy b{font-size:.92rem;line-height:1.25}
+  .demo-screen[data-screen="diary"]:not([hidden]) .d-summary .ring-fg{stroke-dashoffset:64}
+
+  .d-pills{display:flex;gap:6px;margin-top:10px}
+  .d-pill{
+    flex:1;text-align:center;padding:7px 4px;border-radius:999px;
+    background:var(--surface);border:var(--border);font-size:.68rem;font-weight:700;color:var(--text-2);
+  }
+  .d-pill.on{background:var(--accent);color:#fff;border-color:transparent;flex:1.5}
+
+  .d-sec-ic{font-style:normal;margin-right:5px}
+  .d-meal>b{white-space:nowrap}
+  .d-score{width:7px;height:7px;border-radius:50%;flex:none;margin-left:2px}
+  .d-score.good{background:var(--green)}
+  .d-score.mid{background:var(--amber)}
+
+  .d-insight{flex-direction:column;align-items:stretch;gap:8px}
+  .d-insight-title{font-size:.8rem;font-weight:800}
+  .d-ins-row{display:flex;align-items:center;gap:8px;font-size:.71rem;color:var(--text-2);line-height:1.4}
+  .ins-ic{
+    width:26px;height:26px;border-radius:50%;flex:none;font-style:normal;font-size:13px;
+    display:flex;align-items:center;justify-content:center;background:var(--accent-light);
+  }
+
+  .d-tiles{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:9px}
+  .d-tile u{text-decoration:none;font-size:.58rem;color:var(--text-2);font-weight:600}
+
+  .d-chart{margin-top:9px}
+  .d-chart-title{font-size:.75rem;font-weight:800;margin-bottom:9px}
+
+  .d-fav{padding:0;overflow:hidden}
+  .d-fav-photo{
+    display:flex;align-items:center;justify-content:center;height:66px;font-size:28px;
+    background:var(--accent-light);
+  }
+  .d-fav strong{font-size:.72rem;line-height:1.2;margin:8px 9px 0}
+  .d-fav-kcal{display:flex;align-items:center;gap:5px;font-size:.74rem;font-weight:800;color:var(--accent-dark);margin:4px 9px 0}
+  .d-fav small{font-size:.59rem;color:var(--text-2);font-weight:600;margin:3px 9px 9px}
+
+  .d-prem-copy{font-size:.72rem;color:#fff;line-height:1.45}
+  .d-prem-btn{
+    display:block;text-align:center;margin-top:9px;background:rgba(255,255,255,.2);
+    border:1px solid rgba(255,255,255,.3);border-radius:999px;padding:7px;
+    font-size:.74rem;font-weight:800;color:#fff;
+  }
+  .d-row-ic{
+    width:26px;height:26px;border-radius:50%;flex:none;font-style:normal;font-size:13px;
+    display:flex;align-items:center;justify-content:center;background:var(--accent-light);
+  }
+  .d-row u{margin-left:auto;text-decoration:none;color:var(--text-2);font-size:1rem}
+
+  /* karta wyniku skanu - uklad jak w aplikacji */
+  .kcal-flame{font-size:17px;margin-right:6px}
+  .macro-col{display:flex;flex-direction:column;align-items:center;flex:1;gap:2px}
+  .macro-col b{font-size:.84rem;font-weight:800}
+  .macro-col b em{font-style:normal}
+  .macro-col small{font-size:.54rem;letter-spacing:.04em;color:var(--text-2);font-weight:700}
+  .macro-col .m-p{color:var(--protein)}
+  .macro-col .m-c{color:var(--carbs)}
+  .macro-col .m-f{color:var(--fat)}
+  .ai-note{display:block;font-size:.64rem;color:var(--text-2);margin-top:9px}
+  .qty-row{display:flex;align-items:center;justify-content:center;gap:14px;margin-top:11px}
+  .qty-btn{
+    width:30px;height:30px;border-radius:50%;background:var(--accent-light);color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;
+  }
+  .qty-val{font-size:.86rem;font-weight:800}
+  .qty-val small{font-size:.68rem;font-weight:700;color:var(--text-2)}
+  .save-btn{
+    display:block;text-align:center;margin-top:11px;background:var(--accent);color:#fff;
+    border-radius:999px;padding:10px;font-size:.82rem;font-weight:800;
+  }
+  .alt-actions{display:flex;justify-content:space-between;margin-top:10px;padding:0 6px}
+  .alt-actions i{font-style:normal;font-size:.74rem;font-weight:700;color:var(--accent-dark)}
+
   /* Pasek zakładek + FAB */
   .demo-tabs{
     position:absolute;left:12px;right:12px;bottom:12px;height:54px;
@@ -1041,89 +1117,116 @@
             <!-- EKRAN: Dziennik -->
             <div class="demo-screen" data-screen="diary" hidden>
               <div class="d-badges">
-                <span class="d-badge"><i class="bdot water"></i>1600 ml</span>
                 <span class="d-badge"><i class="bdot steps"></i>8 240</span>
-                <span class="d-badge"><i class="bdot streak"></i>12 dni</span>
+                <span class="d-badge"><i class="bdot streak"></i>12</span>
               </div>
-              <div class="d-card d-ring-card">
-                <svg class="d-ring" viewBox="0 0 120 120" aria-hidden="true">
-                  <circle class="ring-bg" cx="60" cy="60" r="52"/>
-                  <circle class="ring-fg" cx="60" cy="60" r="52"/>
-                </svg>
-                <div class="d-ring-text">
-                  <strong>1847</strong>
-                  <small>z 2300 kcal</small>
+              <div class="d-card d-summary">
+                <div class="d-sum-top">
+                  <svg class="d-ring" viewBox="0 0 120 120" aria-hidden="true">
+                    <circle class="ring-bg" cx="60" cy="60" r="50"/>
+                    <circle class="ring-fg" cx="60" cy="60" r="50"/>
+                  </svg>
+                  <div class="d-ring-text"><strong>1847</strong><small>/ 2300</small></div>
+                  <div class="d-sum-copy">
+                    <small>Podsumowanie dnia</small>
+                    <b>Pozostało 453 kcal</b>
+                  </div>
                 </div>
-                <p class="d-ring-note">Pozostało <b>453 kcal</b></p>
-              </div>
-              <div class="d-card d-macros">
                 <div class="d-macro">
-                  <span class="d-macro-top">Białko <b>96 g</b></span>
+                  <span class="d-macro-top">Białko <b>96 g / 173 g</b></span>
                   <span class="d-bar"><i style="width:56%;background:var(--protein)"></i></span>
                 </div>
                 <div class="d-macro">
-                  <span class="d-macro-top">Węglowodany <b>180 g</b></span>
+                  <span class="d-macro-top">Węglowodany <b>180 g / 230 g</b></span>
                   <span class="d-bar"><i style="width:78%;background:var(--carbs)"></i></span>
                 </div>
                 <div class="d-macro">
-                  <span class="d-macro-top">Tłuszcze <b>52 g</b></span>
+                  <span class="d-macro-top">Tłuszcze <b>52 g / 77 g</b></span>
                   <span class="d-bar"><i style="width:67%;background:var(--fat)"></i></span>
                 </div>
               </div>
-              <p class="d-section-title">Posiłki</p>
-              <div class="d-meal"><span class="d-thumb">🥗</span><span class="d-meal-name">Sałatka z kurczakiem<small>B 38 g · W 14 g · T 18 g</small></span><b>412</b></div>
-              <div class="d-meal"><span class="d-thumb">🍝</span><span class="d-meal-name">Makaron z pesto<small>B 21 g · W 76 g · T 22 g</small></span><b>598</b></div>
+              <div class="d-pills">
+                <span class="d-pill on">🔥 Kalorie</span>
+                <span class="d-pill">💧</span>
+                <span class="d-pill">🚶</span>
+              </div>
+              <p class="d-section-title"><i class="d-sec-ic">🍽</i>Posiłki</p>
+              <div class="d-meal">
+                <span class="d-meal-name">Sałatka z kurczakiem<small>B 38 g · W 14 g · T 18 g</small></span>
+                <b>412 kcal</b><i class="d-score good"></i>
+              </div>
+              <div class="d-meal">
+                <span class="d-meal-name">Makaron z pesto<small>B 21 g · W 76 g · T 22 g</small></span>
+                <b>598 kcal</b><i class="d-score mid"></i>
+              </div>
             </div>
 
-            <!-- EKRAN: Statystyki -->
             <div class="demo-screen" data-screen="stats" hidden>
               <div class="d-card d-insight">
-                <span class="d-insight-icon">✨</span>
-                <p>Wczoraj zjadłeś o <b>240 kcal</b> mniej niż Twój cel. Trzymasz tempo.</p>
+                <p class="d-insight-title">✨ W skrócie</p>
+                <span class="d-ins-row"><i class="ins-ic water">💧</i>Do dzisiejszego celu nawodnienia brakuje 600 ml.</span>
+                <span class="d-ins-row"><i class="ins-ic streak">🔥</i>Seria 12 dni z rzędu. Nie przerywaj!</span>
               </div>
-              <p class="d-section-title">Ostatnie 7 dni</p>
+              <div class="d-tiles">
+                <div class="d-card d-tile"><b>2 118</b><small>Średnie kalorie</small><u>kcal / dzień</u></div>
+                <div class="d-card d-tile"><b>86%</b><small>Realizacja celu</small><u>6 z 7 dni</u></div>
+                <div class="d-card d-tile"><b>78</b><small>Jakość posiłków</small><u>Zdrowe</u></div>
+                <div class="d-card d-tile"><b>12</b><small>Aktualna seria</small><u>Rekord: 21 dni</u></div>
+              </div>
               <div class="d-card d-chart">
+                <p class="d-chart-title">Kalorie dzień po dniu</p>
                 <div class="d-bars">
                   <i style="height:58%"></i><i style="height:74%"></i><i style="height:46%"></i>
                   <i style="height:88%"></i><i style="height:63%"></i><i style="height:71%"></i>
                   <i class="today" style="height:80%"></i>
                 </div>
-                <div class="d-days"><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span><span>Nd</span></div>
-              </div>
-              <div class="d-tiles">
-                <div class="d-card d-tile"><b>2 118</b><small>Średnie kcal / dzień</small></div>
-                <div class="d-card d-tile"><b>−1,7 kg</b><small>Zmiana w 30 dni</small></div>
+                <div class="d-days"><span>Nd</span><span>Pn</span><span>Wt</span><span>Śr</span><span>Cz</span><span>Pt</span><span>So</span></div>
               </div>
             </div>
 
-            <!-- EKRAN: Ulubione -->
             <div class="demo-screen" data-screen="favs" hidden>
-              <p class="d-section-title">Zapisane posiłki</p>
               <div class="d-fav-grid">
-                <div class="d-card d-fav"><span class="d-thumb big">🥣</span><strong>Owsianka z bananem</strong><small>386 kcal</small></div>
-                <div class="d-card d-fav"><span class="d-thumb big">🍗</span><strong>Kurczak z ryżem</strong><small>642 kcal</small></div>
-                <div class="d-card d-fav"><span class="d-thumb big">🥪</span><strong>Kanapka z awokado</strong><small>298 kcal</small></div>
-                <div class="d-card d-fav"><span class="d-thumb big">🍎</span><strong>Jabłko</strong><small>94 kcal</small></div>
+                <div class="d-card d-fav">
+                  <span class="d-fav-photo">🍕</span>
+                  <strong>Pizza z pieczarkami</strong>
+                  <span class="d-fav-kcal">1120 kcal<i class="d-score mid"></i></span>
+                  <small>B 45 g · W 155 g · T 34 g</small>
+                </div>
+                <div class="d-card d-fav">
+                  <span class="d-fav-photo">🍎</span>
+                  <strong>Jabłko</strong>
+                  <span class="d-fav-kcal">94 kcal<i class="d-score good"></i></span>
+                  <small>B 1 g · W 25 g · T 0 g</small>
+                </div>
+                <div class="d-card d-fav">
+                  <span class="d-fav-photo">🍗</span>
+                  <strong>Kurczak w sosie</strong>
+                  <span class="d-fav-kcal">642 kcal<i class="d-score mid"></i></span>
+                  <small>B 48 g · W 63 g · T 18 g</small>
+                </div>
+                <div class="d-card d-fav">
+                  <span class="d-fav-photo">☕</span>
+                  <strong>Kawa z mlekiem</strong>
+                  <span class="d-fav-kcal">70 kcal<i class="d-score mid"></i></span>
+                  <small>B 3 g · W 6 g · T 4 g</small>
+                </div>
               </div>
-              <p class="d-hint">Dodaj do dziennika jednym dotknięciem.</p>
             </div>
 
-            <!-- EKRAN: Profil -->
             <div class="demo-screen" data-screen="profile" hidden>
               <div class="d-card d-profile">
-                <span class="d-avatar">A</span>
-                <span class="d-meal-name">Arek<small>Cel: schudnąć · 2300 kcal</small></span>
+                <span class="d-meal-name">Arek<small>arek@example.com</small></span>
               </div>
+              <p class="d-section-title">EatSee Premium</p>
               <div class="d-card d-premium">
-                <strong>EatSee Premium</strong>
-                <small>Bez limitu skanów, pełne statystyki, motywy kolorystyczne i eksport PDF.</small>
+                <span class="d-prem-copy">✨ Nielimitowane skany, pełne statystyki i motywy kolorystyczne.</span>
+                <span class="d-prem-btn">Odblokuj bez limitu</span>
               </div>
-              <div class="d-row"><span>🎨</span>Wygląd<i>›</i></div>
-              <div class="d-row"><span>🔔</span>Powiadomienia<i>›</i></div>
-              <div class="d-row"><span>📥</span>Eksport danych<i>›</i></div>
+              <div class="d-row"><i class="d-row-ic">🧍</i>Twoje dane i cele<u>›</u></div>
+              <div class="d-row"><i class="d-row-ic">🔔</i>Powiadomienia<u>›</u></div>
+              <div class="d-row"><i class="d-row-ic">✉️</i>Newsletter EatSee<u>›</u></div>
+              <div class="d-row"><i class="d-row-ic">🎨</i>Wygląd<u>›</u></div>
             </div>
-
-            <!-- EKRAN: Skan -->
             <div class="demo-screen" data-screen="scan">
             <div class="photo-card" id="photoCard">
               <div class="plate">
@@ -1138,23 +1241,29 @@
             </div>
             <div class="result-card" id="resultCard" aria-live="polite">
               <div class="result-head">
+                <span class="score-pill" id="scorePill">
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.9-9.5-9.2C.9 8.4 3 5 6.4 5c2 0 3.5 1.1 4.3 2.4h2.6C14.1 6.1 15.6 5 17.6 5 21 5 23.1 8.4 21.5 11.8 19.5 16.1 12 21 12 21z"/></svg>
+                  <span id="scoreText"></span>
+                </span>
                 <span class="dish-name" id="dishName">&nbsp;</span>
-                <span class="ai-tag">AI · 3 s</span>
               </div>
               <div class="kcal-row">
+                <span class="kcal-flame" aria-hidden="true">🔥</span>
                 <span class="kcal-value" id="kcalValue" aria-hidden="true">0</span>
                 <span class="visually-hidden" id="kcalSr"></span>
                 <span class="kcal-unit">kcal</span>
               </div>
               <div class="macro-row">
-                <span class="macro-pill"><span class="mdot protein"></span>Białko <strong id="mProtein"></strong></span>
-                <span class="macro-pill"><span class="mdot carbs"></span>Węgle <strong id="mCarbs"></strong></span>
-                <span class="macro-pill"><span class="mdot fat"></span>Tłuszcze <strong id="mFat"></strong></span>
+                <span class="macro-col"><b class="m-p">B <em id="mProtein"></em></b><small>BIAŁKO</small></span>
+                <span class="macro-col"><b class="m-c">W <em id="mCarbs"></em></b><small>WĘGLOWODANY</small></span>
+                <span class="macro-col"><b class="m-f">T <em id="mFat"></em></b><small>TŁUSZCZE</small></span>
               </div>
-              <span class="score-pill" id="scorePill">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 21s-7.5-4.9-9.5-9.2C.9 8.4 3 5 6.4 5c2 0 3.5 1.1 4.3 2.4h2.6C14.1 6.1 15.6 5 17.6 5 21 5 23.1 8.4 21.5 11.8 19.5 16.1 12 21 12 21z"/></svg>
-                <span id="scoreText"></span>
-              </span>
+              <span class="ai-note" id="aiNote">✨ Założenia AI: porcja ~320 g</span>
+              <div class="qty-row" aria-hidden="true">
+                <span class="qty-btn">−</span><span class="qty-val">1 <small>szt.</small></span><span class="qty-btn">+</span>
+              </div>
+              <span class="save-btn" aria-hidden="true">Zapisz posiłek</span>
+              <span class="alt-actions" aria-hidden="true"><i>Doprecyzuj</i><i>Odrzuć</i></span>
             </div>
             </div>
 
@@ -1523,11 +1632,11 @@
 
   /* Dane demo: 5 dań losowanych przy każdym skanie */
   var DISHES = [
-    { name:"Pierogi ruskie",          emoji:"🥟🥟🥟", kcal:540, protein:16, carbs:78, fat:18, score:58 },
-    { name:"Jajecznica z pomidorami", emoji:"🍳🍅",   kcal:320, protein:20, carbs:6,  fat:24, score:72 },
-    { name:"Kurczak z ryżem",         emoji:"🍗🍚🥦", kcal:610, protein:42, carbs:65, fat:16, score:84 },
-    { name:"Owsianka z borówkami",    emoji:"🥣🫐🍌", kcal:380, protein:12, carbs:58, fat:11, score:88 },
-    { name:"Pizza margherita",        emoji:"🍕🍕",   kcal:560, protein:22, carbs:66, fat:22, score:45 }
+    { name:"Pierogi ruskie",          emoji:"🥟🥟🥟", kcal:540, protein:16, carbs:78, fat:18, score:58, note:"pieróg ~45 g ×8" },
+    { name:"Jajecznica z pomidorami", emoji:"🍳🍅",   kcal:320, protein:20, carbs:6,  fat:24, score:72, note:"3 jajka, masło ~10 g" },
+    { name:"Kurczak z ryżem",         emoji:"🍗🍚🥦", kcal:610, protein:42, carbs:65, fat:16, score:84, note:"ryż ~180 g pod mięsem" },
+    { name:"Owsianka z borówkami",    emoji:"🥣🫐🍌", kcal:380, protein:12, carbs:58, fat:11, score:88, note:"płatki ~60 g, mleko ~200 ml" },
+    { name:"Pizza margherita",        emoji:"🍕🍕",   kcal:560, protein:22, carbs:66, fat:22, score:45, note:"2 kawałki ~130 g" }
   ];
 
   var photoCard  = document.getElementById("photoCard");
@@ -1535,6 +1644,7 @@
   var plateFood  = document.getElementById("plateFood");
   var resultCard = document.getElementById("resultCard");
   var dishName   = document.getElementById("dishName");
+  var aiNote     = document.getElementById("aiNote");
   var kcalValue  = document.getElementById("kcalValue");
   var kcalSr     = document.getElementById("kcalSr");
   var mProtein   = document.getElementById("mProtein");
@@ -1585,6 +1695,7 @@
 
   function showResults(dish){
     dishName.textContent = dish.name;
+    if (aiNote) aiNote.textContent = "✨ Założenia AI: " + dish.note;
     mProtein.textContent = dish.protein + " g";
     mCarbs.textContent   = dish.carbs + " g";
     mFat.textContent     = dish.fat + " g";
