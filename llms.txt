@@ -1,4 +1,4 @@
-# EatSee
+﻿# EatSee
 
 > EatSee to polski licznik kalorii oparty na AI na iOS i Androida. Robisz zdjęcie posiłku, a sztuczna inteligencja rozpoznaje danie i w kilka sekund szacuje kalorie, białko, węglowodany i tłuszcze, po czym zapisuje wynik w dzienniku. Aplikacja działa w 14 językach, a jej twórcą jest ASTROWARE Arkadiusz Woźniak (Polska).
 

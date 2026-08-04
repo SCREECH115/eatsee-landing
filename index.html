@@ -777,7 +777,7 @@
     .price-card.featured{order:-1}
   }
   @media (max-width:820px){
-    .hero .wrap{grid-template-columns:1fr;gap:40px;text-align:center}
+    .hero .wrap{grid-template-columns:1fr;gap:30px;text-align:center}
     .hero .sub{margin-left:auto;margin-right:auto}
     .store-badges{justify-content:center}
   }
@@ -785,7 +785,7 @@
     section{padding:56px 0}
     .trust .wrap{grid-template-columns:1fr;gap:10px}
     .trust-item{display:flex;align-items:baseline;justify-content:center;gap:10px;text-align:left;padding:14px 18px}
-    .hero{padding-top:40px}
+    .hero{padding-top:32px;padding-bottom:32px}
   }
 
   /* ===== Ograniczony ruch ===== */
@@ -1040,6 +1040,43 @@
   :root[data-theme="dark"] .theme-toggle .icon-sun{display:none}
   .site-header .wrap{gap:10px}
   @media (max-width:640px){ .theme-toggle{width:36px;height:36px} }
+
+  /* ===== Mobile: pasek pobierania, kolejnosc sekcji, lzejsze renderowanie ===== */
+  .mobile-cta{
+    position:fixed;left:0;right:0;bottom:0;z-index:40;
+    display:none;
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    background:var(--header-bg);
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    border-top:1px solid var(--header-border);
+    transform:translateY(110%);
+    transition:transform .28s ease;
+  }
+  .mobile-cta.visible{transform:translateY(0)}
+  .mobile-cta .store-badge{width:100%;justify-content:center}
+  @media (max-width:719px){
+    .mobile-cta{display:block}
+    body.mcta-open{padding-bottom:76px}
+  }
+  @media (max-width:820px){
+    main{display:flex;flex-direction:column}
+    .hero{order:0}
+    .trust{order:1}
+    #jak-dziala{order:2}
+    #cennik{order:3}
+    #funkcje{order:4}
+    #faq{order:5}
+    .final-cta{order:6}
+    #funkcje,#jak-dziala,#cennik,#faq,.final-cta{
+      content-visibility:auto;
+      contain-intrinsic-size:auto 900px;
+    }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .mobile-cta{transition:none}
+  }
+
 </style>
 <script>
   /* Ustawiamy motyw przed pierwszym malowaniem, zeby strona nie mrugala jasnym tlem */
@@ -1836,5 +1873,42 @@
   }
 })();
 </script>
+
+<div class="mobile-cta" id="mobileCta" aria-hidden="true">
+  <a href="https://play.google.com/store/apps/details?id=com.eatsee.app" data-store="googleplay" class="store-badge" aria-label="Pobierz EatSee z Google Play">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.4 2.3c-.3.3-.4.7-.4 1.2v17c0 .5.1.9.4 1.2l.1.1 9.5-9.6v-.4L4.5 2.2l-.1.1zm12.8 6.4L14 11.8l3.2 3.2 3.7-2.1c1.1-.6 1.1-1.6 0-2.2l-3.7-2zM5.2 21.7c.4.2.9.2 1.5-.1l10-5.7-3-3-8.5 8.8zm0-19.4l8.5 8.7 3-3-10-5.6c-.6-.3-1.1-.4-1.5-.1z"/></svg>
+    <span class="txt"><small>Pobierz z</small><strong>Google Play</strong></span>
+  </a>
+</div>
+
+<script>
+  /* Pasek pobierania na mobile: pojawia sie po zjechaniu ponizej hero, znika przy koncowym CTA */
+  (function () {
+    var bar = document.getElementById('mobileCta');
+    var anchor = document.querySelector('.hero .store-badges');
+    var finale = document.querySelector('.final-cta');
+    if (!bar || !anchor || !('IntersectionObserver' in window)) { return; }
+    var pastHero = false;
+    var nearFinale = false;
+    function update() {
+      var show = pastHero && !nearFinale;
+      bar.classList.toggle('visible', show);
+      bar.setAttribute('aria-hidden', show ? 'false' : 'true');
+      document.body.classList.toggle('mcta-open', show);
+    }
+    new IntersectionObserver(function (entries) {
+      var entry = entries[0];
+      pastHero = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      update();
+    }).observe(anchor);
+    if (finale) {
+      new IntersectionObserver(function (entries) {
+        nearFinale = entries[0].isIntersecting;
+        update();
+      }).observe(finale);
+    }
+  })();
+</script>
+
 </body>
 </html>
