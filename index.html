@@ -24,6 +24,19 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
+
+  /* Consent Mode v2: bez zgody z banera cookies Google pozostaja zablokowane */
+  var eatseeConsent = null;
+  try { eatseeConsent = localStorage.getItem('eatsee-cookies'); } catch (e) {}
+  var consentGranted = eatseeConsent === 'granted';
+  gtag('consent', 'default', {
+    ad_storage: consentGranted ? 'granted' : 'denied',
+    ad_user_data: consentGranted ? 'granted' : 'denied',
+    ad_personalization: consentGranted ? 'granted' : 'denied',
+    analytics_storage: consentGranted ? 'granted' : 'denied'
+  });
+  gtag('set', 'url_passthrough', true);
+  gtag('set', 'ads_data_redaction', !consentGranted);
   gtag('js', new Date());
 
   gtag('config', 'AW-18369541079');
@@ -1059,6 +1072,40 @@
   .site-header .wrap{gap:10px}
   @media (max-width:640px){ .theme-toggle{width:36px;height:36px} }
 
+/* ===== Baner cookies ===== */
+  .cookie-consent{
+    position:fixed;left:16px;right:16px;bottom:16px;z-index:60;
+    max-width:400px;
+    background:var(--surface);
+    border:var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:18px 20px;
+    opacity:0;transform:translateY(14px);
+    transition:opacity .3s ease,transform .3s ease;
+  }
+  .cookie-consent.visible{opacity:1;transform:translateY(0)}
+  .cookie-consent p{margin:0 0 14px;font-size:.9rem;line-height:1.5;color:var(--text-2)}
+  .cookie-consent p strong{color:var(--text)}
+  .cookie-consent a{color:var(--accent)}
+  .cookie-actions{display:flex;gap:10px}
+  .cookie-btn{
+    flex:1;padding:10px 14px;border-radius:999px;
+    font-size:.9rem;font-weight:700;font-family:inherit;
+    cursor:pointer;transition:transform .15s,opacity .15s;
+  }
+  .cookie-btn:active{transform:scale(.97)}
+  .cookie-btn.accept{background:var(--accent);color:#fff;border:none}
+  .cookie-btn.accept:hover{opacity:.92}
+  .cookie-btn.decline{background:transparent;color:var(--text-2);border:var(--border)}
+  .cookie-btn.decline:hover{color:var(--text)}
+  @media (max-width:560px){
+    .cookie-consent{left:10px;right:10px;bottom:10px;max-width:none;padding:16px}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .cookie-consent{transition:none}
+  }
+
   /* ===== Mobile: pasek pobierania, kolejnosc sekcji, lzejsze renderowanie ===== */
   .mobile-cta{
     position:fixed;left:0;right:0;bottom:0;z-index:40;
@@ -1890,6 +1937,43 @@
     document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("visible"); });
   }
 })();
+</script>
+
+<div class="cookie-consent" id="cookieConsent" role="dialog" aria-label="Zgoda na pliki cookie" hidden>
+  <p><strong>Ciasteczka?</strong> Używamy plików cookie Google, żeby wiedzieć, czy nasze reklamy działają. Żadnego śledzenia bez Twojej zgody - szczegóły w <a href="/polityka-prywatnosci">polityce prywatności</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" id="cookieDecline" type="button">Tylko niezbędne</button>
+    <button class="cookie-btn accept" id="cookieAccept" type="button">Akceptuję</button>
+  </div>
+</div>
+
+<script>
+  /* Baner cookies: pokazuje sie raz, wybor zapamietany w przegladarce */
+  (function () {
+    var stored = null;
+    try { stored = localStorage.getItem('eatsee-cookies'); } catch (e) {}
+    if (stored === 'granted' || stored === 'denied') { return; }
+    var banner = document.getElementById('cookieConsent');
+    if (!banner) { return; }
+    banner.hidden = false;
+    requestAnimationFrame(function () { banner.classList.add('visible'); });
+    function choose(value) {
+      try { localStorage.setItem('eatsee-cookies', value); } catch (e) {}
+      if (value === 'granted') {
+        gtag('consent', 'update', {
+          ad_storage: 'granted',
+          ad_user_data: 'granted',
+          ad_personalization: 'granted',
+          analytics_storage: 'granted'
+        });
+        gtag('set', 'ads_data_redaction', false);
+      }
+      banner.classList.remove('visible');
+      setTimeout(function () { banner.hidden = true; }, 300);
+    }
+    document.getElementById('cookieAccept').addEventListener('click', function () { choose('granted'); });
+    document.getElementById('cookieDecline').addEventListener('click', function () { choose('denied'); });
+  })();
 </script>
 
 <div class="mobile-cta" id="mobileCta" aria-hidden="true">
