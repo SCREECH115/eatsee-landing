@@ -1,0 +1,430 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Regulamin aplikacji EatSee | EatSee</title>
+<meta name="description" content="Regulamin aplikacji EatSee: zakres usługi, limity uczciwego korzystania, ceny i płatności, prawo odstąpienia, reklamacje.">
+<link rel="canonical" href="https://eatsee.pl/regulamin">
+<link rel="alternate" hreflang="pl" href="https://eatsee.pl/regulamin">
+<link rel="alternate" hreflang="en" href="https://eatsee.pl/terms">
+<link rel="icon" href="/img/logo-128.png" type="image/png">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Regulamin aplikacji EatSee">
+<meta property="og:description" content="Regulamin aplikacji EatSee: zakres usługi, limity uczciwego korzystania, ceny i płatności, prawo odstąpienia, reklamacje.">
+<meta property="og:url" content="https://eatsee.pl/regulamin">
+<meta property="og:image" content="https://eatsee.pl/og.png">
+<style>
+  :root{
+    --bg:#F5F1E9;
+    --surface:#FFFFFF;
+    --bg-alt:#F0EDE6;
+    --accent:#A76843;
+    --accent-dark:#714525;
+    --accent-light:#F6ECE4;
+    --text:#1B1A17;
+    --text-2:#57534C;
+    --radius:20px;
+    --border:1px solid rgba(27,26,23,.09);
+    --header-bg:rgba(245,241,233,.92);
+    --header-border:rgba(27,26,23,.07);
+    --shadow:0 6px 24px rgba(27,26,23,.07);
+    color-scheme:light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#16120D;
+    --surface:#211B14;
+    --bg-alt:#2B241B;
+    --accent:#C9905F;
+    --accent-dark:#E4BB94;
+    --accent-light:#38281A;
+    --text:#F2ECE1;
+    --text-2:#B9AF9F;
+    --border:1px solid rgba(242,236,225,.10);
+    --header-bg:rgba(22,18,13,.92);
+    --header-border:rgba(242,236,225,.08);
+    --shadow:0 6px 24px rgba(0,0,0,.35);
+    color-scheme:dark;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--text);
+    font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .site-header{
+    position:sticky;top:0;z-index:20;
+    background:var(--header-bg);
+    backdrop-filter:saturate(180%) blur(14px);
+    -webkit-backdrop-filter:saturate(180%) blur(14px);
+    border-bottom:1px solid var(--header-border);
+  }
+  .site-header .wrap{
+    max-width:860px;margin:0 auto;padding:12px 24px;
+    display:flex;align-items:center;gap:16px;
+  }
+  .logo{
+    display:inline-flex;align-items:center;gap:8px;
+    font-weight:800;font-size:1.05rem;color:var(--text);text-decoration:none;
+  }
+  .logo img{border-radius:8px}
+  .logo .dot{color:var(--accent)}
+  .doc-nav{margin-left:auto;display:flex;flex-wrap:wrap;gap:14px;font-size:.9rem}
+  .doc-nav a{color:var(--text-2);text-decoration:none}
+  .doc-nav a:hover{color:var(--accent)}
+  .doc-nav a[aria-current="page"]{color:var(--accent-dark);font-weight:700}
+  .theme-toggle{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:34px;height:34px;border-radius:999px;
+    border:var(--border);background:var(--surface);color:var(--text-2);
+    cursor:pointer;padding:0;flex:none;
+  }
+  .theme-toggle:hover{color:var(--accent)}
+  .theme-toggle svg{width:17px;height:17px}
+  .icon-moon{display:none}
+  :root[data-theme="dark"] .icon-moon{display:block}
+  :root[data-theme="dark"] .icon-sun{display:none}
+  main{max-width:860px;margin:0 auto;padding:40px 24px 88px}
+  .card{
+    background:var(--surface);
+    border:var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:clamp(24px,4vw,40px);
+  }
+  h1{color:var(--accent-dark);font-size:clamp(1.6rem,4vw,2rem);line-height:1.25;margin:0 0 4px}
+  h2{color:var(--accent-dark);font-size:1.18rem;margin-top:2em}
+  .meta{color:var(--text-2);font-size:.95rem;margin-bottom:24px}
+  a{color:var(--accent)}
+  ul{padding-left:1.3em}
+  li{margin-bottom:.35em}
+  strong{color:var(--text)}
+  .note{
+    background:var(--accent-light);
+    border-radius:16px;
+    padding:16px 20px;
+    margin:20px 0;
+  }
+  .table-scroll{overflow-x:auto;margin:16px 0}
+  table{width:100%;border-collapse:collapse;font-size:.97rem;min-width:460px}
+  th,td{text-align:left;padding:10px 12px;border-bottom:var(--border)}
+  th{color:var(--accent-dark)}
+  .doc-footer{
+    max-width:860px;margin:0 auto;padding:0 24px 56px;
+    color:var(--text-2);font-size:.9rem;
+    display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;
+  }
+  .doc-footer a{color:var(--text-2)}
+  @media (max-width:560px){
+    .site-header .wrap{padding:10px 16px;gap:10px}
+    .doc-nav{width:100%;order:3;margin-left:0}
+    main{padding:28px 16px 64px}
+    .doc-footer{padding:0 16px 48px}
+  }
+</style>
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('eatsee-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored === 'dark' || stored === 'light' ? stored : prefersDark ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="logo" href="/" aria-label="EatSee - Strona główna"><img src="/img/logo-128.png" alt="" width="30" height="30">EatSee<span class="dot">.</span></a>
+    <nav class="doc-nav" aria-label="Regulamin aplikacji EatSee">
+      <a href="/regulamin" aria-current="page">Regulamin</a>
+      <a href="/polityka-prywatnosci">Polityka prywatności</a>
+      <a href="/terms">English</a>
+    </nav>
+    <button class="theme-toggle" type="button" aria-label="Przełącz motyw jasny/ciemny"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
+  </div>
+</header>
+
+<main>
+  <article class="card">
+<h1>Regulamin aplikacji EatSee</h1>
+        <p class="meta">Obowiązuje od: 4 sierpnia 2026 r.</p>
+
+        <h2>1. Usługodawca</h2>
+        <p>
+          Usługodawcą i właścicielem aplikacji EatSee jest
+          <strong>ASTROWARE Arkadiusz Woźniak</strong>, Rudka Kozłowiecka 102, 21-025 Niemce,
+          Polska, wpisany do Centralnej Ewidencji i Informacji o Działalności Gospodarczej, NIP:
+          <strong>7133133330</strong>.
+        </p>
+        <p>
+          Kontakt: <strong>kontakt@eatsee.pl</strong> (sprawy dotyczące aplikacji, płatności i
+          reklamacji) oraz <strong>kontakt@astroware.pl</strong> (sprawy dotyczące danych
+          osobowych).
+        </p>
+
+        <h2>2. Czym jest EatSee</h2>
+        <p>
+          EatSee to aplikacja mobilna, która pozwala prowadzić dziennik żywieniowy. Zdjęcie posiłku
+          lub etykiety produktu jest analizowane przez sztuczną inteligencję, która szacuje wartości
+          odżywcze i zapisuje je w dzienniku. Aplikacja umożliwia też skanowanie kodów kreskowych,
+          rejestrowanie wody, wagi i kroków oraz przeglądanie statystyk.
+        </p>
+
+        <h2>3. Wymagania techniczne</h2>
+        <ul>
+          <li>urządzenie z systemem iOS lub Android w wersji wspieranej przez aplikację,</li>
+          <li>aktywne połączenie z internetem (analiza zdjęć odbywa się na serwerze),</li>
+          <li>aktywne konto w App Store lub Google Play - w przypadku zakupu Premium,</li>
+          <li>dostęp do aparatu lub galerii zdjęć - w przypadku dodawania posiłków ze zdjęcia.</li>
+        </ul>
+
+        <h2>4. Konto użytkownika</h2>
+        <ul>
+          <li>
+            Korzystanie z aplikacji wymaga założenia konta (adres e-mail i hasło albo logowanie
+            przez Google lub Apple).
+          </li>
+          <li>
+            Adres e-mail wymaga potwierdzenia klikniętym linkiem. Do czasu potwierdzenia część
+            funkcji może być niedostępna - jest to zabezpieczenie przed nadużywaniem darmowych
+            analiz.
+          </li>
+          <li>Konto może założyć osoba, która ukończyła 13 lat.</li>
+          <li>
+            Konto jest przypisane do jednej osoby. Nie wolno udostępniać danych logowania osobom
+            trzecim ani zakładać wielu kont w celu obejścia limitów.
+          </li>
+          <li>
+            Konto możesz usunąć w każdej chwili w aplikacji (<em>Profil → Usuń konto</em>).
+            Usunięcie konta trwale kasuje profil, dziennik posiłków i zdjęcia.
+          </li>
+        </ul>
+
+        <h2>5. Zakres usługi i limity uczciwego korzystania</h2>
+        <p>
+          Analiza zdjęcia przez sztuczną inteligencję jest usługą płatną po stronie Usługodawcy,
+          dlatego jej dostępność objęta jest dziennymi limitami. Limity odnawiają się codziennie o
+          północy czasu urządzenia.
+        </p>
+        <div class="table-scroll"><table>
+          <tr>
+            <th>Funkcja</th>
+            <th>Konto darmowe</th>
+            <th>EatSee Premium</th>
+          </tr>
+          <tr>
+            <td>Analizy AI (zdjęcia posiłków i etykiet)</td>
+            <td>3 dziennie</td>
+            <td>do 50 dziennie</td>
+          </tr>
+          <tr>
+            <td>Doprecyzowania wyniku analizy</td>
+            <td>10 dziennie</td>
+            <td>do 100 dziennie</td>
+          </tr>
+          <tr>
+            <td>Skanowanie kodów kreskowych</td>
+            <td>bez limitu</td>
+            <td>bez limitu</td>
+          </tr>
+          <tr>
+            <td>Ręczne dodawanie posiłków, woda, waga, ulubione</td>
+            <td>bez limitu</td>
+            <td>bez limitu</td>
+          </tr>
+          <tr>
+            <td>Pełna historia statystyk, trendy miesięczne, motywy kolorystyczne</td>
+            <td>niedostępne</td>
+            <td>dostępne</td>
+          </tr>
+        </table></div>
+        <div class="note">
+          <strong>Zasada uczciwego korzystania.</strong> Limit 50 analiz dziennie w planie Premium
+          znacznie przekracza typowe użycie (kilka posiłków dziennie) i służy wyłącznie ochronie
+          usługi przed automatycznym lub nadmiernym wykorzystaniem. Jeżeli Twoje potrzeby są większe
+          - napisz na <strong>kontakt@eatsee.pl</strong>, znajdziemy rozwiązanie.
+        </div>
+        <p>
+          Usługodawca może czasowo ograniczyć dostęp do analiz AI w przypadku uzasadnionego
+          podejrzenia nadużycia (np. korzystania z automatów, obchodzenia limitów przez zakładanie
+          wielu kont). Użytkownik zostanie o tym poinformowany, a ograniczenie zostanie zdjęte po
+          wyjaśnieniu sprawy.
+        </p>
+        <p>
+          Usługodawca zastrzega sobie prawo do zmiany wysokości limitów. O zmniejszeniu limitów w
+          planie Premium poinformujemy z co najmniej 30-dniowym wyprzedzeniem w aplikacji lub
+          e-mailem; jeśli nie zaakceptujesz zmiany, możesz zrezygnować z subskrypcji przed jej
+          wejściem w życie.
+        </p>
+
+        <h2>6. EatSee Premium, ceny i płatności</h2>
+        <ul>
+          <li>
+            Premium jest dostępne w planie miesięcznym, rocznym (z 7-dniowym okresem próbnym) oraz
+            jako zakup jednorazowy „na zawsze".
+          </li>
+          <li>
+            Aktualne ceny są zawsze widoczne na ekranie zakupu w aplikacji i w sklepie z
+            aplikacjami. Ceny zawierają podatek VAT.
+          </li>
+          <li>
+            Płatność pobiera <strong>Apple App Store</strong> lub <strong>Google Play</strong>,
+            zgodnie z regulaminem odpowiedniego sklepu. Usługodawca nie przetwarza danych kart
+            płatniczych.
+          </li>
+          <li>
+            Subskrypcja odnawia się automatycznie na kolejny okres, chyba że zostanie anulowana co
+            najmniej 24 godziny przed końcem bieżącego okresu - w ustawieniach konta App Store lub
+            Google Play.
+          </li>
+          <li>
+            Okres próbny: jeżeli nie anulujesz subskrypcji przed jego zakończeniem, zostanie pobrana
+            opłata za pierwszy pełny okres. Niewykorzystana część okresu próbnego przepada w chwili
+            zakupu.
+          </li>
+          <li>
+            Zakup „na zawsze" oznacza bezterminowy dostęp do funkcji Premium na czas świadczenia
+            usługi EatSee - nie jest subskrypcją i nie odnawia się.
+          </li>
+          <li>
+            Anulowanie subskrypcji zatrzymuje kolejne płatności; dostęp do Premium pozostaje aktywny
+            do końca opłaconego okresu.
+          </li>
+        </ul>
+
+        <h2>7. Prawo odstąpienia od umowy</h2>
+        <p>
+          Konsumentowi (oraz przedsiębiorcy na prawach konsumenta) przysługuje prawo odstąpienia od
+          umowy zawartej na odległość w terminie 14 dni bez podania przyczyny. Ponieważ Premium jest
+          treścią cyfrową dostarczaną natychmiast po zakupie, akceptując zakup wyrażasz zgodę na
+          rozpoczęcie świadczenia przed upływem terminu odstąpienia i przyjmujesz do wiadomości, że
+          z chwilą pełnego wykonania usługi prawo odstąpienia wygasa (art. 38 ust. 1 pkt 13 ustawy o
+          prawach konsumenta).
+        </p>
+        <p>
+          Niezależnie od powyższego zwroty płatności realizują operatorzy sklepów zgodnie z ich
+          własnymi zasadami:
+          <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>
+          (Apple) oraz
+          <a href="https://support.google.com/googleplay/answer/2479637" rel="noopener"
+            >pomoc Google Play</a
+          >. Jeśli potrzebujesz wsparcia w sprawie zwrotu - napisz na kontakt@eatsee.pl, pomożemy.
+        </p>
+
+        <h2>8. Kody promocyjne</h2>
+        <ul>
+          <li>
+            Kody promocyjne przyznają czasowy dostęp do Premium i nie mają wartości pieniężnej - nie
+            podlegają wymianie na gotówkę.
+          </li>
+          <li>Kod może zostać wykorzystany jednorazowo, przez jedno konto.</li>
+          <li>
+            Kod powitalny dla zapisanych na newsletter jest ważny 24 godziny od momentu wysłania.
+            Pozostałe kody mają termin ważności podany w wiadomości.
+          </li>
+          <li>
+            Kod uzyskany z naruszeniem regulaminu (np. z wykorzystaniem wielu kont) może zostać
+            unieważniony.
+          </li>
+        </ul>
+
+        <h2>9. Charakter wyników i zastrzeżenie zdrowotne</h2>
+        <p>
+          Wartości odżywcze wyliczane przez EatSee są <strong>szacunkowe</strong>. Sztuczna
+          inteligencja rozpoznaje danie i jego wielkość na podstawie zdjęcia, więc wynik może
+          odbiegać od stanu faktycznego. Aplikacja ma charakter wyłącznie informacyjny i motywacyjny
+          - <strong>nie stanowi porady medycznej ani dietetycznej</strong> i nie zastąpi konsultacji
+          z lekarzem lub dietetykiem. Nie jest wyrobem medycznym.
+        </p>
+
+        <h2>10. Reklamacje</h2>
+        <p>
+          Reklamacje dotyczące działania aplikacji zgłaszaj na adres
+          <strong>kontakt@eatsee.pl</strong>. Odpowiadamy najpóźniej w ciągu 14 dni od otrzymania
+          zgłoszenia. W zgłoszeniu podaj adres e-mail konta, opis problemu i - jeśli to możliwe -
+          zrzut ekranu. Reklamacje dotyczące samej płatności należy kierować do sklepu, który ją
+          pobrał.
+        </p>
+
+        <h2>11. Odpowiedzialność i dostępność usługi</h2>
+        <ul>
+          <li>
+            Dokładamy starań, aby aplikacja działała nieprzerwanie, ale możliwe są przerwy
+            techniczne oraz przerwy wynikające z awarii dostawców zewnętrznych (m.in. Google
+            Firebase, OpenAI).
+          </li>
+          <li>
+            Odpowiedzialność Usługodawcy wobec konsumenta jest ograniczona wyłącznie w zakresie
+            dopuszczalnym przez przepisy prawa - niniejszy regulamin nie wyłącza ani nie ogranicza
+            praw konsumenta wynikających z bezwzględnie obowiązujących przepisów.
+          </li>
+          <li>
+            Użytkownik odpowiada za decyzje żywieniowe podejmowane na podstawie szacunków
+            przedstawianych przez aplikację.
+          </li>
+        </ul>
+
+        <h2>12. Rozwiązanie umowy</h2>
+        <p>
+          Umowę o świadczenie usług drogą elektroniczną możesz rozwiązać w każdej chwili, usuwając
+          konto w aplikacji. Usługodawca może rozwiązać umowę z zachowaniem 14-dniowego okresu
+          wypowiedzenia w przypadku zakończenia świadczenia usługi albo natychmiast - w przypadku
+          rażącego naruszenia regulaminu przez Użytkownika. W obu przypadkach zwracamy
+          proporcjonalną część opłaty za niewykorzystany, opłacony okres Premium.
+        </p>
+
+        <h2>13. Dane osobowe</h2>
+        <p>
+          Zasady przetwarzania danych osobowych opisuje
+          <a href="/polityka-prywatnosci">Polityka prywatności</a>, która stanowi integralną część niniejszego
+          regulaminu.
+        </p>
+
+        <h2>14. Zmiany regulaminu</h2>
+        <p>
+          O zmianach regulaminu poinformujemy w aplikacji lub e-mailem z co najmniej 14-dniowym
+          wyprzedzeniem. Jeżeli nie akceptujesz zmian, możesz usunąć konto przed ich wejściem w
+          życie. Aktualna wersja regulaminu jest zawsze dostępna pod tym adresem.
+        </p>
+
+        <h2>15. Postanowienia końcowe</h2>
+        <p>
+          W sprawach nieuregulowanych stosuje się prawo polskie, z zastrzeżeniem, że konsument nie
+          jest pozbawiony ochrony wynikającej z bezwzględnie obowiązujących przepisów państwa jego
+          miejsca zwykłego pobytu. Konsument może skorzystać z pozasądowych sposobów rozpatrywania
+          reklamacji i dochodzenia roszczeń, w tym z platformy ODR Komisji Europejskiej dostępnej
+          pod adresem
+          <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a
+          >.
+        </p>
+  </article>
+</main>
+
+<footer class="doc-footer">
+  <span>&copy; 2026 EatSee</span>
+  <span>ASTROWARE Arkadiusz Woźniak &middot; kontakt@eatsee.pl</span>
+</footer>
+
+<script>
+  (function () {
+    var btn = document.querySelector('.theme-toggle');
+    if (!btn) { return; }
+    btn.addEventListener('click', function () {
+      var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('eatsee-theme', next); } catch (e) {}
+    });
+  })();
+</script>
+</body>
+</html>
