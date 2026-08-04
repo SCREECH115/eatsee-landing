@@ -1,0 +1,39 @@
+# EatSee
+
+> EatSee to polski licznik kalorii oparty na AI na iOS i Androida. Robisz zdjęcie posiłku, a sztuczna inteligencja rozpoznaje danie i w kilka sekund szacuje kalorie, białko, węglowodany i tłuszcze, po czym zapisuje wynik w dzienniku. Aplikacja działa w 14 językach, a jej twórcą jest ASTROWARE Arkadiusz Woźniak (Polska).
+
+Najważniejsze funkcje:
+
+- Analiza zdjęć posiłków i etykiet produktów przez AI (kalorie + makroskładniki + ocena zdrowotności)
+- Skanowanie kodów kreskowych z bazą produktów - zawsze za darmo i bez limitu
+- Doprecyzowanie wyniku analizy jednym zdaniem albo zmianą liczby sztuk
+- Dziennik z celami kalorycznymi wyliczanymi z profilu (płeć, wiek, wzrost, waga, aktywność, cel)
+- Śledzenie wody, wagi i kroków; synchronizacja z Apple Health i Health Connect
+- Statystyki z automatycznymi wnioskami, seria dni, prognoza wagi
+- Tryb ciemny, motywy kolorystyczne, eksport dziennika do PDF (Premium)
+
+Ceny i limity:
+
+- Konto darmowe: 3 analizy AI dziennie, kody kreskowe bez limitu
+- EatSee Premium: do 50 analiz AI dziennie (zasada uczciwego korzystania), pełna historia statystyk, trendy miesięczne, motywy kolorystyczne
+- Plany: 19,99 zł/mies., 99,99 zł/rok (7 dni za darmo), 299 zł jednorazowo na zawsze
+- Płatność przez App Store lub Google Play
+
+Wyniki analiz są szacunkowe i nie stanowią porady medycznej ani dietetycznej.
+
+## Dokumenty
+
+- [Regulamin (PL)](https://eatsee.pl/regulamin): zakres usługi, limity uczciwego korzystania, płatności, odstąpienie, reklamacje
+- [Polityka prywatności (PL)](https://eatsee.pl/polityka-prywatnosci): jakie dane przetwarzamy i jakie masz prawa
+- [Terms of Use (EN)](https://eatsee.pl/terms)
+- [Privacy Policy (EN)](https://eatsee.pl/privacy)
+
+## Pobieranie
+
+- [Google Play](https://play.google.com/store/apps/details?id=com.eatsee.app): wersja na Androida
+- App Store: wersja na iOS w przygotowaniu
+
+## Kontakt
+
+- E-mail: kontakt@eatsee.pl
+- Strona: https://eatsee.pl
