@@ -342,6 +342,26 @@
   }
   .shot.active{transform:scale(1);opacity:1}
   .shot img{display:block;width:100%;height:auto}
+  .shots-wrap{position:relative}
+  .shots-arrow{
+    position:absolute;top:50%;transform:translateY(-50%);
+    width:44px;height:44px;border-radius:50%;
+    border:var(--border);background:var(--surface);color:var(--text);
+    display:none;align-items:center;justify-content:center;
+    cursor:pointer;box-shadow:var(--shadow);z-index:2;
+    transition:transform .15s ease,opacity .15s ease;
+  }
+  .shots-arrow:hover{transform:translateY(-50%) scale(1.08);color:var(--accent)}
+  .shots-arrow:disabled{opacity:.3;cursor:default}
+  .shots-arrow:disabled:hover{transform:translateY(-50%);color:var(--text)}
+  .shots-arrow.prev{left:-10px}
+  .shots-arrow.next{right:-10px}
+  .shots-arrow svg{width:19px;height:19px}
+  @media (hover:hover) and (pointer:fine){
+    .shots-arrow{display:flex}
+    .shot{cursor:pointer}
+    .shot.active{cursor:default}
+  }
   .shots-dots{display:flex;justify-content:center;gap:7px}
   .shots-dots button{
     width:8px;height:8px;border-radius:50%;border:0;padding:0;cursor:pointer;
@@ -892,6 +912,7 @@
 
       <!-- Karuzela zrzutow ekranu z aplikacji -->
       <div class="shots-col">
+        <div class="shots-wrap">
         <div class="shots" id="shotsTrack" role="region" aria-label="Zrzuty ekranu aplikacji EatSee - przewijaj kciukiem">
           <figure class="shot"><img src="img/screens/screenshot-1.webp" alt="Ekran aplikacji EatSee (1 z 8)" loading="eager" fetchpriority="high" decoding="async" width="1284" height="2778"></figure>
           <figure class="shot"><img src="img/screens/screenshot-2.webp" alt="Ekran aplikacji EatSee (2 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
@@ -901,6 +922,13 @@
           <figure class="shot"><img src="img/screens/screenshot-6.webp" alt="Ekran aplikacji EatSee (6 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
           <figure class="shot"><img src="img/screens/screenshot-7.webp" alt="Ekran aplikacji EatSee (7 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
           <figure class="shot"><img src="img/screens/screenshot-8.webp" alt="Ekran aplikacji EatSee (8 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
+        </div>
+        <button class="shots-arrow prev" id="shotsPrev" type="button" aria-label="Poprzedni zrzut ekranu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button class="shots-arrow next" id="shotsNext" type="button" aria-label="Następny zrzut ekranu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+        </button>
         </div>
         <div class="shots-dots" id="shotsDots">
           <button type="button" aria-label="Przejdź do zrzutu 1"></button>
@@ -1259,10 +1287,34 @@
     if (!scroller || !dotsWrap) return;
     var slides = Array.prototype.slice.call(scroller.querySelectorAll(".shot"));
     var dots = Array.prototype.slice.call(dotsWrap.querySelectorAll("button"));
+    var prevBtn = document.getElementById("shotsPrev");
+    var nextBtn = document.getElementById("shotsNext");
+    var pointerFine = window.matchMedia("(hover:hover) and (pointer:fine)").matches;
+    var current = 0;
 
     function setActive(index){
+      current = index;
       slides.forEach(function(slide, i){ slide.classList.toggle("active", i === index); });
       dots.forEach(function(dot, i){ dot.classList.toggle("active", i === index); });
+      if (prevBtn) prevBtn.disabled = index <= 0;
+      if (nextBtn) nextBtn.disabled = index >= slides.length - 1;
+    }
+
+    function scrollToIndex(index){
+      var slide = slides[index];
+      if (slide){ scroller.scrollTo({ left: slide.offsetLeft, behavior: "smooth" }); }
+    }
+
+    if (prevBtn) prevBtn.addEventListener("click", function(){ scrollToIndex(current - 1); });
+    if (nextBtn) nextBtn.addEventListener("click", function(){ scrollToIndex(current + 1); });
+
+    if (pointerFine){
+      slides.forEach(function(slide){
+        slide.addEventListener("click", function(){
+          var index = slides.indexOf(slide);
+          if (index !== current){ scrollToIndex(index); }
+        });
+      });
     }
 
     if ("IntersectionObserver" in window){
@@ -1277,11 +1329,7 @@
     }
 
     dots.forEach(function(dot){
-      dot.addEventListener("click", function(){
-        var index = dots.indexOf(dot);
-        var slide = slides[index];
-        if (slide){ scroller.scrollTo({ left: slide.offsetLeft, behavior: "smooth" }); }
-      });
+      dot.addEventListener("click", function(){ scrollToIndex(dots.indexOf(dot)); });
     });
 
     slides.forEach(function(slide){
