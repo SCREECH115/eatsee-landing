@@ -1313,24 +1313,28 @@
     });
   }
 
-  /* Przelacznik motywu: zapamietuje wybor, dopoki user go nie zmieni sledzi system */
+  /* Przelacznik motywu: wybor zgodny z systemem wraca do trybu automatycznego */
   (function(){
     var toggle = document.getElementById("themeToggle");
     if (!toggle) return;
     var root = document.documentElement;
     var media = window.matchMedia("(prefers-color-scheme: dark)");
 
-    var apply = function(theme, persist){
+    var apply = function(theme){
       root.setAttribute("data-theme", theme);
       toggle.setAttribute("aria-label", theme === "dark" ? "Włącz tryb jasny" : "Włącz tryb ciemny");
-      if (persist){ try { localStorage.setItem("eatsee-theme", theme); } catch (e) {} }
     };
 
-    apply(root.getAttribute("data-theme") === "dark" ? "dark" : "light", false);
+    apply(root.getAttribute("data-theme") === "dark" ? "dark" : "light");
 
     toggle.addEventListener("click", function(){
       var next = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
-      apply(next, true);
+      var system = media.matches ? "dark" : "light";
+      apply(next);
+      try {
+        if (next === system){ localStorage.removeItem("eatsee-theme"); }
+        else { localStorage.setItem("eatsee-theme", next); }
+      } catch (e) {}
       if (typeof gtag === "function"){ gtag("event", "theme_toggle", { theme: next }); }
     });
 

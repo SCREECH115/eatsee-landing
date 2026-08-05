@@ -406,8 +406,12 @@
     if (!btn) { return; }
     btn.addEventListener('click', function () {
       var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      var system = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('eatsee-theme', next); } catch (e) {}
+      try {
+        if (next === system) { localStorage.removeItem('eatsee-theme'); }
+        else { localStorage.setItem('eatsee-theme', next); }
+      } catch (e) {}
     });
   })();
 </script>
