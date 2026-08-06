@@ -914,14 +914,14 @@
       <div class="shots-col">
         <div class="shots-wrap">
         <div class="shots" id="shotsTrack" role="region" aria-label="Zrzuty ekranu aplikacji EatSee - przewijaj kciukiem">
-          <figure class="shot"><img src="img/screens/screenshot-1.webp" alt="Ekran aplikacji EatSee (1 z 8)" loading="eager" fetchpriority="high" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-2.webp" alt="Ekran aplikacji EatSee (2 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-3.webp" alt="Ekran aplikacji EatSee (3 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-4.webp" alt="Ekran aplikacji EatSee (4 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-5.webp" alt="Ekran aplikacji EatSee (5 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-6.webp" alt="Ekran aplikacji EatSee (6 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-7.webp" alt="Ekran aplikacji EatSee (7 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
-          <figure class="shot"><img src="img/screens/screenshot-8.webp" alt="Ekran aplikacji EatSee (8 z 8)" loading="lazy" decoding="async" width="1284" height="2778"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-1.webp" alt="Ekran aplikacji EatSee (1 z 8)" loading="eager" fetchpriority="high" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-2.webp" alt="Ekran aplikacji EatSee (2 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-3.webp" alt="Ekran aplikacji EatSee (3 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-4.webp" alt="Ekran aplikacji EatSee (4 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-5.webp" alt="Ekran aplikacji EatSee (5 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-6.webp" alt="Ekran aplikacji EatSee (6 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-7.webp" alt="Ekran aplikacji EatSee (7 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
+          <figure class="shot"><img src="img/screens/screenshot-8.webp" alt="Ekran aplikacji EatSee (8 z 8)" loading="lazy" decoding="async" width="1290" height="2796"></figure>
         </div>
         <button class="shots-arrow prev" id="shotsPrev" type="button" aria-label="Poprzedni zrzut ekranu">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg>
@@ -1302,7 +1302,10 @@
 
     function scrollToIndex(index){
       var slide = slides[index];
-      if (slide){ scroller.scrollTo({ left: slide.offsetLeft, behavior: "smooth" }); }
+      if (!slide){ return; }
+      var target = slide.offsetLeft - (scroller.clientWidth - slide.offsetWidth) / 2;
+      var maxScroll = scroller.scrollWidth - scroller.clientWidth;
+      scroller.scrollTo({ left: Math.max(0, Math.min(maxScroll, target)), behavior: "smooth" });
     }
 
     if (prevBtn) prevBtn.addEventListener("click", function(){ scrollToIndex(current - 1); });
