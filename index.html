@@ -1320,16 +1320,27 @@
       });
     }
 
-    if ("IntersectionObserver" in window){
-      var io = new IntersectionObserver(function(entries){
-        entries.forEach(function(entry){
-          if (entry.isIntersecting){
-            setActive(slides.indexOf(entry.target));
-          }
-        });
-      }, { root: scroller, threshold: 0.6 });
-      slides.forEach(function(slide){ io.observe(slide); });
+    var scrollFrame = null;
+    function activeFromScroll(){
+      scrollFrame = null;
+      var viewportCenter = scroller.scrollLeft + scroller.clientWidth / 2;
+      var best = 0;
+      var bestDistance = Infinity;
+      slides.forEach(function(slide, index){
+        var distance = Math.abs(slide.offsetLeft + slide.offsetWidth / 2 - viewportCenter);
+        if (distance < bestDistance){
+          bestDistance = distance;
+          best = index;
+        }
+      });
+      setActive(best);
     }
+    scroller.addEventListener("scroll", function(){
+      if (scrollFrame === null){
+        scrollFrame = requestAnimationFrame(activeFromScroll);
+      }
+    }, { passive: true });
+    window.addEventListener("resize", activeFromScroll);
 
     dots.forEach(function(dot){
       dot.addEventListener("click", function(){ scrollToIndex(dots.indexOf(dot)); });
@@ -1346,11 +1357,11 @@
         if (dot) dot.remove();
         slides.splice(index, 1);
         dots.splice(index, 1);
-        setActive(0);
+        activeFromScroll();
       });
     });
 
-    setActive(0);
+    activeFromScroll();
   })();
 
   /* Poswiata na kafelkach funkcji podaza za kursorem (tylko myszka, bez dotyku) */
