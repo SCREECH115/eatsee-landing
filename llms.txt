@@ -31,7 +31,7 @@ Wyniki analiz są szacunkowe i nie stanowią porady medycznej ani dietetycznej.
 ## Pobieranie
 
 - [Google Play](https://play.google.com/store/apps/details?id=com.eatsee.app): wersja na Androida
-- App Store: wersja na iOS w przygotowaniu
+- [App Store](https://apps.apple.com/pl/app/eatsee-kalorie-ze-zdj%C4%99cia/id6789152922): wersja na iOS
 
 ## Kontakt
 
