@@ -1,0 +1,353 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex" />
+<title>EatSee - potwierdzenie</title>
+<link rel="icon" type="image/png" href="/img/logo-128.png" />
+<style>
+  :root{
+    --bg:#F5F1E9;
+    --surface:#FFFFFF;
+    --accent:#A76843;
+    --accent-dark:#714525;
+    --accent-light:#F6ECE4;
+    --text:#1B1A17;
+    --text-2:#57534C;
+    --green:#516835;
+    --green-light:#E4EBD8;
+    --red:#B23A2E;
+    --red-light:#F6E2DF;
+    --radius:20px;
+    --shadow:0 6px 24px rgba(27,26,23,.07);
+    --border:1px solid rgba(27,26,23,.09);
+    color-scheme:light;
+  }
+  :root[data-theme="dark"]{
+    --bg:#16120D;
+    --surface:#211B14;
+    --accent:#C9905F;
+    --accent-dark:#E4BB94;
+    --accent-light:#38281A;
+    --text:#F2ECE1;
+    --text-2:#B9AF9F;
+    --green:#A3BD7E;
+    --green-light:#28331D;
+    --red:#E28B7F;
+    --red-light:#40221E;
+    --shadow:0 6px 24px rgba(0,0,0,.45);
+    --border:1px solid rgba(255,255,255,.08);
+    color-scheme:dark;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  body{
+    font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    padding:24px 16px;
+  }
+  .card{
+    width:100%;
+    max-width:420px;
+    background:var(--surface);
+    border-radius:var(--radius);
+    border:var(--border);
+    box-shadow:var(--shadow);
+    padding:40px 32px;
+    text-align:center;
+  }
+  .logo{font-size:26px;font-weight:800;margin-bottom:28px}
+  .logo .dot{color:var(--accent)}
+  .icon{
+    width:64px;height:64px;border-radius:50%;
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 20px;
+  }
+  .icon.ok{background:var(--green-light)}
+  .icon.err{background:var(--red-light)}
+  .icon.info{background:var(--accent-light)}
+  .icon svg{width:30px;height:30px}
+  h1{font-size:21px;font-weight:700;margin-bottom:10px}
+  p.lead{font-size:15px;line-height:22px;color:var(--text-2)}
+  .email-pill{
+    display:inline-block;margin-top:14px;padding:6px 14px;border-radius:999px;
+    background:var(--accent-light);color:var(--accent-dark);
+    font-size:13px;font-weight:600;word-break:break-all;
+  }
+  form{margin-top:24px;text-align:left}
+  label{display:block;font-size:13px;font-weight:600;margin-bottom:6px}
+  input{
+    width:100%;padding:13px 14px;border-radius:12px;border:var(--border);
+    background:var(--bg);color:var(--text);font-size:15px;outline:none;
+  }
+  input:focus{border-color:var(--accent)}
+  .field{margin-bottom:16px}
+  .hint{font-size:12px;color:var(--text-2);margin-top:5px}
+  .field-error{font-size:12px;color:var(--red);margin-top:5px;display:none}
+  .btn{
+    display:inline-block;width:100%;margin-top:6px;padding:14px 24px;border:none;
+    border-radius:12px;background:var(--accent);color:#FFFFFF;
+    font-size:16px;font-weight:600;cursor:pointer;text-decoration:none;text-align:center;
+  }
+  .btn:disabled{opacity:.6;cursor:default}
+  .btn.secondary{background:transparent;color:var(--accent-dark);font-size:14px;margin-top:10px}
+  .spinner{
+    width:34px;height:34px;margin:0 auto 20px;border-radius:50%;
+    border:3px solid var(--accent-light);border-top-color:var(--accent);
+    animation:spin .8s linear infinite;
+  }
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .footer{margin-top:22px;font-size:11px;color:var(--text-2)}
+  .footer a{color:var(--text-2)}
+  .hidden{display:none}
+</style>
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem('eatsee-theme');
+      var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var theme = stored === 'dark' || stored === 'light' ? stored : prefersDark ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+    } catch (e) {
+      document.documentElement.setAttribute('data-theme', 'light');
+    }
+  })();
+</script>
+</head>
+<body>
+<main class="card">
+  <div class="logo">EatSee<span class="dot">.</span></div>
+
+  <section id="state-loading">
+    <div class="spinner" role="status"></div>
+    <p class="lead" data-i18n="loading"></p>
+  </section>
+
+  <section id="state-result" class="hidden">
+    <div class="icon" id="result-icon"></div>
+    <h1 id="result-title"></h1>
+    <p class="lead" id="result-body"></p>
+    <span class="email-pill hidden" id="result-email"></span>
+    <a class="btn hidden" id="result-open-app" href="eatsee://" data-i18n="openApp"></a>
+  </section>
+
+  <section id="state-reset" class="hidden">
+    <div class="icon info">
+      <svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+    </div>
+    <h1 data-i18n="resetTitle"></h1>
+    <p class="lead" data-i18n="resetLead"></p>
+    <span class="email-pill" id="reset-email"></span>
+    <form id="reset-form" novalidate>
+      <div class="field">
+        <label for="new-password" data-i18n="passwordLabel"></label>
+        <input type="password" id="new-password" autocomplete="new-password" minlength="8" required />
+        <p class="hint" data-i18n="passwordHint"></p>
+        <p class="field-error" id="error-short" data-i18n="passwordTooShort"></p>
+      </div>
+      <div class="field">
+        <label for="confirm-password" data-i18n="confirmLabel"></label>
+        <input type="password" id="confirm-password" autocomplete="new-password" required />
+        <p class="field-error" id="error-mismatch" data-i18n="passwordMismatch"></p>
+      </div>
+      <button type="submit" class="btn" id="reset-submit" data-i18n="resetCta"></button>
+    </form>
+  </section>
+
+  <p class="footer">ASTROWARE Arkadiusz Woźniak &middot; <a href="https://eatsee.pl">eatsee.pl</a></p>
+</main>
+
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js';
+  import {
+    applyActionCode,
+    confirmPasswordReset,
+    getAuth,
+    verifyPasswordResetCode,
+  } from 'https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js';
+
+  const strings = {
+    pl: {
+      loading: 'Przetwarzamy Twój link…',
+      openApp: 'Otwórz aplikację EatSee',
+      verifiedTitle: 'Adres e-mail potwierdzony',
+      verifiedBody: 'Twoje konto jest gotowe. Wróć do aplikacji EatSee i analizuj posiłki do woli.',
+      resetTitle: 'Ustaw nowe hasło',
+      resetLead: 'Wybierz nowe hasło do swojego konta EatSee.',
+      passwordLabel: 'Nowe hasło',
+      passwordHint: 'Minimum 8 znaków.',
+      passwordTooShort: 'Hasło musi mieć minimum 8 znaków.',
+      confirmLabel: 'Powtórz hasło',
+      passwordMismatch: 'Hasła muszą być identyczne.',
+      resetCta: 'Zmień hasło',
+      resetDoneTitle: 'Hasło zmienione',
+      resetDoneBody: 'Zaloguj się w aplikacji EatSee, używając nowego hasła.',
+      recoveredTitle: 'Przywrócono poprzedni adres e-mail',
+      recoveredBody:
+        'Zmiana adresu została cofnięta. Jeśli to nie Ty zmieniałeś adres, jak najszybciej ustaw też nowe hasło w aplikacji.',
+      expiredTitle: 'Link wygasł lub został już użyty',
+      expiredBody:
+        'Poproś o nowy link w aplikacji EatSee i spróbuj ponownie. Linki są jednorazowe i działają przez ograniczony czas.',
+      weakPassword: 'Hasło jest zbyt proste. Użyj co najmniej 8 znaków.',
+      errorTitle: 'Coś poszło nie tak',
+      errorBody: 'Spróbuj ponownie za chwilę albo napisz do nas: kontakt@eatsee.pl.',
+      idleTitle: 'Ta strona obsługuje linki z e-maili EatSee',
+      idleBody: 'Otwórz wiadomość od EatSee i kliknij przycisk w e-mailu, aby dokończyć akcję.',
+    },
+    en: {
+      loading: 'Processing your link…',
+      openApp: 'Open the EatSee app',
+      verifiedTitle: 'E-mail address confirmed',
+      verifiedBody: 'Your account is ready. Head back to the EatSee app and analyse away.',
+      resetTitle: 'Set a new password',
+      resetLead: 'Choose a new password for your EatSee account.',
+      passwordLabel: 'New password',
+      passwordHint: 'At least 8 characters.',
+      passwordTooShort: 'The password must be at least 8 characters long.',
+      confirmLabel: 'Repeat password',
+      passwordMismatch: 'The passwords must match.',
+      resetCta: 'Change password',
+      resetDoneTitle: 'Password changed',
+      resetDoneBody: 'Sign in to the EatSee app with your new password.',
+      recoveredTitle: 'Previous e-mail address restored',
+      recoveredBody:
+        'The address change has been reverted. If it was not you, please also set a new password in the app.',
+      expiredTitle: 'This link has expired or was already used',
+      expiredBody:
+        'Request a new link in the EatSee app and try again. Links are single-use and time-limited.',
+      weakPassword: 'This password is too weak. Use at least 8 characters.',
+      errorTitle: 'Something went wrong',
+      errorBody: 'Please try again in a moment or write to us: kontakt@eatsee.pl.',
+      idleTitle: 'This page handles links from EatSee e-mails',
+      idleBody: 'Open the message from EatSee and tap the button in the e-mail to finish the action.',
+    },
+  };
+
+  const params = new URLSearchParams(window.location.search);
+  const lang =
+    params.get('lang') === 'en' || (!params.get('lang') && !navigator.language.startsWith('pl'))
+      ? 'en'
+      : 'pl';
+  const t = strings[lang];
+  document.documentElement.lang = lang;
+  for (const node of document.querySelectorAll('[data-i18n]')) {
+    node.textContent = t[node.dataset.i18n];
+  }
+
+  const okIcon =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>';
+  const errIcon =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4m0 4h.01"/></svg>';
+  const infoIcon =
+    '<svg viewBox="0 0 24 24" fill="none" stroke="var(--accent-dark)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="4"/><path d="M12 11v5m0-8h.01"/></svg>';
+
+  const show = (id) => {
+    for (const section of ['state-loading', 'state-result', 'state-reset']) {
+      document.getElementById(section).classList.toggle('hidden', section !== id);
+    }
+  };
+
+  const showResult = ({ tone, title, body, email, openApp }) => {
+    const icon = document.getElementById('result-icon');
+    icon.className = 'icon ' + (tone === 'ok' ? 'ok' : tone === 'err' ? 'err' : 'info');
+    icon.innerHTML = tone === 'ok' ? okIcon : tone === 'err' ? errIcon : infoIcon;
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-body').textContent = body;
+    const emailPill = document.getElementById('result-email');
+    emailPill.classList.toggle('hidden', !email);
+    if (email) emailPill.textContent = email;
+    document.getElementById('result-open-app').classList.toggle('hidden', !openApp);
+    show('state-result');
+  };
+
+  const expired = (code) =>
+    code === 'auth/expired-action-code' ||
+    code === 'auth/invalid-action-code' ||
+    code === 'auth/user-not-found';
+
+  const fail = (error) => {
+    if (expired(error && error.code)) {
+      showResult({ tone: 'err', title: t.expiredTitle, body: t.expiredBody });
+    } else {
+      showResult({ tone: 'err', title: t.errorTitle, body: t.errorBody });
+    }
+  };
+
+  const mode = params.get('mode');
+  const oobCode = params.get('oobCode');
+
+  if (!mode || !oobCode) {
+    showResult({ tone: 'info', title: t.idleTitle, body: t.idleBody });
+  } else {
+    const app = initializeApp({
+      apiKey: params.get('apiKey') || 'AIzaSyA9EgR16hD58idOdh0g_PJJu2JNmTXIzHE',
+      authDomain: 'eatsee-48b26.firebaseapp.com',
+      projectId: 'eatsee-48b26',
+    });
+    const auth = getAuth(app);
+    auth.languageCode = lang;
+
+    if (mode === 'verifyEmail') {
+      applyActionCode(auth, oobCode)
+        .then(() =>
+          showResult({ tone: 'ok', title: t.verifiedTitle, body: t.verifiedBody, openApp: true }),
+        )
+        .catch(fail);
+    } else if (mode === 'recoverEmail') {
+      applyActionCode(auth, oobCode)
+        .then(() => showResult({ tone: 'ok', title: t.recoveredTitle, body: t.recoveredBody }))
+        .catch(fail);
+    } else if (mode === 'resetPassword') {
+      verifyPasswordResetCode(auth, oobCode)
+        .then((email) => {
+          document.getElementById('reset-email').textContent = email;
+          show('state-reset');
+          const form = document.getElementById('reset-form');
+          form.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const password = document.getElementById('new-password').value;
+            const confirm = document.getElementById('confirm-password').value;
+            const shortError = document.getElementById('error-short');
+            const mismatchError = document.getElementById('error-mismatch');
+            shortError.style.display = password.length < 8 ? 'block' : 'none';
+            mismatchError.style.display =
+              password.length >= 8 && password !== confirm ? 'block' : 'none';
+            if (password.length < 8 || password !== confirm) {
+              return;
+            }
+            const submit = document.getElementById('reset-submit');
+            submit.disabled = true;
+            confirmPasswordReset(auth, oobCode, password)
+              .then(() =>
+                showResult({
+                  tone: 'ok',
+                  title: t.resetDoneTitle,
+                  body: t.resetDoneBody,
+                  openApp: true,
+                }),
+              )
+              .catch((error) => {
+                submit.disabled = false;
+                if (error && error.code === 'auth/weak-password') {
+                  shortError.textContent = t.weakPassword;
+                  shortError.style.display = 'block';
+                } else {
+                  fail(error);
+                }
+              });
+          });
+        })
+        .catch(fail);
+    } else {
+      showResult({ tone: 'info', title: t.idleTitle, body: t.idleBody });
+    }
+  }
+</script>
+</body>
+</html>
