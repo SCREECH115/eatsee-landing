@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EatSee - policz kalorie jednym zdjęciem</title>
-<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Woda, waga, synchronizacja z Apple Health i Health Connect, statystyki z wnioskami. Po polsku i w 13 innych językach.">
+<title>EatSee - policz kalorie zdjęciem albo głosem</title>
+<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku albo powiedz, co zjadłeś, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Streaks i odznaki, woda, waga i kroki, Apple Health i Health Connect. Po polsku i w 13 innych językach.">
 <link rel="canonical" href="https://eatsee.pl/">
-<meta property="og:title" content="EatSee - policz kalorie jednym zdjęciem">
-<meta property="og:description" content="Licznik kalorii z AI: zdjęcie posiłku zamienia w kalorie i makroskładniki w kilka sekund. Kody kreskowe bez limitu, woda i waga, Apple Health i Health Connect, statystyki z wnioskami.">
+<meta property="og:title" content="EatSee - policz kalorie zdjęciem albo głosem">
+<meta property="og:description" content="Licznik kalorii z AI: zdjęcie albo jedno zdanie zamienia w kalorie i makroskładniki w kilka sekund. Streaks, odznaki, kody kreskowe bez limitu, woda, waga i kroki, Apple Health i Health Connect.">
 <meta property="og:url" content="https://eatsee.pl/">
 <meta property="og:image" content="https://eatsee.pl/og.png">
 <meta property="og:image:width" content="1200">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EatSee - policz kalorie jednym zdjęciem">
-<meta name="twitter:description" content="Licznik kalorii z AI: zdjęcie posiłku zamienia w kalorie i makro w kilka sekund. Woda, waga, Apple Health i Health Connect, statystyki z wnioskami.">
+<meta name="twitter:title" content="EatSee - policz kalorie zdjęciem albo głosem">
+<meta name="twitter:description" content="Licznik kalorii z AI: zdjęcie albo jedno zdanie zamienia w kalorie i makro w kilka sekund. Streaks, odznaki, woda, waga i kroki, Apple Health i Health Connect.">
 <meta name="twitter:image" content="https://eatsee.pl/og.png">
 <meta name="apple-itunes-app" content="app-id=6789152922">
 <link rel="icon" type="image/png" href="img/logo-128.png">
@@ -65,7 +65,9 @@
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "EatSee",
-  "description": "Licznik kalorii oparty na AI: zdjęcie posiłku zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Skanowanie kodów kreskowych bez limitu, dziennik z celami, śledzenie wody i wagi, synchronizacja z Apple Health i Health Connect oraz statystyki z automatycznymi wnioskami.",
+  "description": "Licznik kalorii oparty na AI: zdjęcie posiłku albo wypowiedziane zdanie zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Streaks z wyzwaniem 7 dni, 12 odznak, skanowanie kodów kreskowych bez limitu, dziennik z celami, śledzenie wody, wagi i kroków, synchronizacja z Apple Health i Health Connect oraz statystyki z automatycznymi wnioskami.",
+  "softwareVersion": "1.2",
+  "featureList": "Analiza zdjęć posiłków przez AI, dodawanie posiłków głosem, skanowanie kodów kreskowych, etykiety wartości odżywczych, dziennik z celami, Streaks i wyzwanie 7 dni, odznaki za osiągnięcia, woda, waga, kroki, Apple Health i Health Connect, spersonalizowane przypomnienia, statystyki",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "iOS, Android",
   "inLanguage": ["pl", "en", "de", "fr", "es", "it", "pt", "uk", "cs", "sk", "nl", "tr", "ro", "hu"],
@@ -106,6 +108,22 @@
     },
     {
       "@type": "Question",
+      "name": "Jak działa dodawanie posiłków głosem?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Dotykasz mikrofonu i mówisz, co zjadłeś, np. dwie kanapki z serem i kawa z mlekiem. AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje zdjęcie dania. Nagranie służy tylko do rozpoznania tekstu i nie jest przechowywane. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czym są Streaks i odznaki?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Streaks to seria dni z co najmniej jednym wpisem w dzienniku. Każdy dzień ją podtrzymuje, tarcze chronią serię, gdy odpuścisz dzień, a wyzwanie 7 dni pomaga wystartować. Do tego 12 odznak za osiągnięcia, np. pierwszy posiłek głosem, cel wody czy idealny tydzień, każda z ciekawostką do udostępnienia."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Czy EatSee działa z polskimi produktami i daniami?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -117,7 +135,7 @@
       "name": "Co się stanie, gdy wykorzystam darmowy limit analiz AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Darmowe konto ma 3 analizy AI dziennie - limit odnawia się każdego dnia. Po jego wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limit do 50 analiz AI dziennie."
+        "text": "Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie."
       }
     },
     {
@@ -141,7 +159,7 @@
       "name": "Czy EatSee łączy się z Apple Health lub Health Connect?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie, a w aplikacji zobaczysz też swoje dzisiejsze kroki."
+        "text": "Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie. Kroki z obu źródeł zobaczysz w aplikacji razem z celem, wykresem tygodnia i ciekawostkami, np. ile to maratonów."
       }
     },
     {
@@ -508,6 +526,39 @@
   .b-sync i:nth-child(2){width:74%;opacity:.6}
   .b-sync i:nth-child(3){width:46%;opacity:.35}
 
+  .b-voice{margin-top:14px;display:flex;flex-direction:column;gap:8px}
+  .b-voice .v-bubble{
+    display:flex;align-items:center;gap:9px;background:var(--surface);border:var(--border);
+    border-radius:14px 14px 14px 4px;padding:9px 12px;font-size:.82rem;font-weight:600;color:var(--text);
+  }
+  .b-voice .v-bubble b{
+    width:26px;height:26px;border-radius:50%;background:var(--accent);color:#fff;
+    display:flex;align-items:center;justify-content:center;flex:none;font-size:13px;
+  }
+  .b-voice .v-result{
+    align-self:flex-end;background:var(--accent-light);color:var(--accent-dark);
+    border-radius:14px 14px 4px 14px;padding:7px 12px;font-size:.8rem;font-weight:700;
+  }
+  .b-streak{display:flex;gap:6px;flex:none;align-items:center;flex-wrap:wrap;justify-content:flex-end;max-width:150px}
+  .b-streak i{
+    width:28px;height:28px;border-radius:50%;background:var(--accent-light);color:var(--accent-dark);
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:800;
+  }
+  .b-streak i.on{background:var(--accent);color:#fff}
+  .b-streak i.flame{background:none;width:auto;font-size:24px}
+  .b-medals{display:flex;gap:8px;flex:none}
+  .b-medals i{
+    width:42px;height:42px;border-radius:50%;
+    background:linear-gradient(150deg,var(--accent) 0%,var(--accent-dark) 100%);
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:18px;box-shadow:var(--shadow-soft);
+  }
+  .b-medals i.lock{background:var(--accent-light);opacity:.7;font-size:15px}
+  .b-notif{
+    flex:none;width:200px;background:var(--surface);border:var(--border);border-radius:14px;
+    padding:10px 12px;font-size:.78rem;line-height:1.4;color:var(--text-2);
+  }
+  .b-notif b{display:block;font-size:.82rem;color:var(--text);margin-bottom:2px}
+
   /* wejscie kaskadowe */
   .bento .reveal:nth-child(2){transition-delay:.06s}
   .bento .reveal:nth-child(3){transition-delay:.12s}
@@ -525,7 +576,8 @@
     .bento{grid-template-columns:1fr}
     .b-hero,.b-wide{grid-column:span 1}
     .b-split{flex-direction:column;align-items:flex-start;gap:14px}
-    .b-bars,.b-favs,.b-sync{width:100%}
+    .b-bars,.b-favs,.b-sync,.b-notif{width:100%}
+    .b-streak{max-width:none;justify-content:flex-start}
     .b-favs{grid-template-columns:repeat(4,1fr)}
     .b-sync{flex-direction:row;align-items:center}
     .b-sync i{flex:1;height:8px}
@@ -890,10 +942,10 @@
       <div class="hero-copy">
         <span class="hero-note">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.2L20 10l-5.8 1.8L12 18l-2.2-6.2L4 10l5.8-1.8L12 2zM19 15l1.1 3 3 1.1-3 1.1L19 23l-1.1-2.8-3-1.1 3-1.1L19 15z"/></svg>
-          Licznik kalorii z AI · iOS i Android
+          Licznik kalorii z AI · iOS i Android · Nowa wersja 1.2
         </span>
-        <h1>Policz kalorie <em>jednym zdjęciem</em></h1>
-        <p class="sub">Zrób zdjęcie posiłku, a AI w kilka sekund rozpozna danie i poda kalorie, białko, węglowodany i tłuszcze - razem z oceną, jak zdrowy jest Twój talerz.</p>
+        <h1>Policz kalorie <em>zdjęciem albo głosem</em></h1>
+        <p class="sub">Zrób zdjęcie posiłku albo po prostu powiedz, co zjadłeś. AI w kilka sekund rozpozna danie i poda kalorie, białko, węglowodany i tłuszcze - razem z oceną, jak zdrowy jest Twój talerz.</p>
         <div class="store-badges">
           <a href="https://apps.apple.com/pl/app/eatsee-kalorie-ze-zdj%C4%99cia/id6789152922?l=pl" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.1 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14.6 4.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
@@ -943,7 +995,7 @@
   <!-- ===== PASEK ZAUFANIA ===== -->
   <div class="trust" aria-label="Najważniejsze fakty o EatSee">
     <div class="wrap">
-      <div class="trust-item reveal"><strong>3 sekundy</strong><span>od zdjęcia do wyniku</span></div>
+      <div class="trust-item reveal"><strong>3 sekundy</strong><span>od zdjęcia lub zdania do wyniku</span></div>
       <div class="trust-item reveal"><strong>Bez limitu</strong><span>skanowania kodów kreskowych</span></div>
       <div class="trust-item reveal"><strong>Po polsku</strong><span>i dla polskich produktów</span></div>
     </div>
@@ -994,6 +1046,19 @@
         </article>
 
         <article class="b-card b-wide b-tint reveal">
+          <div class="b-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg>
+          </div>
+          <h3>Powiedz, co zjadłeś</h3>
+          <p>Nowość w 1.2. Bez zdjęcia i bez wpisywania: mówisz jednym zdaniem, a AI rozpoznaje dania, liczy kalorie i dorysowuje zdjęcie posiłku.</p>
+          <div class="b-voice" aria-hidden="true">
+            <span class="v-bubble"><b>🎤</b>„dwie kanapki z serem i kawa z mlekiem"</span>
+            <span class="v-result">2 posiłki · 486 kcal · B 21 g</span>
+          </div>
+          <span class="b-tag">1 wpis dziennie za darmo · Premium do 50</span>
+        </article>
+
+        <article class="b-card b-wide b-tint reveal">
           <div class="b-split">
             <div>
               <div class="b-icon">
@@ -1039,7 +1104,7 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 20V10M9.5 20V4M15 20v-9M20.5 20V7"/><path d="M2.5 20h19"/></svg>
               </div>
               <h3>Statystyki i ciekawostki</h3>
-              <p>Wykresy kalorii, wody i wagi oraz sekcja „W skrócie", która sama wyłapuje wnioski.</p>
+              <p>Wykresy kalorii, wody i wagi, kafelki statystyk do wyboru oraz sekcja „W skrócie", która sama wyłapuje wnioski.</p>
             </div>
             <span class="b-bars" aria-hidden="true">
               <i style="--h:52%"></i><i style="--h:78%"></i><i style="--h:44%"></i>
@@ -1069,9 +1134,48 @@
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg>
               </div>
               <h3>Apple Health i Health Connect</h3>
-              <p>Posiłki i waga synchronizują się ze Zdrowiem na iPhonie i Health Connect na Androidzie, a kroki widzisz w EatSee.</p>
+              <p>Posiłki i waga synchronizują się ze Zdrowiem na iPhonie i Health Connect na Androidzie, a kroki widzisz w EatSee z celem, wykresem tygodnia i ciekawostkami: ile to maratonów albo jaki procent obwodu Ziemi.</p>
             </div>
             <span class="b-sync" aria-hidden="true"><i></i><i></i><i></i></span>
+          </div>
+        </article>
+
+        <article class="b-card b-wide reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 3 4 4.5 4 8.5a4 4 0 0 1-8 0c0-1.5.5-2.5 1.2-3.3.3 1.2 1 1.8 1.8 1.8C11.5 8.5 11 5.5 12 3z"/><path d="M8.5 13.5C7 15 6 16.5 6 18a6 6 0 0 0 12 0c0-1.5-.6-2.8-1.5-4"/></svg>
+              </div>
+              <h3>Streaks i wyzwanie 7 dni</h3>
+              <p>Każdy dzień z wpisem podtrzymuje serię. Kalendarz, tarcze chroniące serię, gdy odpuścisz dzień, i naprawa przerwanej serii w Premium.</p>
+            </div>
+            <span class="b-streak" aria-hidden="true"><i class="on">1</i><i class="on">2</i><i class="on">3</i><i class="on">4</i><i class="on">5</i><i>6</i><i>7</i><i class="flame">🔥</i></span>
+          </div>
+        </article>
+
+        <article class="b-card b-wide reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M12 11l.9 1.9 2.1.3-1.5 1.5.4 2.1-1.9-1-1.9 1 .4-2.1-1.5-1.5 2.1-.3L12 11z" fill="currentColor" stroke="none"/><path d="M8.5 3l2 6M15.5 3l-2 6"/></svg>
+              </div>
+              <h3>12 odznak do zdobycia</h3>
+              <p>Za pierwszy posiłek głosem, cel wody, idealny tydzień, wagę w dobrym kierunku i więcej. Każda z ciekawostką ze świata jedzenia i kartą do udostępnienia.</p>
+            </div>
+            <span class="b-medals" aria-hidden="true"><i>🎤</i><i>💧</i><i>⭐</i><i class="lock">🔒</i></span>
+          </div>
+        </article>
+
+        <article class="b-card b-wide reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 16V11a6 6 0 0 1 12 0v5l1.5 2h-15L6 16z"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+              </div>
+              <h3>Przypomnienia, które znają Ciebie</h3>
+              <p>Twoje imię, brakujące kalorie i woda, ulubione dania o porze, w której zwykle jesz. Najwyżej kilka dziennie, bez spamu.</p>
+            </div>
+            <span class="b-notif" aria-hidden="true"><b>Hej Ola, zostało Ci 640 kcal 🍽️</b>Kolacja o 19:00? Ostatnio był łosoś z warzywami.</span>
           </div>
         </article>
 
@@ -1095,8 +1199,8 @@
             <span class="cnr bl"></span><span class="cnr br"></span>
             <span class="plate-mini">🍗</span>
           </div>
-          <h3>Zrób zdjęcie</h3>
-          <p>Wyceluj telefon w talerz i tapnij. Nie musisz nic ważyć ani niczego wpisywać.</p>
+          <h3>Zrób zdjęcie albo powiedz</h3>
+          <p>Wyceluj telefon w talerz i tapnij albo dotknij mikrofonu i powiedz, co zjadłeś. Nie musisz nic ważyć ani wpisywać.</p>
         </article>
 
         <article class="flow-step reveal">
@@ -1131,7 +1235,7 @@
       <div class="section-head">
         <span class="kicker">Cennik</span>
         <h2>Zacznij za darmo, przyspiesz z Premium</h2>
-        <p>EatSee Premium podnosi dzienny limit analiz AI z 3 do 50, odblokowuje statystyki miesięczne i motywy kolorystyczne aplikacji. Wybierz plan, który Ci pasuje.</p>
+        <p>EatSee Premium podnosi dzienny limit analiz AI z 3 do 50, daje do 50 wpisów głosowych dziennie, naprawę przerwanej serii, statystyki miesięczne i motywy kolorystyczne. Wybierz plan, który Ci pasuje.</p>
       </div>
       <div class="pricing-grid">
         <article class="price-card reveal">
@@ -1161,7 +1265,7 @@
           <a class="plan-cta ghost" href="#pobierz">Kupuję raz na zawsze</a>
         </article>
       </div>
-      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI dziennie, <strong>Premium do 50 dziennie</strong> w ramach uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Szczegóły w <a href="/regulamin">regulaminie</a>.</p>
+      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI i 1 wpis głosowy dziennie, <strong>Premium do 50 dziennie</strong> w ramach uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Szczegóły w <a href="/regulamin">regulaminie</a>.</p>
     </div>
   </section>
 
@@ -1178,12 +1282,20 @@
           <div class="faq-body">AI rozpoznaje na zdjęciu danie i jego składniki, szacuje wielkość porcji i na tej podstawie wylicza kalorie oraz makroskładniki. Wynik możesz zawsze skorygować ręcznie, np. zmieniając wielkość porcji.</div>
         </details>
         <details class="faq-item reveal">
+          <summary>Jak działa dodawanie posiłków głosem?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Dotykasz mikrofonu i mówisz, co zjadłeś, np. „dwie kanapki z serem i kawa z mlekiem". AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje zdjęcie dania. Nagranie służy tylko do rozpoznania tekstu i nie jest przechowywane. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czym są Streaks i odznaki?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Streaks to seria dni z co najmniej jednym wpisem w dzienniku. Każdy dzień ją podtrzymuje, tarcze chronią serię, gdy odpuścisz dzień, a wyzwanie 7 dni pomaga wystartować. Do tego 12 odznak za osiągnięcia, np. pierwszy posiłek głosem, cel wody czy idealny tydzień - każda z ciekawostką do udostępnienia znajomym.</div>
+        </details>
+        <details class="faq-item reveal">
           <summary>Czy EatSee działa z polskimi produktami i daniami?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
           <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Co się stanie, gdy wykorzystam darmowy limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Darmowe konto ma 3 analizy AI dziennie - limit odnawia się każdego dnia. Po jego wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limit do 50 analiz AI dziennie.</div>
+          <div class="faq-body">Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czy Premium ma jakiś limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1195,7 +1307,7 @@
         </details>
         <details class="faq-item reveal">
           <summary>Czy EatSee łączy się z Apple Health lub Health Connect?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie, a w aplikacji zobaczysz też swoje dzisiejsze kroki.</div>
+          <div class="faq-body">Tak. Po włączeniu synchronizacji EatSee zapisuje posiłki (kalorie i makroskładniki) oraz wagę w Apple Health na iPhonie i w Health Connect na Androidzie. Kroki z obu źródeł zobaczysz w aplikacji razem z celem, wykresem tygodnia i ciekawostkami, np. ile to maratonów.</div>
         </details>
         <details class="faq-item reveal">
           <summary>W jakich językach działa aplikacja?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1217,7 +1329,7 @@
   <section class="final-cta">
     <div class="wrap">
       <div class="section-head" style="margin-bottom:24px">
-        <h2>Następny posiłek policz zdjęciem</h2>
+        <h2>Następny posiłek policz zdjęciem albo głosem</h2>
         <p>Pobierz EatSee i przekonaj się, jak proste może być liczenie kalorii.</p>
       </div>
       <div class="store-badges">
