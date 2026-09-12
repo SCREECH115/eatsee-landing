@@ -157,7 +157,9 @@
 <main>
   <article class="card">
 <h1>EatSee Terms of Use</h1>
-        <p class="meta">Effective from: 9 August 2026</p>
+        <p class="meta">
+          Effective from: 26 September 2026<br>Last updated: 12 September 2026
+        </p>
 
         <h2>1. Provider</h2>
         <p>
@@ -167,33 +169,59 @@
         </p>
         <p>
           Contact: <strong>kontakt@eatsee.pl</strong> (app, payments and complaints) and
-          <strong>kontakt@astroware.pl</strong> (personal data matters).
+          <strong>kontakt@eatsee.pl</strong> (personal data matters).
         </p>
 
         <h2>2. What EatSee is</h2>
-        <p>
-          EatSee is a mobile app for keeping a food diary. A photo of a meal or a product label is
-          analysed by artificial intelligence, which estimates its nutritional values and saves them
-          to your diary. The app also supports barcode scanning, water, weight and step logging, and
-          statistics.
-        </p>
+        <p>EatSee is a mobile app for keeping a food diary and planning meals.</p>
+        <ul>
+          <li>
+            <strong>Meal analysis:</strong> artificial intelligence recognises the dish in a photo
+            of a meal or a product label, or in a description given by voice or text, estimates its
+            nutritional values and saves them to your diary. You can also add a meal by scanning a
+            barcode, from your favourites, by repeating it from previous days or by entering it by
+            hand. For a meal added by voice or description without a photo, the app may generate
+            an illustrative image.
+          </li>
+          <li>
+            <strong>Meal planner (Plan tab):</strong> after a short setup that uses the goals saved
+            in your profile, the app builds a meal plan for a day or a week around your calorie and
+            protein goal - with recipes, portions and preparation steps. You can swap a planned
+            meal for one of the suggestions, log it to your diary with "I ate it", save it to your
+            favourites and, when you drift from the plan, adjust the rest of the day. The plan
+            produces a shopping list where you can tick off products and mark the ones you already
+            have at home. With Premium, a plan can also prepare itself: every day or
+            once a week, at the hour you choose, so that it is waiting for you in the Plan tab (off
+            by default).
+          </li>
+          <li>
+            <strong>Other features:</strong> water, weight and step logging, sync with Apple Health
+            and Health Connect, statistics and reports, streaks and badges, reminders and a
+            referral programme.
+          </li>
+        </ul>
 
         <h2>3. Technical requirements</h2>
         <ul>
           <li>a device running a supported version of iOS or Android,</li>
-          <li>an active internet connection (photo analysis runs on the server),</li>
+          <li>an active internet connection (AI analyses and meal planning run on the server),</li>
           <li>an active App Store or Google Play account - if you purchase Premium,</li>
-          <li>camera or photo library access - if you add meals from photos.</li>
+          <li>camera or photo library access - if you add meals from photos,</li>
+          <li>microphone access - if you log meals by voice,</li>
+          <li>notification permission - for reminders,</li>
+          <li>Apple Health or Health Connect access - if you turn on sync (optional).</li>
         </ul>
 
         <h2>4. Your account</h2>
         <ul>
           <li>
             Using the app requires an account (email and password, or sign-in with Google or Apple).
+            Before creating an account you can try one photo analysis.
           </li>
           <li>
-            Your email address must be confirmed via the link we send. Until it is confirmed, some
-            features may be unavailable - this protects the service from abuse of free analyses.
+            Your email address must be confirmed via the link we send. Until it is confirmed, AI
+            analyses, voice logging, the meal planner and the referral programme, among others, are
+            unavailable - this protects the service from abuse.
           </li>
           <li>Accounts may be created by people aged 13 and over.</li>
           <li>
@@ -201,15 +229,27 @@
             multiple accounts to work around the limits.
           </li>
           <li>
-            You may delete your account at any time in the app (<em>Profile → Delete account</em>).
-            Deletion permanently removes your profile, food diary and photos.
+            You may delete your account at any time in the app
+            (<em>Profile → Account → Delete account</em>). Deletion permanently removes your
+            profile, food diary, photos, meal plans and planner preferences. Data that remains
+            after deletion is described in the Privacy policy (section 8). Deleting your account
+            does not cancel a subscription in the App Store or Google Play.
+          </li>
+          <li>
+            The product name and nutritional values read from a label you photograph for a product
+            missing from the database go to EatSee's shared product database and are shown to other
+            users who scan the same barcode. Recipes from your plans that you log to your diary may
+            be used in other users' plans - without data that identifies you.
           </li>
         </ul>
 
         <h2>5. Scope of the service and fair-use limits</h2>
         <p>
-          AI photo analysis has a real cost for the provider, which is why it is subject to daily
-          limits. Limits reset every day at midnight, device time.
+          AI features (analysis of photos, descriptions and recordings, meal illustrations and meal
+          plans) have a real cost for the provider, which is why they are subject to limits. Daily
+          limits reset once a day at midnight UTC (01:00 in Poland in winter time, 02:00 in summer
+          time). The free meal plan is available once every 7 days, counted from your previous free
+          plan.
         </p>
         <div class="table-scroll"><table>
           <tr>
@@ -228,6 +268,16 @@
             <td>up to 100 per day</td>
           </tr>
           <tr>
+            <td>Logging meals by voice or description</td>
+            <td>1 per day</td>
+            <td>up to 50 per day</td>
+          </tr>
+          <tr>
+            <td>AI-generated meal illustrations</td>
+            <td>up to 10 per day</td>
+            <td>up to 10 per day</td>
+          </tr>
+          <tr>
             <td>Barcode scanning</td>
             <td>no limit</td>
             <td>no limit</td>
@@ -238,19 +288,52 @@
             <td>no limit</td>
           </tr>
           <tr>
-            <td>Full statistics history, monthly trends, colour themes</td>
+            <td>Meal plans</td>
+            <td>a plan for tomorrow, once every 7 days</td>
+            <td>plans for today, tomorrow and 7 days, up to 20 per day</td>
+          </tr>
+          <tr>
+            <td>Meal swap in a plan (up to 3 suggestions to choose from)</td>
+            <td>1 swap in every generated plan</td>
+            <td>up to 60 per day</td>
+          </tr>
+          <tr>
+            <td>"Adjust the rest of the day"</td>
+            <td>not available</td>
+            <td>up to 30 per day</td>
+          </tr>
+          <tr>
+            <td>Shopping list</td>
+            <td>1 day</td>
+            <td>1, 3 or 7 days</td>
+          </tr>
+          <tr>
+            <td>Automatic planning</td>
+            <td>not available</td>
+            <td>available (off by default)</td>
+          </tr>
+          <tr>
+            <td>
+              Full statistics history, monthly trends, full weekly report, PDF export, colour
+              themes
+            </td>
             <td>not available</td>
             <td>available</td>
           </tr>
+          <tr>
+            <td>Restoring a broken streak</td>
+            <td>not available</td>
+            <td>once every 30 days</td>
+          </tr>
         </table></div>
         <div class="note">
-          <strong>Fair use.</strong> The 50-analyses-per-day Premium limit far exceeds typical usage
-          (a few meals a day) and exists solely to protect the service from automated or excessive
-          use. If you genuinely need more, write to <strong>kontakt@eatsee.pl</strong> and we will
-          find a solution.
+          <strong>Fair use.</strong> The Premium limits (for example 50 AI analyses, 20 plans, 60
+          swaps and 30 day adjustments per day) far exceed typical usage and exist solely to protect
+          the service from automated or excessive use. If you genuinely need more, write to
+          <strong>kontakt@eatsee.pl</strong> and we will find a solution.
         </div>
         <p>
-          The provider may temporarily restrict access to AI analyses where abuse is reasonably
+          The provider may temporarily restrict access to AI features where abuse is reasonably
           suspected (for example automation or circumventing limits with multiple accounts). You
           will be informed, and the restriction will be lifted once the matter is clarified.
         </p>
@@ -267,6 +350,7 @@
             purchase. Selected plans may include a free trial - its length is always shown on the
             purchase screen.
           </li>
+          <li>The Premium features and their limits are listed in the table in section 5.</li>
           <li>
             Current prices are always shown on the purchase screen in the app and in the app store.
             Prices include VAT.
@@ -340,13 +424,39 @@
           </li>
         </ul>
 
-        <h2>9. Nature of results and health disclaimer</h2>
+        <h2>9. Nature of results, meal plans and health disclaimer</h2>
         <p>
           The nutritional values calculated by EatSee are <strong>estimates</strong>. The AI
-          recognises the dish and its size from a photo, so results may differ from reality. The app
-          is informational and motivational only -
-          <strong>it is not medical or dietary advice</strong> and does not replace consulting a
-          doctor or a dietitian. It is not a medical device.
+          recognises the dish and its size from a photo, a recording or a description, so results
+          may differ from reality. AI-generated meal illustrations are for illustration only and do
+          not show your meal.
+        </p>
+        <p>
+          <strong>Meal plans and recipes are suggestions.</strong> The AI picks ingredients from
+          the EatSee catalog and their amounts and writes the recipe, while calories and
+          macronutrients are calculated by EatSee's software from the catalog values - not by the
+          AI. We save a new plan only when the planned meals of each day are within roughly ±5% of
+          your calorie goal and ±10% of your protein goal. After a meal swap, "Adjust the rest of
+          the day" or adding a meal from your favourites to the plan, values may differ more from
+          the goal. Actual values depend on the products you buy, their amounts and how you
+          prepare them. Some meals in a plan may come from ready-made EatSee recipe templates, and
+          recipes written by the AI may contain mistakes - read the recipe before you cook.
+        </p>
+        <p>
+          <strong>Allergies and exclusions.</strong> The planner takes into account the diet,
+          allergies, exclusions and equipment you provide, and automatically rejects recipes with
+          excluded ingredients. This only works within the information you provided, and meals
+          added to the plan from your favourites are not checked for it. The planner does not
+          guarantee that a meal is free of an allergen - products may contain allergens, or traces
+          of them, that are not visible in the ingredient name.
+          <strong>If you have an allergy or intolerance, always read product labels.</strong>
+        </p>
+        <p>
+          The app is informational and motivational only -
+          <strong>it is not medical or dietary advice</strong>, and meal plans are not a
+          therapeutic diet and do not replace consulting a doctor or a dietitian. If you have a
+          medical condition or follow a diet prescribed by a doctor, consult the plan with a
+          specialist. It is not a medical device.
         </p>
 
         <h2>10. Complaints</h2>
@@ -361,7 +471,16 @@
         <ul>
           <li>
             We work to keep the app running continuously, but maintenance windows and outages caused
-            by third-party providers (including Google Firebase and OpenAI) are possible.
+            by third-party providers (including Google Firebase, OpenAI and Expo) are possible.
+          </li>
+          <li>
+            Automatic planning may not prepare a plan, for example when Premium has expired, your
+            preferences cannot be met, generation fails, or you have not opened the planner for 14
+            days; a plan may also be prepared later than set.
+          </li>
+          <li>
+            Reminders are local phone notifications - their delivery depends on your phone's
+            settings and operating system.
           </li>
           <li>
             The provider's liability towards consumers is limited only to the extent permitted by
@@ -369,8 +488,8 @@
             provisions.
           </li>
           <li>
-            You are responsible for the dietary decisions you make based on the estimates the app
-            provides.
+            You are responsible for the dietary decisions you make based on the estimates and plans
+            the app provides, including checking product ingredients for allergens.
           </li>
         </ul>
 
@@ -399,10 +518,11 @@
         <p>
           Polish law applies to matters not covered here, provided that consumers are not deprived
           of the protection afforded by mandatory provisions of the law of their country of habitual
-          residence. Consumers may use out-of-court complaint and redress mechanisms, including the
-          European Commission's ODR platform at
-          <a href="https://ec.europa.eu/consumers/odr" rel="noopener">ec.europa.eu/consumers/odr</a
-          >.
+          residence. Consumers may use out-of-court complaint and redress mechanisms, for example
+          help from a district or municipal consumer ombudsman (rzecznik konsumentów) or consumer
+          organisations in Poland; information is available at
+          <a href="https://uokik.gov.pl" rel="noopener">uokik.gov.pl</a>. Consumers living in
+          another country may contact their national consumer protection bodies.
         </p>
   </article>
 </main>

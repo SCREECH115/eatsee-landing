@@ -148,7 +148,7 @@
     <nav class="doc-nav" aria-label="Polityka prywatności aplikacji EatSee">
       <a href="/regulamin">Regulamin</a>
       <a href="/polityka-prywatnosci" aria-current="page">Polityka prywatności</a>
-      <a href="/terms">English</a>
+      <a href="/privacy">English</a>
     </nav>
     <button class="theme-toggle" type="button" aria-label="Przełącz motyw jasny/ciemny"><svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z"/></svg></button>
   </div>
@@ -157,56 +157,150 @@
 <main>
   <article class="card">
 <h1>Polityka prywatności aplikacji EatSee</h1>
-        <p class="meta">Obowiązuje od: 4 sierpnia 2026 r.</p>
+        <p class="meta">Ostatnia aktualizacja: 12 września 2026 r.</p>
 
         <h2>1. Administrator danych</h2>
         <p>
           Administratorem danych osobowych jest <strong>ASTROWARE Arkadiusz Woźniak</strong>, Rudka
-          Kozłowiecka 102, 21-025 Niemce, Polska. Kontakt w sprawach ochrony danych:
-          <strong>kontakt@astroware.pl</strong>.
+          Kozłowiecka 102, 21-025 Niemce, Polska, NIP 7133133330. Kontakt w sprawach ochrony
+          danych: <strong>kontakt@eatsee.pl</strong>. W sprawach aplikacji, płatności i
+          reklamacji: <strong>kontakt@eatsee.pl</strong>.
         </p>
 
         <h2>2. Jakie dane przetwarzamy</h2>
         <ul>
-          <li><strong>Dane konta:</strong> adres e-mail, imię, zaszyfrowane dane logowania.</li>
+          <li>
+            <strong>Dane konta:</strong> adres e-mail, imię, identyfikator konta, sposób logowania
+            (e-mail i hasło, Google albo Apple), informacja, czy adres e-mail jest potwierdzony,
+            oraz zaszyfrowane dane logowania.
+          </li>
           <li>
             <strong>Dane profilu (dane dotyczące zdrowia):</strong> płeć, data urodzenia, wzrost,
-            waga, poziom aktywności, cel wagowy oraz wyliczone cele kaloryczne i makroskładniki.
+            waga, poziom aktywności, cel wagowy, wyliczone cele kaloryczne i makroskładniki oraz
+            cel wody i cel kroków.
           </li>
           <li>
-            <strong>Dziennik posiłków:</strong> zdjęcia posiłków i etykiet produktów, rozpoznane
-            nazwy dań, szacunkowe wartości odżywcze, daty posiłków.
+            <strong>Dziennik:</strong> posiłki (nazwa dania, szacunkowe wartości odżywcze, ocena
+            zdrowotności, data i godzina, porcja, powiązanie z planem posiłków), zdjęcia posiłków i
+            etykiet produktów, ilustracje posiłków wygenerowane przez AI, ulubione posiłki,
+            spożycie wody, historia wagi, seria dni, odznaki i osiągnięcia.
           </li>
           <li>
-            <strong>Dane subskrypcji:</strong> status planu (darmowy/premium) oraz identyfikatory
-            transakcji przekazywane przez sklep aplikacji i RevenueCat. Nie przetwarzamy danych kart
-            płatniczych.
+            <strong>Opisy i nagrania głosowe:</strong> tekst, który wpisujesz przy dodawaniu lub
+            poprawianiu posiłku, nagranie głosowe, gdy dodajesz posiłek głosem, oraz tekst
+            rozpoznany z nagrania. Nagrania nie zapisujemy na serwerach EatSee, a opisu ani
+            rozpoznanego tekstu nie zapisujemy w dzienniku. Przekazujemy je do OpenAI w celach
+            opisanych w pkt 4.
           </li>
           <li>
-            <strong>Dane techniczne:</strong> dzienne liczniki analiz oraz logi techniczne niezbędne
-            do zapewnienia bezpieczeństwa i stabilności usługi.
+            <strong>Planer posiłków:</strong> liczba i pory posiłków, rodzaj diety, alergie
+            (wybrane z listy 14 alergenów UE oraz wpisane własnymi słowami), produkty, których nie
+            lubisz lub nie chcesz jeść (także wpisane własnymi słowami), czas przygotowania,
+            sprzęt kuchenny, styl śniadań, priorytety, podejście do powtarzania dań i produkty
+            oznaczone jako „Mam w domu", a także zapisane plany posiłków z przepisami, propozycje
+            zamian, stan listy zakupów, oceny przepisów wynikające z Twoich wyborów oraz przepisy,
+            których nie chcesz dostawać. Informacje o alergiach i diecie mogą ujawniać informacje o
+            Twoim zdrowiu, dlatego traktujemy je jak dane dotyczące zdrowia.
           </li>
           <li>
-            <strong>Zgody marketingowe:</strong> status zgody na otrzymywanie informacji
-            marketingowych, data jej udzielenia oraz wersja treści klauzuli, na którą wyrażono
-            zgodę.
+            <strong>Wspólna baza przepisów:</strong> gdy dodasz do dziennika posiłek z planu, jego
+            przepis (nazwa, składniki, kroki przygotowania) może trafić do wspólnej bazy przepisów
+            EatSee i być proponowany w planach innych użytkowników korzystających z aplikacji w tym
+            samym języku. Inni użytkownicy nie widzą, od kogo pochodzi przepis.
+          </li>
+          <li>
+            <strong>Automatyczne planowanie (Premium, domyślnie wyłączone):</strong> wybrany tryb
+            (codziennie albo raz w tygodniu), godzina i dzień tygodnia, strefa czasowa i język
+            urządzenia, data ostatniego otwarcia planera oraz token powiadomień push (Expo),
+            potrzebny, żeby powiadomić Cię o gotowym planie. Token zapisujemy dopiero po włączeniu
+            tej funkcji i usuwamy go przy wylogowaniu oraz przy usunięciu konta.
+          </li>
+          <li>
+            <strong>Apple Health i Health Connect</strong> (opcjonalnie, po włączeniu synchronizacji
+            w aplikacji i nadaniu uprawnień w telefonie): EatSee zapisuje w nich kalorie i
+            makroskładniki posiłków oraz wagę, a odczytuje z nich wagę i liczbę kroków. Sama liczba
+            kroków zostaje na Twoim telefonie - nie wysyłamy jej na serwery EatSee. Zapisujemy
+            natomiast informację o zdobyciu odznaki za kroki (np. 100 000 kroków) i wysyłamy to
+            zdarzenie do statystyk korzystania (PostHog, Google Analytics for Firebase). Wagę z tych
+            aplikacji możemy zaproponować jako aktualizację profilu - zapisujemy ją dopiero po
+            Twoim potwierdzeniu.
+          </li>
+          <li>
+            <strong>Kody kreskowe:</strong> numer zeskanowanego kodu. Gdy produktu nie ma w bazie i
+            sfotografujesz jego etykietę, nazwa produktu i odczytane wartości odżywcze trafiają do
+            wspólnej bazy produktów EatSee, z której korzystają wszyscy zalogowani użytkownicy.
+            Wpis zawiera techniczny identyfikator konta, które go dodało, bez imienia i adresu
+            e-mail.
+          </li>
+          <li>
+            <strong>Subskrypcja, kody i polecenia:</strong> status planu (darmowy albo Premium),
+            źródło uprawnienia (zakup, kod promocyjny albo polecenie) i data jego końca,
+            identyfikatory transakcji przekazywane przez sklep z aplikacjami i RevenueCat, Twój kod
+            polecający, informacja o tym, kto kogo polecił, oraz wykorzystane kody promocyjne i kod
+            powitalny. Aby zapobiegać nadużyciom, przy kodach i poleceniach zapisujemy też skrót
+            (hash) adresu e-mail. Nie przetwarzamy danych kart płatniczych.
+          </li>
+          <li>
+            <strong>Dane techniczne i statystyki korzystania:</strong> dzienne liczniki użycia
+            funkcji (analizy AI, doprecyzowania, wpisy głosowe, ilustracje, plany i zamiany),
+            zdarzenia w aplikacji powiązane z identyfikatorem konta (np. zapisanie posiłku, dodanie
+            wody, wyświetlenie ekranu Premium, zakup, a przy produktach ze wspólnej bazy także
+            numer kodu kreskowego), informacje o urządzeniu, systemie i wersji aplikacji, raporty
+            błędów i wydajności, logi serwera oraz adres IP urządzenia i wyliczona z niego
+            przybliżona lokalizacja (kraj, region), którą ustalają statystyki korzystania
+            (PostHog, Google Analytics for Firebase) i raporty błędów (Sentry). Zdarzenia z
+            konfiguracji planera zawierają
+            liczbę posiłków, rodzaj diety oraz liczbę wybranych alergii i sprzętów, bez nazw
+            alergii. Jeżeli przed założeniem konta wypróbujesz analizę zdjęcia, zapisujemy
+            anonimowy identyfikator i informację, że próba została wykorzystana.
+          </li>
+          <li>
+            <strong>Wsparcie:</strong> gdy napiszesz do nas z aplikacji, do wiadomości dołączany
+            jest plik z wersją aplikacji i systemu oraz ostatnimi komunikatami o błędach aplikacji.
+            Otrzymujemy też treść wiadomości i adres e-mail, z którego piszesz.
+          </li>
+          <li>
+            <strong>Zgody marketingowe i newsletter:</strong> status zgody na otrzymywanie
+            informacji marketingowych, data jej udzielenia oraz wersja treści klauzuli, na którą
+            wyrażono zgodę. Przy wysyłce newslettera zapisujemy adres e-mail, na który wysłaliśmy
+            wiadomość, oraz datę i status wysyłki.
+          </li>
+          <li>
+            <strong>Dane na Twoim urządzeniu:</strong> ustawienia aplikacji (m.in. przypomnień i
+            wyglądu), język, imię używane w przypomnieniach oraz pliki tymczasowe (np. nagranie
+            głosowe, raport PDF) aplikacja przechowuje w pamięci telefonu. Przypomnienia planuje i
+            przygotowuje aplikacja na telefonie.
           </li>
         </ul>
 
         <h2>3. Cele i podstawy prawne przetwarzania</h2>
         <ul>
           <li>
-            świadczenie usługi (konto, dziennik, synchronizacja) - art. 6 ust. 1 lit. b RODO
-            (wykonanie umowy);
+            świadczenie usługi (konto, dziennik, analizy AI, dodawanie posiłków głosem, ilustracje
+            posiłków, planer posiłków z listą zakupów, automatyczne planowanie,
+            przypomnienia, synchronizacja, program poleceń, e-maile potrzebne do obsługi konta i
+            obsługa zgłoszeń) - art. 6 ust. 1 lit. b RODO (wykonanie umowy);
           </li>
           <li>
-            przetwarzanie danych dotyczących zdrowia (profil, wartości odżywcze posiłków) - art. 9
-            ust. 2 lit. a RODO (wyraźna zgoda, którą wyrażasz, dobrowolnie podając te dane podczas
-            konfiguracji profilu; zgodę możesz wycofać w każdej chwili, usuwając konto);
+            przetwarzanie danych dotyczących zdrowia (profil, wartości odżywcze posiłków, waga,
+            alergie i dieta podane w planerze) - art. 9 ust. 2 lit. a RODO (wyraźna zgoda, którą
+            wyrażasz, dobrowolnie podając te dane podczas konfiguracji profilu i planera; zgodę
+            możesz wycofać w każdej chwili, usuwając konto, a alergie i wykluczenia możesz też w
+            każdej chwili usunąć, a dietę zmienić, w preferencjach planera);
           </li>
           <li>
-            obsługa płatności i zapobieganie nadużyciom (limity analiz) - art. 6 ust. 1 lit. b i f
-            RODO (prawnie uzasadniony interes);
+            statystyki korzystania i raporty błędów (PostHog, Google Analytics for Firebase,
+            Sentry), żeby rozwijać aplikację i usuwać błędy - art. 6 ust. 1 lit. f RODO (prawnie
+            uzasadniony interes);
+          </li>
+          <li>
+            prowadzenie wspólnej bazy produktów (kody kreskowe) i wspólnej bazy przepisów, żeby
+            wyniki i plany były trafniejsze dla wszystkich użytkowników - art. 6 ust. 1 lit. f RODO
+            (prawnie uzasadniony interes);
+          </li>
+          <li>
+            obsługa płatności i zapobieganie nadużyciom (limity, kody promocyjne, polecenia) - art.
+            6 ust. 1 lit. b i f RODO (prawnie uzasadniony interes);
           </li>
           <li>
             wysyłka informacji marketingowych na podany adres e-mail - art. 6 ust. 1 lit. a RODO
@@ -215,12 +309,52 @@
           <li>obowiązki podatkowe i rachunkowe - art. 6 ust. 1 lit. c RODO.</li>
         </ul>
 
-        <h2>4. Analiza zdjęć przez sztuczną inteligencję</h2>
+        <h2>4. Funkcje sztucznej inteligencji</h2>
         <p>
-          Zdjęcia posiłków i etykiet, które wykonujesz lub wybierasz z galerii, są przesyłane do
-          OpenAI w celu automatycznego oszacowania wartości odżywczych. Zgodnie z polityką API
-          OpenAI dane przesłane przez API nie są wykorzystywane do trenowania modeli. Wyniki analizy
-          są szacunkowe i mają charakter wyłącznie informacyjny - nie stanowią porady medycznej ani
+          Funkcje AI działają na serwerze EatSee, który przekazuje dane do OpenAI. Aplikacja nie
+          łączy się z OpenAI bezpośrednio. Do OpenAI nie przekazujemy Twojego imienia, adresu
+          e-mail ani identyfikatora konta. Przekazujemy:
+        </p>
+        <ul>
+          <li>
+            <strong>przy analizie posiłku ze zdjęcia lub etykiety:</strong> zdjęcie (także z
+            próbnej analizy przed założeniem konta), język aplikacji i wskazówkę, jeśli ją dodasz,
+            a przy poprawce wyniku - jej treść razem z poprzednim wynikiem;
+          </li>
+          <li>
+            <strong>przy dodawaniu posiłku głosem lub opisem:</strong> nagranie głosowe, które
+            OpenAI zamienia na tekst, a następnie zatwierdzony przez Ciebie opis, na podstawie
+            którego AI szacuje wartości odżywcze;
+          </li>
+          <li>
+            <strong>przy ilustracji posiłku:</strong> gdy dodasz posiłek głosem lub opisem, bez
+            zdjęcia, nazwa dania i Twój opis służą do wygenerowania przez AI poglądowej ilustracji.
+            Ilustrację zapisujemy razem z posiłkiem - nie jest to zdjęcie Twojego posiłku;
+          </li>
+          <li>
+            <strong>w planerze posiłków:</strong> rodzaj diety, alergie i wykluczenia (także
+            wpisane własnymi słowami), produkty, których nie lubisz, sprzęt, limit czasu
+            przygotowania, styl śniadań, priorytety, podejście do powtarzania dań, produkty „Mam w
+            domu", docelowe kalorie i białko poszczególnych posiłków, nazwy ulubionych dań i dań
+            najczęściej zapisywanych w dzienniku w ostatnich 4 tygodniach, a przy zamianie posiłku
+            - nazwę zamienianego dania i powód zamiany (jeśli go wybierzesz) oraz język. Nie
+            przekazujemy płci, wieku ani wagi. Przy automatycznym planowaniu dane te są wysyłane o
+            ustawionej przez Ciebie porze, bez otwierania aplikacji.
+          </li>
+        </ul>
+        <p>
+          W planach posiłków AI dobiera składniki z katalogu EatSee i ich ilości oraz pisze
+          przepis, ale nie podaje kalorii ani makroskładników - wylicza je oprogramowanie EatSee na
+          podstawie katalogu składników. Zanim nowy plan zostanie zapisany, oprogramowanie
+          sprawdza, czy uwzględnia on Twoją dietę, alergie, wykluczenia, sprzęt i limit czasu
+          przygotowania oraz czy zaplanowane posiłki każdego dnia mieszczą się w przybliżeniu w
+          ±5% celu kalorii i ±10% celu białka. Część posiłków może pochodzić z gotowych szablonów
+          przepisów EatSee.
+        </p>
+        <p>
+          Zgodnie z polityką API OpenAI dane przesłane przez API nie są wykorzystywane do
+          trenowania modeli. Wyniki analiz, ilustracje i plany posiłków są szacunkowe lub
+          poglądowe i mają charakter wyłącznie informacyjny - nie stanowią porady medycznej ani
           dietetycznej.
         </p>
 
@@ -230,7 +364,7 @@
           nowościach, porady, przepisy oraz kody promocyjne uprawniające do darmowych dni premium.
           Podstawą prawną jest art. 6 ust. 1 lit. a RODO (zgoda), a sama wysyłka odbywa się zgodnie
           z ustawą o świadczeniu usług drogą elektroniczną oraz przepisami o komunikacji
-          elektronicznej.
+          elektronicznej. Wiadomości wysyłamy za pośrednictwem usługi Resend.
         </p>
         <ul>
           <li>
@@ -238,8 +372,9 @@
             aplikacji ani z konta.
           </li>
           <li>
-            Możesz wycofać ją w każdej chwili w aplikacji (<em>Profil → Newsletter EatSee</em>),
-            klikając link rezygnacji w stopce każdej wiadomości albo pisząc na adres kontaktowy.
+            Możesz wycofać ją w każdej chwili w aplikacji (<em>Profil → Newsletter EatSee</em>)
+            albo pisząc na <strong>kontakt@eatsee.pl</strong>. Jeśli Twój program pocztowy
+            pokazuje przycisk wypisania się z listy, jego użycie wyśle nam taką prośbę e-mailem.
             Wycofanie zgody nie wpływa na zgodność z prawem wysyłek dokonanych przed jej wycofaniem.
           </li>
           <li>
@@ -248,49 +383,144 @@
           </li>
           <li>
             Zgodę na komunikację marketingową mogą wyrazić wyłącznie osoby, które ukończyły 16 lat.
+            Jeżeli nie masz 16 lat, nie zaznaczaj tej zgody.
           </li>
           <li>
             Adres e-mail wykorzystujemy w tym celu do czasu wycofania zgody lub usunięcia konta.
+            Zapis wysłanych wiadomości (adres e-mail, data i status wysyłki) nie jest usuwany razem
+            z kontem - zobacz pkt 8.
           </li>
         </ul>
 
         <h2>6. Odbiorcy danych</h2>
-        <p>Korzystamy z usług następujących podmiotów przetwarzających:</p>
+        <p>Korzystamy z usług następujących podmiotów przetwarzających dane na nasze zlecenie:</p>
         <ul>
           <li>
             <strong>Google Ireland Ltd. / Google LLC</strong> - infrastruktura Firebase
-            (uwierzytelnianie, baza danych, przechowywanie zdjęć, funkcje serwerowe);
+            (uwierzytelnianie, w tym logowanie przez Google, baza danych, przechowywanie zdjęć,
+            funkcje serwerowe i logi serwera) oraz Google Analytics for Firebase (statystyki
+            korzystania, w tym przybliżona lokalizacja wyliczona z adresu IP);
           </li>
-          <li><strong>OpenAI, L.L.C.</strong> - analiza zdjęć posiłków;</li>
-          <li><strong>RevenueCat, Inc.</strong> - obsługa statusu subskrypcji;</li>
+          <li>
+            <strong>OpenAI, L.L.C.</strong> - analiza zdjęć, opisów i nagrań, zamiana mowy na
+            tekst, ilustracje posiłków i układanie planów posiłków (pkt 4);
+          </li>
+          <li>
+            <strong>RevenueCat, Inc.</strong> - obsługa statusu subskrypcji oraz przyznawanie
+            Premium z kodów promocyjnych i poleceń;
+          </li>
+          <li>
+            <strong>PostHog</strong> - statystyki korzystania z aplikacji; usługa wylicza z adresu
+            IP przybliżoną lokalizację (kraj, region);
+          </li>
+          <li>
+            <strong>Sentry</strong> - raporty błędów i wydajności aplikacji, razem z adresem IP
+            urządzenia;
+          </li>
+          <li>
+            <strong>Resend</strong> - wysyłka e-maili: potwierdzenie adresu, reset hasła, kod
+            powitalny i newsletter;
+          </li>
+          <li>
+            <strong>Expo</strong> - dostarczanie powiadomień o gotowym planie (za pośrednictwem
+            usług powiadomień Apple i Google) oraz aktualizacje aplikacji;
+          </li>
+          <li><strong>Hetzner</strong> - serwer, na którym działa strona eatsee.pl.</li>
+        </ul>
+        <p>Dane otrzymują też:</p>
+        <ul>
           <li>
             <strong>Apple Inc. / Google LLC</strong> - realizacja płatności w sklepach App Store i
-            Google Play (jako odrębni administratorzy danych płatniczych).
+            Google Play oraz logowanie przez Apple (jako odrębni administratorzy danych);
+          </li>
+          <li>
+            <strong>Google</strong> - pliki cookie Google Ads na stronie eatsee.pl, na zasadach
+            opisanych w pkt 12;
+          </li>
+          <li>
+            <strong>Open Food Facts</strong> - gdy skanujesz kod kreskowy produktu, którego nie ma
+            we wspólnej bazie EatSee, aplikacja pyta o niego bezpośrednio otwartą bazę Open Food
+            Facts, która otrzymuje numer kodu i adres IP Twojego urządzenia;
+          </li>
+          <li>
+            <strong>inni użytkownicy EatSee</strong> - produkty dodane przez Ciebie do wspólnej
+            bazy kodów kreskowych oraz przepisy, które trafiły do wspólnej bazy przepisów (pkt 2).
           </li>
         </ul>
 
         <h2>7. Przekazywanie danych poza EOG</h2>
         <p>
-          Część usługodawców przetwarza dane w Stanach Zjednoczonych. Przekazywanie odbywa się na
+          Część usługodawców (m.in. OpenAI, RevenueCat, Resend i Expo, a w zależności od usługi
+          także Google) może przetwarzać dane w Stanach Zjednoczonych. Przekazywanie odbywa się na
           podstawie decyzji o adekwatności (EU-US Data Privacy Framework) lub standardowych klauzul
-          umownych zatwierdzonych przez Komisję Europejską.
+          umownych zatwierdzonych przez Komisję Europejską. Statystyki korzystania (PostHog) i
+          raporty błędów (Sentry) aplikacja wysyła do europejskich serwerów tych usług - razem z
+          adresem IP, z którego usługi te wyliczają przybliżoną lokalizację.
         </p>
 
-        <h2>8. Okres przechowywania i usuwanie danych</h2>
+        <h2 id="usuwanie-konta">8. Okres przechowywania i usuwanie danych</h2>
         <p>
-          Dane przechowujemy do czasu usunięcia konta. Konto możesz usunąć samodzielnie w aplikacji
-          (<em>Profil → Usuń konto</em>) - operacja trwale usuwa konto, profil, dziennik posiłków,
-          zdjęcia oraz liczniki użycia. Dane niezbędne do rozliczeń przechowujemy przez okres
-          wymagany przepisami prawa.
+          Dane przechowujemy do czasu usunięcia konta. Dotyczy to także planów posiłków i
+          preferencji planera - alergie i wykluczenia możesz w każdej chwili zmienić lub usunąć w
+          preferencjach planera. Konto możesz usunąć samodzielnie w aplikacji
+          (<em>Profil → Konto → Usuń konto</em>). Operacja trwale usuwa konto logowania, profil,
+          dziennik posiłków, zdjęcia i ilustracje posiłków, ulubione, wpisy wody i wagi, plany
+          posiłków, preferencje planera (w tym alergie), ustawienia automatycznego planowania
+          razem z tokenem powiadomień, Twoje prywatne przepisy, liczniki użycia oraz status
+          Premium zapisany w EatSee.
+        </p>
+        <p>Po usunięciu konta zostają:</p>
+        <ul>
+          <li>
+            przepisy z Twoich planów, które wcześniej trafiły do wspólnej bazy przepisów - bez
+            powiązania z Twoim kontem;
+          </li>
+          <li>
+            produkty dodane przez Ciebie do wspólnej bazy kodów kreskowych, z technicznym
+            identyfikatorem konta, które je dodało;
+          </li>
+          <li>
+            zapisy chroniące przed nadużyciami: wykorzystane kody promocyjne, polecające i
+            powitalne oraz dzienne limity wysyłki e-maili, z identyfikatorem konta albo skrótem
+            (hash) adresu e-mail;
+          </li>
+          <li>zapis wysyłek newslettera z adresem e-mail, datą i statusem wysyłki;</li>
+          <li>
+            anonimowy identyfikator i informacja o wykorzystaniu próbnej analizy przed założeniem
+            konta;
+          </li>
+          <li>
+            dane u dostawców: historia zakupów w RevenueCat i w sklepie z aplikacjami, statystyki
+            korzystania (PostHog, Google Analytics for Firebase), raporty błędów (Sentry), logi
+            wysyłki e-maili (Resend) i logi serwera (Google Cloud) - przez okresy ustawione u tych
+            dostawców; dane przesłane do OpenAI są przechowywane zgodnie z warunkami OpenAI;
+          </li>
+          <li>
+            dane zapisane przez EatSee w Apple Health lub Health Connect - usuniesz je w tych
+            aplikacjach;
+          </li>
+          <li>
+            ustawienia i pliki tymczasowe w pamięci telefonu - usuniesz je, odinstalowując
+            aplikację.
+          </li>
+        </ul>
+        <p>
+          Wspólne bazy, zapisy chroniące przed nadużyciami i zapis wysyłek newslettera nie są dziś
+          usuwane automatycznie. Możesz poprosić o ich usunięcie, pisząc na
+          <strong>kontakt@eatsee.pl</strong>. Usunięcie konta nie anuluje subskrypcji w App
+          Store ani Google Play - zrób to w ustawieniach sklepu. Dane niezbędne do rozliczeń
+          przechowujemy przez okres wymagany przepisami prawa.
         </p>
 
         <h2>9. Twoje prawa</h2>
         <p>
-          Masz prawo do: dostępu do danych, ich sprostowania, usunięcia, ograniczenia przetwarzania,
-          przenoszenia, sprzeciwu oraz wycofania zgody w dowolnym momencie (bez wpływu na zgodność z
-          prawem wcześniejszego przetwarzania). Przysługuje Ci również skarga do Prezesa Urzędu
-          Ochrony Danych Osobowych (uodo.gov.pl). W sprawach dotyczących danych napisz na adres:
-          <strong>kontakt@astroware.pl</strong>.
+          Masz prawo do: dostępu do danych, ich sprostowania, usunięcia, ograniczenia
+          przetwarzania, przenoszenia, sprzeciwu oraz wycofania zgody w dowolnym momencie (bez
+          wpływu na zgodność z prawem wcześniejszego przetwarzania). Aplikacja nie ma funkcji
+          pobrania kopii wszystkich Twoich danych - taką kopię, sprzeciw wobec statystyk
+          korzystania i inne żądania zgłosisz e-mailem. Przysługuje Ci również skarga do Prezesa
+          Urzędu Ochrony Danych Osobowych (uodo.gov.pl). W sprawach dotyczących danych napisz na
+          adres: <strong>kontakt@eatsee.pl</strong>.
         </p>
 
         <h2>10. Dzieci</h2>
@@ -298,23 +528,36 @@
           Aplikacja jest przeznaczona dla osób, które ukończyły 13 lat. Nie kierujemy usługi do
           młodszych dzieci i nie gromadzimy świadomie ich danych. Zgodę na otrzymywanie informacji
           marketingowych mogą natomiast wyrazić wyłącznie osoby, które ukończyły 16 lat - zgodnie z
-          polskimi przepisami o ochronie danych osobowych.
+          polskimi przepisami o ochronie danych osobowych. Jeżeli nie masz 16 lat, nie zaznaczaj
+          tej zgody.
         </p>
 
         <h2>11. Bezpieczeństwo</h2>
         <p>
           Dane są szyfrowane podczas przesyłania (TLS), a dostęp do nich ograniczają reguły
-          bezpieczeństwa - każdy użytkownik ma dostęp wyłącznie do własnych danych.
+          bezpieczeństwa - każdy użytkownik ma dostęp wyłącznie do własnych danych. Wyjątkiem jest
+          wspólna baza produktów (kody kreskowe), którą mogą odczytać wszyscy zalogowani
+          użytkownicy. Wspólna baza przepisów jest dostępna wyłącznie dla serwera EatSee, który
+          korzysta z niej przy układaniu planów.
         </p>
 
-        <h2>12. Pliki cookie na stronie eatsee.pl</h2>
+        <h2>12. Pliki cookie i pamięć urządzenia</h2>
         <p>
           Strona eatsee.pl korzysta z plików cookie Google (Google Ads) wyłącznie do mierzenia
           skuteczności reklam i ruchu na stronie. Pliki te zapisujemy dopiero po Twojej zgodzie,
           którą możesz wyrazić lub odrzucić w banerze przy pierwszej wizycie - wybór zapamiętujemy
-          w Twojej przeglądarce i możesz go cofnąć, czyszcząc dane witryny. Bez zgody korzystamy
-          jedynie z bezplikowych pomiarów zbiorczych (Google Consent Mode). Aplikacja mobilna
-          EatSee nie używa plików cookie.
+          w Twojej przeglądarce. Możesz go zmienić lub wycofać w każdej chwili linkiem
+          <em>Ustawienia cookies</em> w stopce strony eatsee.pl, a także czyszcząc dane
+          witryny. Bez zgody korzystamy jedynie z bezplikowych pomiarów zbiorczych (Google
+          Consent Mode). W pamięci przeglądarki
+          strona zapisuje też wybrany motyw (jasny lub ciemny). Strona potwierdzania adresu e-mail
+          i resetu hasła (auth.eatsee.pl) pobiera bibliotekę Firebase z serwerów Google.
+        </p>
+        <p>
+          Aplikacja mobilna EatSee nie używa plików cookie. Zapisuje jednak w pamięci telefonu
+          ustawienia oraz identyfikatory potrzebne do statystyk korzystania (PostHog, Google
+          Analytics for Firebase) i raportów błędów (Sentry). Aplikacja nie zbiera identyfikatora
+          reklamowego urządzenia.
         </p>
 
         <h2>13. Zmiany polityki</h2>
