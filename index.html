@@ -3,11 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EatSee - policz kalorie zdjęciem albo głosem</title>
-<meta name="description" content="EatSee to licznik kalorii oparty na AI. Zrób zdjęcie posiłku albo powiedz, co zjadłeś, a w kilka sekund poznasz kalorie, białko, węglowodany i tłuszcze. Streaks i odznaki, woda, waga i kroki, Apple Health i Health Connect. Po polsku i w 13 innych językach.">
+<title>EatSee - skaner i planer posiłków. Licznik kalorii z AI</title>
+<meta name="description" content="EatSee to skaner i planer posiłków. Zrób zdjęcie talerza albo powiedz, co zjadłeś, a AI w kilka sekund poda kalorie i makroskładniki. Zakładka Plan ułoży posiłki na dzień albo tydzień pod Twój cel, z przepisami i listą zakupów. Kody kreskowe bez limitu, woda, waga i kroki, Apple Health i Health Connect. Po polsku i w 13 innych językach.">
 <link rel="canonical" href="https://eatsee.pl/">
-<meta property="og:title" content="EatSee - policz kalorie zdjęciem albo głosem">
-<meta property="og:description" content="Licznik kalorii z AI: zdjęcie albo jedno zdanie zamienia w kalorie i makroskładniki w kilka sekund. Streaks, odznaki, kody kreskowe bez limitu, woda, waga i kroki, Apple Health i Health Connect.">
+<meta property="og:title" content="EatSee - skaner i planer posiłków. Licznik kalorii z AI">
+<meta property="og:description" content="Skaner i planer posiłków w jednej aplikacji. Zdjęcie albo jedno zdanie zamienia w kalorie i makroskładniki w kilka sekund, a zakładka Plan układa posiłki pod Twój cel kalorii i białka - z przepisami i listą zakupów. Kody kreskowe bez limitu, woda, waga i kroki, Apple Health i Health Connect.">
 <meta property="og:url" content="https://eatsee.pl/">
 <meta property="og:image" content="https://eatsee.pl/og.png">
 <meta property="og:image:width" content="1200">
@@ -15,8 +15,8 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="pl_PL">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="EatSee - policz kalorie zdjęciem albo głosem">
-<meta name="twitter:description" content="Licznik kalorii z AI: zdjęcie albo jedno zdanie zamienia w kalorie i makro w kilka sekund. Streaks, odznaki, woda, waga i kroki, Apple Health i Health Connect.">
+<meta name="twitter:title" content="EatSee - skaner i planer posiłków. Licznik kalorii z AI">
+<meta name="twitter:description" content="Skaner i planer posiłków w jednej aplikacji. Zdjęcie albo jedno zdanie zamienia w kalorie i makro w kilka sekund, a zakładka Plan układa posiłki pod Twój cel - z przepisami i listą zakupów.">
 <meta name="twitter:image" content="https://eatsee.pl/og.png">
 <meta name="apple-itunes-app" content="app-id=6789152922">
 <link rel="icon" type="image/png" href="img/logo-128.png">
@@ -71,9 +71,9 @@ oaiq(
   "@context": "https://schema.org",
   "@type": "MobileApplication",
   "name": "EatSee",
-  "description": "Licznik kalorii oparty na AI: zdjęcie posiłku albo wypowiedziane zdanie zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Streaks z wyzwaniem 7 dni, 12 odznak, skanowanie kodów kreskowych bez limitu, dziennik z celami, śledzenie wody, wagi i kroków, synchronizacja z Apple Health i Health Connect oraz statystyki z automatycznymi wnioskami.",
-  "softwareVersion": "1.2",
-  "featureList": "Analiza zdjęć posiłków przez AI, dodawanie posiłków głosem, skanowanie kodów kreskowych, etykiety wartości odżywczych, dziennik z celami, Streaks i wyzwanie 7 dni, odznaki za osiągnięcia, woda, waga, kroki, Apple Health i Health Connect, spersonalizowane przypomnienia, statystyki",
+  "description": "EatSee to oparty na AI skaner i planer posiłków. Zdjęcie posiłku albo wypowiedziane zdanie zamienia w kalorie, białko, węglowodany i tłuszcze w kilka sekund. Druga główna funkcja to plan posiłków na dzień lub tydzień pod cel kalorii i białka, z przepisami, zamianą posiłków i listą zakupów, w którym kalorie i makro wylicza kod ze składników, a nie AI. Do tego Streaks z wyzwaniem 7 dni, 12 odznak, skanowanie kodów kreskowych bez limitu, dziennik z celami, śledzenie wody, wagi i kroków, synchronizacja z Apple Health i Health Connect oraz statystyki z automatycznymi wnioskami.",
+  "softwareVersion": "1.3",
+  "featureList": "Skaner posiłków: analiza zdjęć przez AI, plan posiłków z przepisami i listą zakupów, dodawanie posiłków głosem, skanowanie kodów kreskowych, etykiety wartości odżywczych, dziennik z celami, Streaks i wyzwanie 7 dni, odznaki za osiągnięcia, woda, waga, kroki, Apple Health i Health Connect, spersonalizowane przypomnienia, statystyki",
   "applicationCategory": "HealthApplication",
   "operatingSystem": "iOS, Android",
   "inLanguage": ["pl", "en", "de", "fr", "es", "it", "pt", "uk", "cs", "sk", "nl", "tr", "ro", "hu"],
@@ -117,7 +117,39 @@ oaiq(
       "name": "Jak działa dodawanie posiłków głosem?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dotykasz mikrofonu i mówisz, co zjadłeś, np. dwie kanapki z serem i kawa z mlekiem. AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje zdjęcie dania. Nagranie służy tylko do rozpoznania tekstu i nie jest przechowywane. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50."
+        "text": "Dotykasz mikrofonu i mówisz, co zjadłeś, np. dwie kanapki z serem i kawa z mlekiem. AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie wysyłamy do OpenAI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Jak działa plan posiłków?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na jutro albo, w Premium, także na dziś i na 7 dni, a AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. Przycisk Zjadłem dodaje posiłek do dziennika, a Zamień pokazuje do 3 innych propozycji."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Skąd plan posiłków zna kalorie i makro?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Nie od AI. Model AI proponuje dania złożone ze składników z naszego katalogu (270 składników) i podaje ich gramatury, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych tych składników. Nowy plan zapisujemy dopiero wtedy, gdy zaplanowane posiłki trafiają w Twój cel kalorii z dokładnością ok. 5%, a białka ok. 10%. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Czy plan posiłków uwzględni moje alergie i dietę?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Składniki, które się z nimi kłócą, odrzucamy, zanim AI zacznie układać plan, a gotowe przepisy sprawdzamy jeszcze raz przed zapisaniem. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy modelowi AI (OpenAI), który dobiera dania. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Co w planie posiłków jest za darmo, a co w Premium?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Za darmo ułożysz plan na jutro raz na 7 dni, z 1 zamianą posiłku w planie i listą zakupów na ten dzień. Przepisy i przycisk Zjadłem działają w obu wersjach. Premium daje plany na dziś, jutro i 7 dni, zamiany posiłków w ramach dziennych limitów, dopasowanie reszty dnia, listy zakupów na 3 i 7 dni oraz automatyczne planowanie."
       }
     },
     {
@@ -133,7 +165,7 @@ oaiq(
       "name": "Czy EatSee działa z polskimi produktami i daniami?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków."
+        "text": "Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach, a plan posiłków układa przepisy ze składników, które kupisz w zwykłym sklepie. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków."
       }
     },
     {
@@ -141,7 +173,7 @@ oaiq(
       "name": "Co się stanie, gdy wykorzystam darmowy limit analiz AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie."
+        "text": "Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit: na darmowym koncie ułożysz plan na jutro raz na 7 dni. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie."
       }
     },
     {
@@ -189,7 +221,7 @@ oaiq(
       "name": "Czy mogę usunąć konto i swoje dane?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tak. W ustawieniach aplikacji jest opcja usunięcia konta razem ze wszystkimi danymi. Szczegóły opisuje polityka prywatności, a pytania można kierować na kontakt@eatsee.pl."
+        "text": "Tak. W aplikacji (Profil → Konto → Usuń konto) usuniesz konto razem z profilem, dziennikiem, zdjęciami posiłków, preferencjami i planami posiłków. Kilka zapisów zostaje, np. przepisy we wspólnej bazie (już bez powiązania z Tobą), zapisy chroniące przed nadużyciami i historia zakupów w sklepie - opisuje to polityka prywatności. Usunięcie konta nie anuluje subskrypcji, zrób to w ustawieniach sklepu. Pytania można kierować na kontakt@eatsee.pl."
       }
     }
   ]
@@ -327,6 +359,16 @@ oaiq(
   }
   .hero-note svg{width:14px;height:14px;flex:none}
   .hero-copy .hero-note{margin-top:0;margin-bottom:18px}
+  a.hero-note{text-decoration:none;transition:background .18s,color .18s}
+  a.hero-note:hover{background:var(--accent);color:#fff}
+  .hero .sub strong{color:var(--text);font-weight:700}
+  /* notka nad naglowkiem zostaje w jednej linii takze na waskich telefonach */
+  @media (max-width:380px){
+    .hero-note{font-size:.79rem;padding:6px 12px;gap:7px}
+  }
+  @media (max-width:340px){
+    .hero-note .hn-cat{display:none}
+  }
 
   /* Badge sklepów (placeholdery) */
   .store-badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
@@ -564,6 +606,11 @@ oaiq(
     padding:10px 12px;font-size:.78rem;line-height:1.4;color:var(--text-2);
   }
   .b-notif b{display:block;font-size:.82rem;color:var(--text);margin-bottom:2px}
+  .b-auto{
+    flex:none;width:200px;background:var(--bg-alt);border:var(--border);border-radius:14px;
+    padding:10px 12px;font-size:.78rem;line-height:1.4;color:var(--text-2);
+  }
+  .b-auto b{display:block;font-size:.82rem;color:var(--text);margin-bottom:2px}
 
   /* wejscie kaskadowe */
   .bento .reveal:nth-child(2){transition-delay:.06s}
@@ -582,7 +629,7 @@ oaiq(
     .bento{grid-template-columns:1fr}
     .b-hero,.b-wide{grid-column:span 1}
     .b-split{flex-direction:column;align-items:flex-start;gap:14px}
-    .b-bars,.b-favs,.b-sync,.b-notif{width:100%}
+    .b-bars,.b-favs,.b-sync,.b-notif,.b-auto{width:100%}
     .b-streak{max-width:none;justify-content:flex-start}
     .b-favs{grid-template-columns:repeat(4,1fr)}
     .b-sync{flex-direction:row;align-items:center}
@@ -684,6 +731,109 @@ oaiq(
     .flow .reveal{transition-delay:0s !important}
   }
 
+  /* ===== Plan posilkow: druga flagowa funkcja obok skanu ===== */
+  .section-plan{background:linear-gradient(180deg,var(--accent-light) 0%,var(--bg) 100%)}
+
+  /* kroki "jak to dziala" w wersji kompaktowej */
+  .plan-steps{
+    list-style:none;display:grid;grid-template-columns:repeat(3,1fr);gap:18px 30px;
+    max-width:1000px;margin:0 auto 40px;
+  }
+  .plan-steps li{display:flex;gap:14px;align-items:flex-start}
+  .ps-num{
+    flex:none;width:34px;height:34px;border-radius:50%;
+    background:var(--accent);color:#fff;font-weight:800;font-size:.92rem;
+    display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow-soft);
+  }
+  .plan-steps h3{font-size:1rem;font-weight:700;letter-spacing:-.01em;line-height:1.3;margin-top:6px}
+  .plan-steps p{margin-top:5px;font-size:.9rem;color:var(--text-2);line-height:1.5}
+  .plan-steps .reveal:nth-child(2){transition-delay:.08s}
+  .plan-steps .reveal:nth-child(3){transition-delay:.16s}
+
+  /* makieta dnia z planu w kafelku glownym - emoji zamiast zdjec potraw */
+  .b-plan{gap:8px}
+  .b-plan .p-head{
+    display:flex;justify-content:space-between;align-items:baseline;gap:10px;
+    font-size:.72rem;font-weight:700;color:rgba(255,255,255,.85);
+  }
+  .b-plan .p-head b{font-size:.84rem;color:#fff}
+  .b-plan .p-head em{font-style:normal;text-align:right}
+  .b-plan .p-row{
+    display:flex;align-items:center;gap:10px;
+    background:rgba(255,255,255,.12);border-radius:12px;padding:7px 9px;
+  }
+  .b-plan .p-row.eaten{background:rgba(255,255,255,.06)}
+  .b-plan .p-row>i{
+    width:30px;height:30px;border-radius:9px;flex:none;background:rgba(255,255,255,.2);
+    display:flex;align-items:center;justify-content:center;font-style:normal;font-size:15px;
+  }
+  .b-plan .p-row>span{flex:1;min-width:0;display:flex;flex-direction:column;line-height:1.3}
+  .b-plan .p-row>span b{font-size:.78rem;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .b-plan .p-row>span small{font-size:.68rem;font-weight:600;color:rgba(255,255,255,.78)}
+  .b-plan .p-row>u{
+    flex:none;text-decoration:none;font-size:.68rem;font-weight:800;white-space:nowrap;
+    border-radius:999px;padding:4px 10px;color:#fff;border:1px solid rgba(255,255,255,.45);
+  }
+  .b-plan .p-row>u.cta{background:#fff;border-color:#fff;color:#714525}
+  .b-plan .p-row>u.done{border-color:transparent;padding-right:2px;color:rgba(255,255,255,.85)}
+
+  /* zamienniki i lista zakupow w szerokich kafelkach */
+  .b-tag.premium{background:var(--accent-light);color:var(--accent-dark)}
+  .b-swaps,.b-list{display:flex;flex-direction:column;gap:6px;flex:none;width:214px}
+  .b-swaps i,.b-list i{
+    display:flex;align-items:center;gap:8px;font-style:normal;
+    background:var(--surface);border:var(--border);border-radius:12px;
+    padding:6px 10px;font-size:.76rem;font-weight:700;color:var(--text);
+  }
+  .b-swaps i b{
+    width:24px;height:24px;border-radius:8px;flex:none;background:var(--accent-light);
+    display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:400;
+  }
+  .b-swaps i em,.b-list i em{margin-left:auto;font-style:normal;font-size:.7rem;font-weight:700;color:var(--text-2);white-space:nowrap}
+  .b-swaps i.on{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+  .b-list i{padding:8px 10px}
+  .b-list i s{
+    position:relative;width:15px;height:15px;border-radius:5px;flex:none;
+    border:1.5px solid var(--text-2);opacity:.55;
+  }
+  .b-list i.on s{background:var(--green);border-color:var(--green);opacity:1}
+  .b-list i.on s::after{
+    content:"";position:absolute;left:4px;top:1.5px;width:4px;height:7px;
+    border:solid #fff;border-width:0 1.6px 1.6px 0;transform:rotate(45deg);
+  }
+  .b-list i.on span{color:var(--text-2);text-decoration:line-through}
+  .b-list i.home em{background:var(--green-light);color:var(--green);border-radius:999px;padding:2px 8px;font-weight:800}
+
+  /* za darmo vs Premium w planie */
+  .plan-tiers{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:780px;margin:30px auto 0}
+  .plan-tier{
+    background:var(--surface);border:var(--border);border-radius:var(--radius);
+    padding:20px 22px 22px;box-shadow:var(--shadow-soft);
+  }
+  .plan-tier.pro{border-color:var(--card-hover-border)}
+  .plan-tier ul{list-style:none;margin-top:14px;display:flex;flex-direction:column;gap:9px}
+  .plan-tier li{position:relative;padding-left:24px;font-size:.9rem;line-height:1.45;color:var(--text)}
+  .plan-tier li::before{
+    content:"";position:absolute;left:3px;top:.3em;width:10px;height:5.5px;
+    border-left:2px solid var(--green);border-bottom:2px solid var(--green);transform:rotate(-45deg);
+  }
+  .plan-tier.pro li::before{border-color:var(--accent)}
+  .plan-tiers .reveal:nth-child(2){transition-delay:.08s}
+  .plan-note{margin:18px auto 0;max-width:40em;text-align:center;font-size:.84rem;color:var(--text-2)}
+
+  @media (max-width:820px){
+    .plan-steps{grid-template-columns:1fr;max-width:520px;gap:18px}
+  }
+  @media (max-width:640px){
+    .plan-tiers{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .b-swaps,.b-list{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    .plan-steps .reveal,.plan-tiers .reveal{transition-delay:0s !important}
+  }
+
   /* ===== Cennik ===== */
   .pricing-grid{
     display:grid;grid-template-columns:repeat(3,1fr);gap:18px;align-items:stretch;
@@ -768,6 +918,12 @@ oaiq(
   .footer-links{display:flex;flex-wrap:wrap;gap:8px 22px}
   .footer-links a{color:#D8D3CA;text-decoration:none;font-weight:600}
   .footer-links a:hover{color:#fff;text-decoration:underline}
+  .footer-links button{
+    background:none;border:0;padding:0;font:inherit;font-weight:600;
+    color:#D8D3CA;cursor:pointer;
+  }
+  .footer-links button:hover{color:#fff;text-decoration:underline}
+  .footer-note{font-size:.8rem;line-height:1.5;color:#A8A29A;max-width:56em}
   .footer-bottom{
     border-top:1px solid rgba(255,255,255,.12);padding-top:20px;
     display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;
@@ -792,6 +948,7 @@ oaiq(
     section{padding:56px 0}
     .trust .wrap{grid-template-columns:1fr;gap:10px}
     .trust-item{display:flex;align-items:baseline;justify-content:center;gap:10px;text-align:left;padding:14px 18px}
+    .trust-item strong{white-space:nowrap}
     .hero{padding-top:32px;padding-bottom:32px}
   }
 
@@ -815,9 +972,14 @@ oaiq(
     border-top:1px solid rgba(255,255,255,.07);
   }
   :root[data-theme="dark"] .site-footer .logo{color:var(--text)}
-  :root[data-theme="dark"] .footer-links a{color:var(--text-2)}
+  :root[data-theme="dark"] .footer-links a,
+  :root[data-theme="dark"] .footer-links button{color:var(--text-2)}
   :root[data-theme="dark"] .site-footer .store-badge{
     background:var(--surface);
+  }
+  /* Kafelki glowne (skan i plan): w ciemnym motywie jasny gradient akcentu gasil biale napisy */
+  :root[data-theme="dark"] .b-hero{
+    background:linear-gradient(150deg,#A76843 0%,#714525 100%);
   }
 
   /* Przelacznik motywu */
@@ -893,11 +1055,12 @@ oaiq(
     .hero{order:0}
     .trust{order:1}
     #jak-dziala{order:2}
-    #cennik{order:3}
-    #funkcje{order:4}
-    #faq{order:5}
-    .final-cta{order:6}
-    #funkcje,#jak-dziala,#cennik,#faq,.final-cta{
+    #planer{order:3}
+    #cennik{order:4}
+    #funkcje{order:5}
+    #faq{order:6}
+    .final-cta{order:7}
+    #funkcje,#jak-dziala,#planer,#cennik,#faq,.final-cta{
       content-visibility:auto;
       contain-intrinsic-size:auto 900px;
     }
@@ -929,6 +1092,7 @@ oaiq(
     <nav class="main-nav" aria-label="Nawigacja główna">
       <a href="#funkcje">Funkcje</a>
       <a href="#jak-dziala">Jak działa</a>
+      <a href="#planer">Plan posiłków</a>
       <a href="#cennik">Cennik</a>
       <a href="#faq">FAQ</a>
     </nav>
@@ -943,15 +1107,15 @@ oaiq(
 <main>
 
   <!-- ===== HERO ===== -->
-  <section class="hero" id="pobierz" aria-label="EatSee - licznik kalorii z AI">
+  <section class="hero" id="pobierz" aria-label="EatSee - skaner i planer posiłków">
     <div class="wrap">
       <div class="hero-copy">
-        <span class="hero-note">
+        <a class="hero-note" href="#planer">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.2 6.2L20 10l-5.8 1.8L12 18l-2.2-6.2L4 10l5.8-1.8L12 2zM19 15l1.1 3 3 1.1-3 1.1L19 23l-1.1-2.8-3-1.1 3-1.1L19 15z"/></svg>
-          Licznik kalorii z AI · Nowość: wersja 1.2
-        </span>
-        <h1>Policz kalorie <em>zdjęciem albo głosem</em></h1>
-        <p class="sub">Zrób zdjęcie posiłku albo po prostu powiedz, co zjadłeś. AI w kilka sekund rozpozna danie i poda kalorie, białko, węglowodany i tłuszcze - razem z oceną, jak zdrowy jest Twój talerz.</p>
+          <span><span class="hn-cat">Skaner i planer posiłków · </span>Nowość: Plan</span>
+        </a>
+        <h1>Policz kalorie zdjęciem, <em>zaplanuj kolejny posiłek</em></h1>
+        <p class="sub">Zrób zdjęcie posiłku albo po prostu powiedz, co zjadłeś. AI w kilka sekund rozpozna danie i poda kalorie, białko, węglowodany i tłuszcze - razem z oceną, jak zdrowy jest Twój talerz. A nowa zakładka <strong>Plan</strong> ułoży Ci posiłki na dzień albo cały tydzień pod Twój cel kalorii i białka, z przepisami i listą zakupów.</p>
         <div class="store-badges">
           <a href="https://apps.apple.com/pl/app/eatsee-kalorie-ze-zdj%C4%99cia/id6789152922?l=pl" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.1 12.6c0-2.5 2-3.7 2.1-3.8-1.2-1.7-3-1.9-3.6-1.9-1.5-.2-3 .9-3.8.9-.8 0-2-.9-3.3-.9-1.7 0-3.3 1-4.2 2.5-1.8 3.1-.5 7.7 1.3 10.2.9 1.2 1.9 2.6 3.2 2.6 1.3-.1 1.8-.8 3.3-.8 1.5 0 2 .8 3.3.8 1.4 0 2.3-1.3 3.1-2.5 1-1.4 1.4-2.8 1.4-2.9-.1 0-2.8-1.1-2.8-4.2zM14.6 4.6c.7-.8 1.1-2 1-3.1-1 0-2.2.7-2.9 1.5-.6.7-1.2 1.9-1 3 1.1.1 2.2-.6 2.9-1.4z"/></svg>
@@ -1001,8 +1165,8 @@ oaiq(
   <!-- ===== PASEK ZAUFANIA ===== -->
   <div class="trust" aria-label="Najważniejsze fakty o EatSee">
     <div class="wrap">
-      <div class="trust-item reveal"><strong>3 sekundy</strong><span>od zdjęcia lub zdania do wyniku</span></div>
-      <div class="trust-item reveal"><strong>Bez limitu</strong><span>skanowania kodów kreskowych</span></div>
+      <div class="trust-item reveal"><strong>Sekundy</strong><span>od zdjęcia lub zdania do wyniku</span></div>
+      <div class="trust-item reveal"><strong>Plan posiłków</strong><span>z przepisami i listą zakupów</span></div>
       <div class="trust-item reveal"><strong>Po polsku</strong><span>i dla polskich produktów</span></div>
     </div>
   </div>
@@ -1056,7 +1220,7 @@ oaiq(
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8 21h8"/></svg>
           </div>
           <h3>Powiedz, co zjadłeś</h3>
-          <p>Nowość w 1.2. Bez zdjęcia i bez wpisywania: mówisz jednym zdaniem, a AI rozpoznaje dania, liczy kalorie i dorysowuje zdjęcie posiłku.</p>
+          <p>Bez zdjęcia i bez wpisywania: mówisz jednym zdaniem, a AI rozpoznaje dania, liczy kalorie i dorysowuje poglądową ilustrację posiłku.</p>
           <div class="b-voice" aria-hidden="true">
             <span class="v-bubble"><b>🎤</b>„dwie kanapki z serem i kawa z mlekiem"</span>
             <span class="v-result">2 posiłki · 486 kcal · B 21 g</span>
@@ -1193,9 +1357,9 @@ oaiq(
   <section id="jak-dziala" class="section-alt">
     <div class="wrap">
       <div class="section-head">
-        <span class="kicker">Jak to działa</span>
+        <span class="kicker">Jak działa skaner</span>
         <h2>Trzy kroki i posiłek jest w dzienniku</h2>
-        <p>Cały proces trwa krócej niż zamieszanie łyżeczką w herbacie.</p>
+        <p>Cały proces trwa krócej niż zamieszanie łyżeczką w herbacie. Plan posiłków ma własne trzy kroki - niżej na stronie.</p>
       </div>
       <div class="flow">
 
@@ -1235,13 +1399,158 @@ oaiq(
     </div>
   </section>
 
+  <!-- ===== PLAN POSIŁKÓW ===== -->
+  <section id="planer" class="section-plan">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="kicker">Nowość · Plan posiłków</span>
+        <h2>Zdecyduj, co zjesz, zanim zgłodniejesz</h2>
+        <p>Zakładka Plan układa dzień albo cały tydzień posiłków pod Twój cel kalorii i białka - z przepisami, porcjami i listą zakupów. AI dobiera dania, a kalorie i makro każdego przepisu wyliczamy ze składników.</p>
+      </div>
+
+      <ol class="plan-steps">
+        <li class="reveal">
+          <span class="ps-num" aria-hidden="true">1</span>
+          <div>
+            <h3>Powiedz, jak jesz</h3>
+            <p>Kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, czas i sprzęt. Cel kalorii i białka bierzemy z Twojego profilu.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="ps-num" aria-hidden="true">2</span>
+          <div>
+            <h3>AI układa, kod liczy</h3>
+            <p>AI dobiera dania ze składników z naszego katalogu, a kalorie i makro wylicza kod. Nowy plan sprawdzamy, zanim go zapiszemy.</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="ps-num" aria-hidden="true">3</span>
+          <div>
+            <h3>Gotujesz i odhaczasz</h3>
+            <p>Przepis krok po kroku, „Zjadłem" wpisuje posiłek do dziennika, a składniki czekają na liście zakupów.</p>
+          </div>
+        </li>
+      </ol>
+
+      <div class="bento">
+
+        <article class="b-card b-hero reveal">
+          <div class="b-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h3M7.5 17.2h6"/></svg>
+          </div>
+          <h3>Dzień posiłków pod Twój cel</h3>
+          <p>Posiłki o Twoich porach, z przepisami krok po kroku i porcjami. Plan na jutro albo, w Premium, na dziś i na cały tydzień.</p>
+          <div class="b-mock b-plan" aria-hidden="true">
+            <span class="p-head"><b>Dziś</b><em>Planowany bilans 1800 / 1850 kcal</em></span>
+            <span class="b-mock-chips">
+              <i><s class="protein"></s>B 124 g</i>
+              <i><s class="carbs"></s>W 186 g</i>
+              <i><s class="fat"></s>T 60 g</i>
+            </span>
+            <span class="p-row eaten"><i>🥣</i><span><b>Owsianka z jogurtem i malinami</b><small>8:00 · 430 kcal</small></span><u class="done">✓ Zjedzone</u></span>
+            <span class="p-row"><i>🍗</i><span><b>Kurczak z kaszą i warzywami</b><small>13:00 · 640 kcal</small></span><u class="cta">Zjadłem</u></span>
+            <span class="p-row"><i>🍎</i><span><b>Skyr z jabłkiem i cynamonem</b><small>16:30 · 250 kcal</small></span><u>Zamień</u></span>
+            <span class="p-row"><i>🍳</i><span><b>Omlet ze szpinakiem</b><small>19:30 · 480 kcal</small></span></span>
+          </div>
+        </article>
+
+        <article class="b-card reveal">
+          <div class="b-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7"/><path d="M8.8 11.8h.01M12 11.8h.01M15.2 11.8h.01M8.8 15.2h.01M12 15.2h.01M8.8 18.2h.01M12 18.2h.01M15.2 15.2v3" stroke-width="2.3"/></svg>
+          </div>
+          <h3>Kalorie policzone ze składników</h3>
+          <p>Model AI nie podaje kalorii. Liczy je kod ze składników z naszego katalogu (270 składników), a nowy plan zapisujemy dopiero wtedy, gdy mieści się w celu z dokładnością ok. 5% kalorii i 10% białka.</p>
+        </article>
+
+        <article class="b-card reveal">
+          <div class="b-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7 3v5.5c0 4.3-2.9 7.9-7 9.5-4.1-1.6-7-5.2-7-9.5V6l7-3z"/><path d="M8.8 12.2l2.2 2.2 4.2-4.4"/></svg>
+          </div>
+          <h3>Pilnujemy wykluczeń</h3>
+          <p>Dieta, 14 alergenów, produkty, których nie lubisz, i sprzęt, który masz w kuchni. Przepisy sprawdzamy pod tym kątem, zanim trafią do planu.</p>
+        </article>
+
+        <article class="b-card b-wide b-tint reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8.5h14.5M15 5l3.5 3.5L15 12"/><path d="M20 15.5H5.5M9 12l-3.5 3.5L9 19"/></svg>
+              </div>
+              <h3>Zamień, zjedz, dopasuj</h3>
+              <p>Nie masz ochoty na obiad? „Zamień" pokaże do 3 innych propozycji. „Zjadłem" wpisuje posiłek do dziennika, a gdy dzień pójdzie inaczej, „Dopasuj resztę dnia" w Premium dopasuje kolejne posiłki do tego, co zostało z celu.</p>
+            </div>
+            <span class="b-swaps" aria-hidden="true">
+              <i><b>🥗</b>Sałatka z tuńczykiem<em>610 kcal</em></i>
+              <i class="on"><b>🍝</b>Makaron z indykiem<em>650 kcal</em></i>
+              <i><b>🍛</b>Curry z ciecierzycą<em>630 kcal</em></i>
+            </span>
+          </div>
+        </article>
+
+        <article class="b-card b-wide reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 9.5h17l-1.7 9a2 2 0 0 1-2 1.6H7.2a2 2 0 0 1-2-1.6l-1.7-9z"/><path d="M8 9.5L11 4M16 9.5L13 4"/><path d="M9.5 13.5v3M14.5 13.5v3"/></svg>
+              </div>
+              <h3>Lista zakupów z planu</h3>
+              <p>Składniki z planu łączą się w jedną listę podzieloną na działy - na jeden dzień albo, w Premium, na 3 lub 7 dni. Odhaczasz, co już kupione, a to, co masz, oznaczasz „Mam w domu". Listę wyślesz też jako tekst.</p>
+            </div>
+            <span class="b-list" aria-hidden="true">
+              <i class="on"><s></s><span>Płatki owsiane</span><em>240 g</em></i>
+              <i><s></s><span>Pierś z kurczaka</span><em>450 g</em></i>
+              <i class="home"><s></s><span>Jajka</span><em>Mam w domu</em></i>
+            </span>
+          </div>
+        </article>
+        <article class="b-card b-wide reveal">
+          <div class="b-split">
+            <div>
+              <div class="b-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7.2V12l3.2 1.9"/></svg>
+              </div>
+              <h3>Plan gotowy, zanim zajrzysz</h3>
+              <p>EatSee może codziennie przygotować plan na jutro albo raz w tygodniu plan na 7 dni, o wybranej godzinie, żeby czekał gotowy, gdy zajrzysz. Domyślnie wyłączone.</p>
+              <span class="b-tag premium">Premium</span>
+            </div>
+            <span class="b-auto" aria-hidden="true"><b>Automatyczne planowanie</b>Codziennie, 20:00 - plan na jutro. Raz w tygodniu - plan na 7 dni.</span>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="plan-tiers">
+        <div class="plan-tier reveal">
+          <span class="plan-pill green">Za darmo</span>
+          <ul>
+            <li>Plan na jutro raz na 7 dni</li>
+            <li>1 zamiana posiłku w każdym ułożonym planie</li>
+            <li>Lista zakupów na 1 dzień</li>
+            <li>Przepisy krok po kroku i „Zjadłem"</li>
+          </ul>
+        </div>
+        <div class="plan-tier pro reveal">
+          <span class="plan-pill accent">Premium</span>
+          <ul>
+            <li>Plany na dziś, jutro i 7 dni</li>
+            <li>Zamiany posiłków w ramach dziennych limitów</li>
+            <li>„Dopasuj resztę dnia"</li>
+            <li>Listy zakupów na 3 i 7 dni</li>
+            <li>Automatyczne planowanie (domyślnie wyłączone)</li>
+          </ul>
+        </div>
+      </div>
+      <p class="plan-note">Plan nie jest planem medycznym ani dietą leczniczą. Pilnujemy wykluczeń w składnikach, ale przy alergii zawsze sprawdzaj etykiety produktów.</p>
+    </div>
+  </section>
+
   <!-- ===== CENNIK ===== -->
   <section id="cennik">
     <div class="wrap">
       <div class="section-head">
         <span class="kicker">Cennik</span>
         <h2>Zacznij za darmo, przyspiesz z Premium</h2>
-        <p>EatSee Premium podnosi dzienny limit analiz AI z 3 do 50, daje do 50 wpisów głosowych dziennie, naprawę przerwanej serii, statystyki miesięczne i motywy kolorystyczne. Wybierz plan, który Ci pasuje.</p>
+        <p>EatSee Premium podnosi dzienny limit analiz AI z 3 do 50 i daje do 50 wpisów głosowych dziennie. W planie posiłków odblokowuje plany na dziś i na 7 dni, więcej zamian, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni i automatyczne planowanie. Do tego naprawa przerwanej serii, statystyki miesięczne i motywy kolorystyczne. Wybierz plan, który Ci pasuje.</p>
       </div>
       <div class="pricing-grid">
         <article class="price-card reveal">
@@ -1252,7 +1561,7 @@ oaiq(
           <a class="plan-cta ghost" href="#pobierz">Wybieram miesięczny</a>
         </article>
         <article class="price-card featured reveal">
-          <span class="best-tag">Najczęściej wybierany</span>
+          <span class="best-tag">Polecany</span>
           <h3 class="plan-name">Rocznie</h3>
           <p class="plan-price"><strong>149,99 zł</strong><span>/ rok</span></p>
           <div class="plan-pills">
@@ -1271,7 +1580,7 @@ oaiq(
           <a class="plan-cta ghost" href="#pobierz">Kupuję raz na zawsze</a>
         </article>
       </div>
-      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI i 1 wpis głosowy dziennie, <strong>Premium do 50 dziennie</strong> w ramach uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Szczegóły w <a href="/regulamin">regulaminie</a>.</p>
+      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI i 1 wpis głosowy dziennie oraz plan posiłków na jutro raz na 7 dni, <strong>Premium do 50 dziennie</strong> w ramach uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Szczegóły w <a href="/regulamin">regulaminie</a>.</p>
     </div>
   </section>
 
@@ -1289,7 +1598,23 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Jak działa dodawanie posiłków głosem?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Dotykasz mikrofonu i mówisz, co zjadłeś, np. „dwie kanapki z serem i kawa z mlekiem". AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje zdjęcie dania. Nagranie służy tylko do rozpoznania tekstu i nie jest przechowywane. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50.</div>
+          <div class="faq-body">Dotykasz mikrofonu i mówisz, co zjadłeś, np. „dwie kanapki z serem i kawa z mlekiem". AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie wysyłamy do OpenAI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Jak działa plan posiłków?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na jutro albo, w Premium, także na dziś i na 7 dni, a AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. „Zjadłem" dodaje posiłek do dziennika, a „Zamień" pokazuje do 3 innych propozycji.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Skąd plan posiłków zna kalorie i makro?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Nie od AI. Model AI proponuje dania złożone ze składników z naszego katalogu (270 składników) i podaje ich gramatury, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych tych składników. Nowy plan zapisujemy dopiero wtedy, gdy zaplanowane posiłki trafiają w Twój cel kalorii z dokładnością ok. 5%, a białka ok. 10%. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Czy plan posiłków uwzględni moje alergie i dietę?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Składniki, które się z nimi kłócą, odrzucamy, zanim AI zacznie układać plan, a gotowe przepisy sprawdzamy jeszcze raz przed zapisaniem. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy modelowi AI (OpenAI), który dobiera dania - szczegóły opisuje <a href="/polityka-prywatnosci">polityka prywatności</a>. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów.</div>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Co w planie posiłków jest za darmo, a co w Premium?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
+          <div class="faq-body">Za darmo ułożysz plan na jutro raz na 7 dni, z 1 zamianą posiłku w planie i listą zakupów na ten dzień. Przepisy i „Zjadłem" działają w obu wersjach. <strong>Premium</strong> daje plany na dziś, jutro i 7 dni, zamiany posiłków w ramach dziennych limitów, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni oraz automatyczne planowanie.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czym są Streaks i odznaki?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1297,11 +1622,11 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Czy EatSee działa z polskimi produktami i daniami?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), a baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków.</div>
+          <div class="faq-body">Tak - EatSee powstało z myślą o polskim rynku. AI zna polskie dania (pierogi, schabowy, żurek…), baza kodów kreskowych obejmuje produkty dostępne w polskich sklepach, a plan posiłków układa przepisy ze składników, które kupisz w zwykłym sklepie. Aplikacja jest po polsku, a do wyboru masz też 13 innych języków.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Co się stanie, gdy wykorzystam darmowy limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie.</div>
+          <div class="faq-body">Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit: na darmowym koncie ułożysz plan na jutro raz na 7 dni. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czy Premium ma jakiś limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1325,7 +1650,7 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Czy mogę usunąć konto i swoje dane?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Tak. W ustawieniach aplikacji znajdziesz opcję usunięcia konta razem ze wszystkimi danymi. Szczegóły opisuje nasza <a href="/polityka-prywatnosci">polityka prywatności</a>, a w razie pytań napisz na <a href="mailto:kontakt@eatsee.pl">kontakt@eatsee.pl</a>.</div>
+          <div class="faq-body">Tak. W aplikacji (Profil → Konto → Usuń konto) usuniesz konto razem z profilem, dziennikiem, zdjęciami posiłków, preferencjami i planami posiłków. Kilka zapisów zostaje, np. przepisy we wspólnej bazie (już bez powiązania z Tobą), zapisy chroniące przed nadużyciami i historia zakupów w sklepie - dokładnie opisuje to nasza <a href="/polityka-prywatnosci">polityka prywatności</a>. Usunięcie konta nie anuluje subskrypcji, zrób to w ustawieniach sklepu. W razie pytań napisz na <a href="mailto:kontakt@eatsee.pl">kontakt@eatsee.pl</a>.</div>
         </details>
       </div>
     </div>
@@ -1335,8 +1660,8 @@ oaiq(
   <section class="final-cta">
     <div class="wrap">
       <div class="section-head" style="margin-bottom:24px">
-        <h2>Następny posiłek policz zdjęciem albo głosem</h2>
-        <p>Pobierz EatSee i przekonaj się, jak proste może być liczenie kalorii.</p>
+        <h2>Policz, co zjadłeś. Zaplanuj, co zjesz.</h2>
+        <p>Pobierz EatSee i przekonaj się, jak proste może być liczenie kalorii i planowanie posiłków.</p>
       </div>
       <div class="store-badges">
         <a href="https://apps.apple.com/pl/app/eatsee-kalorie-ze-zdj%C4%99cia/id6789152922?l=pl" data-store="appstore" class="store-badge" aria-label="Pobierz EatSee w App Store">
@@ -1375,10 +1700,12 @@ oaiq(
       <a href="/terms">Terms (EN)</a>
       <a href="/privacy">Privacy Policy (EN)</a>
       <a href="mailto:kontakt@eatsee.pl">kontakt@eatsee.pl</a>
+      <button type="button" id="cookieSettings">Ustawienia cookies</button>
     </nav>
+    <p class="footer-note">Wyniki analiz i plany posiłków w EatSee są szacunkowe i mają charakter informacyjny - nie stanowią porady medycznej ani dietetycznej. Plany nie są dietą leczniczą.</p>
     <div class="footer-bottom">
       <span>© 2026 EatSee</span>
-      <span>EatSee - licznik kalorii z AI</span>
+      <span>EatSee - skaner i planer posiłków</span>
     </div>
   </div>
 </footer>
@@ -1542,31 +1869,42 @@ oaiq(
 </div>
 
 <script>
-  /* Baner cookies: pokazuje sie raz, wybor zapamietany w przegladarce */
+  /* Baner cookies: pokazuje sie raz, wybor zapamietany w przegladarce; "Ustawienia cookies" w stopce otwiera go ponownie */
   (function () {
-    var stored = null;
-    try { stored = localStorage.getItem('eatsee-cookies'); } catch (e) {}
-    if (stored === 'granted' || stored === 'denied') { return; }
     var banner = document.getElementById('cookieConsent');
     if (!banner) { return; }
-    banner.hidden = false;
-    requestAnimationFrame(function () { banner.classList.add('visible'); });
+    var stored = null;
+    try { stored = localStorage.getItem('eatsee-cookies'); } catch (e) {}
+    var hideTimer = null;
+    function show() {
+      clearTimeout(hideTimer);
+      banner.hidden = false;
+      requestAnimationFrame(function () { banner.classList.add('visible'); });
+    }
     function choose(value) {
-      try { localStorage.setItem('eatsee-cookies', value); } catch (e) {}
-      if (value === 'granted') {
-        gtag('consent', 'update', {
-          ad_storage: 'granted',
-          ad_user_data: 'granted',
-          ad_personalization: 'granted',
-          analytics_storage: 'granted'
-        });
-        gtag('set', 'ads_data_redaction', false);
-      }
+      var state = value === 'granted' ? 'granted' : 'denied';
+      try { localStorage.setItem('eatsee-cookies', state); } catch (e) {}
+      gtag('consent', 'update', {
+        ad_storage: state,
+        ad_user_data: state,
+        ad_personalization: state,
+        analytics_storage: state
+      });
+      gtag('set', 'ads_data_redaction', state !== 'granted');
       banner.classList.remove('visible');
-      setTimeout(function () { banner.hidden = true; }, 300);
+      hideTimer = setTimeout(function () { banner.hidden = true; }, 300);
     }
     document.getElementById('cookieAccept').addEventListener('click', function () { choose('granted'); });
     document.getElementById('cookieDecline').addEventListener('click', function () { choose('denied'); });
+    var settings = document.getElementById('cookieSettings');
+    if (settings) {
+      settings.addEventListener('click', function () {
+        show();
+        var decline = document.getElementById('cookieDecline');
+        if (decline) { decline.focus(); }
+      });
+    }
+    if (stored !== 'granted' && stored !== 'denied') { show(); }
   })();
 </script>
 

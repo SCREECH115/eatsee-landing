@@ -1,11 +1,15 @@
-﻿# EatSee
+﻿# EatSee - skaner i planer posiłków
 
-> EatSee to polski licznik kalorii oparty na AI na iOS i Androida. Robisz zdjęcie posiłku, a sztuczna inteligencja rozpoznaje danie i w kilka sekund szacuje kalorie, białko, węglowodany i tłuszcze, po czym zapisuje wynik w dzienniku. Aplikacja działa w 14 językach, a jej twórcą jest ASTROWARE Arkadiusz Woźniak (Polska).
+> EatSee to polski skaner i planer posiłków na iOS i Androida - licznik kalorii oparty na AI. Robisz zdjęcie posiłku, a sztuczna inteligencja rozpoznaje danie i w kilka sekund szacuje kalorie, białko, węglowodany i tłuszcze, po czym zapisuje wynik w dzienniku. Drugą główną funkcją jest plan posiłków: aplikacja układa dzień lub tydzień posiłków pod Twój cel kalorii i białka, z przepisami i listą zakupów, a kalorie i makro planu wylicza kod ze składników. Aplikacja działa w 14 językach, a jej twórcą jest ASTROWARE Arkadiusz Woźniak (Polska).
 
 Najważniejsze funkcje:
 
-- Analiza zdjęć posiłków i etykiet produktów przez AI (kalorie + makroskładniki + ocena zdrowotności)
-- Dodawanie posiłków głosem: jedno zdanie zamienia się w posiłek z kaloriami, a AI dorysowuje zdjęcie dania (od wersji 1.2)
+- Skaner posiłków: analiza zdjęć posiłków i etykiet produktów przez AI (kalorie + makroskładniki + ocena zdrowotności)
+- Plan posiłków (od wersji 1.3): plan na jutro, na dziś lub na 7 dni pod cel kalorii i białka z profilu, z przepisami krok po kroku i porcjami. Uwzględnia pory posiłków, dietę, 14 alergenów UE, produkty, których użytkownik nie lubi, czas przygotowania i sprzęt
+- Kalorie i makro w planie posiłków wylicza kod, nie AI: model dobiera dania ze składników z katalogu EatSee (270 składników). Nowy plan jest zapisywany dopiero po sprawdzeniu diety, alergenów, wykluczeń i sprzętu oraz gdy zaplanowane posiłki mieszczą się w ok. ±5% celu kalorii i ±10% celu białka
+- W planie: zamiana posiłku (do 3 propozycji, z opcjonalnym powodem), przycisk „Zjadłem" dodający posiłek do dziennika, „Dopasuj resztę dnia" (Premium), ulubione przepisy, lista zakupów łącząca składniki z wybranych dni, z odhaczaniem i opcją „Mam w domu"
+- Automatyczne planowanie (Premium, domyślnie wyłączone): codziennie plan na jutro albo raz w tygodniu plan na 7 dni, o wybranej godzinie
+- Dodawanie posiłków głosem: jedno zdanie zamienia się w posiłek z kaloriami, a AI dorysowuje poglądową ilustrację dania
 - Skanowanie kodów kreskowych z bazą produktów - zawsze za darmo i bez limitu
 - Doprecyzowanie wyniku analizy jednym zdaniem albo zmianą liczby sztuk
 - Dziennik z celami kalorycznymi wyliczanymi z profilu (płeć, wiek, wzrost, waga, aktywność, cel)
@@ -19,12 +23,12 @@ Najważniejsze funkcje:
 
 Ceny i limity:
 
-- Konto darmowe: 3 analizy AI i 1 wpis głosowy dziennie, kody kreskowe bez limitu
-- EatSee Premium: do 50 analiz AI i 50 wpisów głosowych dziennie (zasada uczciwego korzystania), naprawa przerwanej serii, pełna historia statystyk, trendy miesięczne, motywy kolorystyczne
+- Konto darmowe: 3 analizy AI i 1 wpis głosowy dziennie, plan posiłków na jutro raz na 7 dni (z 1 zamianą posiłku w planie i listą zakupów na 1 dzień), kody kreskowe bez limitu
+- EatSee Premium: do 50 analiz AI i 50 wpisów głosowych dziennie (zasada uczciwego korzystania), plany posiłków na dziś, jutro i 7 dni, zamiany posiłków i „Dopasuj resztę dnia" w ramach dziennych limitów, listy zakupów na 3 i 7 dni, automatyczne planowanie, naprawa przerwanej serii, pełna historia statystyk, trendy miesięczne, motywy kolorystyczne
 - Plany: 19,99 zł/mies., 149,99 zł/rok, 299 zł jednorazowo na zawsze
 - Płatność przez App Store lub Google Play
 
-Wyniki analiz są szacunkowe i nie stanowią porady medycznej ani dietetycznej.
+Wyniki analiz i plany posiłków są szacunkowe i nie stanowią porady medycznej ani dietetycznej. Plany nie są dietą leczniczą - przy alergii zawsze sprawdzaj etykiety produktów.
 
 ## Dokumenty
 
