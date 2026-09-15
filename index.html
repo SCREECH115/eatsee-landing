@@ -117,7 +117,7 @@ oaiq(
       "name": "Jak działa dodawanie posiłków głosem?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Dotykasz mikrofonu i mówisz, co zjadłeś, np. dwie kanapki z serem i kawa z mlekiem. AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie wysyłamy do OpenAI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50."
+        "text": "Dotykasz mikrofonu i mówisz, co zjadłeś, np. dwie kanapki z serem i kawa z mlekiem. AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie trafia do naszego dostawcy usług AI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Dodawanie posiłków głosem ma dzienny limit - na darmowym koncie mniejszy, w Premium wyraźnie większy. Na darmowym koncie widzisz w aplikacji, ile wpisów zostało na dziś."
       }
     },
     {
@@ -133,7 +133,7 @@ oaiq(
       "name": "Skąd plan posiłków zna kalorie i makro?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Nie od AI. Model AI proponuje dania złożone ze składników z naszego katalogu (270 składników) i podaje ich gramatury, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych tych składników. Nowy plan zapisujemy dopiero wtedy, gdy zaplanowane posiłki trafiają w Twój cel kalorii z dokładnością ok. 5%, a białka ok. 10%. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej."
+        "text": "Nie od AI. Model AI proponuje dania i ich porcje, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych składników - to nie są liczby zmyślone przez model. Nowy plan zapisujemy dopiero wtedy, gdy sprawdzimy, że zaplanowane posiłki trafiają w Twój cel kalorii i białka. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej."
       }
     },
     {
@@ -141,7 +141,7 @@ oaiq(
       "name": "Czy plan posiłków uwzględni moje alergie i dietę?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Składniki, które się z nimi kłócą, odrzucamy, zanim AI zacznie układać plan, a gotowe przepisy sprawdzamy jeszcze raz przed zapisaniem. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy modelowi AI (OpenAI), który dobiera dania. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów."
+        "text": "Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Pilnujemy tych wykluczeń, układając plan - przepisów z wykluczonymi składnikami Ci nie proponujemy. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy naszemu dostawcy usług AI, który dobiera dania. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów."
       }
     },
     {
@@ -149,7 +149,7 @@ oaiq(
       "name": "Co w planie posiłków jest za darmo, a co w Premium?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Za darmo ułożysz plan na jutro raz na 7 dni, z 1 zamianą posiłku w planie i listą zakupów na ten dzień. Przepisy i przycisk Zjadłem działają w obu wersjach. Premium daje plany na dziś, jutro i 7 dni, zamiany posiłków w ramach dziennych limitów, dopasowanie reszty dnia, listy zakupów na 3 i 7 dni oraz automatyczne planowanie."
+        "text": "Za darmo ułożysz plan na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i przycisk Zjadłem działają w obu wersjach. Premium daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, dopasowanie reszty dnia, listy zakupów na 3 i 7 dni oraz automatyczne planowanie."
       }
     },
     {
@@ -173,7 +173,7 @@ oaiq(
       "name": "Co się stanie, gdy wykorzystam darmowy limit analiz AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit: na darmowym koncie ułożysz plan na jutro raz na 7 dni. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie."
+        "text": "Nic nie przepada - limity analiz AI i wpisów głosowych odnawiają się każdego dnia, a ile zostało na dziś, widać w aplikacji. Po ich wykorzystaniu nadal można bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit, który na darmowym koncie odnawia się rzadziej. EatSee Premium wyraźnie podnosi dzienne limity analiz AI i wpisów głosowych."
       }
     },
     {
@@ -181,7 +181,7 @@ oaiq(
       "name": "Czy Premium ma jakiś limit analiz AI?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "W ramach zasady uczciwego korzystania Premium daje do 50 analiz AI dziennie - to wielokrotnie więcej niż typowe użycie i limit chroni usługę przed nadużyciami. Skanowanie kodów kreskowych, ręczne dodawanie posiłków i ulubione są zawsze bez limitu."
+        "text": "Tak, i mówimy o tym wprost. Funkcje oparte na AI mają dzienne limity uczciwego korzystania, a Premium wyraźnie je podnosi - do poziomu wielokrotnie wyższego niż typowe użycie, który chroni usługę przed nadużyciami. Aktualne wartości zobaczysz w aplikacji, jeszcze przed zakupem. Skanowanie kodów kreskowych, ręczne dodawanie posiłków i ulubione są zawsze bez limitu."
       }
     },
     {
@@ -1225,7 +1225,7 @@ oaiq(
             <span class="v-bubble"><b>🎤</b>„dwie kanapki z serem i kawa z mlekiem"</span>
             <span class="v-result">2 posiłki · 486 kcal · B 21 g</span>
           </div>
-          <span class="b-tag">1 wpis dziennie za darmo · Premium do 50</span>
+          <span class="b-tag">Dzienny limit za darmo · w Premium wyraźnie większy</span>
         </article>
 
         <article class="b-card b-wide b-tint reveal">
@@ -1420,7 +1420,7 @@ oaiq(
           <span class="ps-num" aria-hidden="true">2</span>
           <div>
             <h3>AI układa, kod liczy</h3>
-            <p>AI dobiera dania ze składników z naszego katalogu, a kalorie i makro wylicza kod. Nowy plan sprawdzamy, zanim go zapiszemy.</p>
+            <p>AI dobiera dania i porcje, a kalorie i makro wylicza kod z wartości odżywczych składników. Nowy plan sprawdzamy, zanim go zapiszemy.</p>
           </div>
         </li>
         <li class="reveal">
@@ -1459,7 +1459,7 @@ oaiq(
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8.5 7.5h7"/><path d="M8.8 11.8h.01M12 11.8h.01M15.2 11.8h.01M8.8 15.2h.01M12 15.2h.01M8.8 18.2h.01M12 18.2h.01M15.2 15.2v3" stroke-width="2.3"/></svg>
           </div>
           <h3>Kalorie policzone ze składników</h3>
-          <p>Model AI nie podaje kalorii. Liczy je kod ze składników z naszego katalogu (270 składników), a nowy plan zapisujemy dopiero wtedy, gdy mieści się w celu z dokładnością ok. 5% kalorii i 10% białka.</p>
+          <p>Model AI nie podaje kalorii. Liczy je kod z wartości odżywczych składników, a nowy plan zapisujemy dopiero wtedy, gdy sprawdzimy, że trafia w Twój cel kalorii i białka.</p>
         </article>
 
         <article class="b-card reveal">
@@ -1523,8 +1523,8 @@ oaiq(
         <div class="plan-tier reveal">
           <span class="plan-pill green">Za darmo</span>
           <ul>
-            <li>Plan na jutro raz na 7 dni</li>
-            <li>1 zamiana posiłku w każdym ułożonym planie</li>
+            <li>Plan na jutro, odnawiany co jakiś czas</li>
+            <li>Zamiana posiłku w ułożonym planie</li>
             <li>Lista zakupów na 1 dzień</li>
             <li>Przepisy krok po kroku i „Zjadłem"</li>
           </ul>
@@ -1550,7 +1550,7 @@ oaiq(
       <div class="section-head">
         <span class="kicker">Cennik</span>
         <h2>Zacznij za darmo, przyspiesz z Premium</h2>
-        <p>EatSee Premium podnosi dzienny limit analiz AI z 3 do 50 i daje do 50 wpisów głosowych dziennie. W planie posiłków odblokowuje plany na dziś i na 7 dni, więcej zamian, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni i automatyczne planowanie. Do tego naprawa przerwanej serii, statystyki miesięczne i motywy kolorystyczne. Wybierz plan, który Ci pasuje.</p>
+        <p>EatSee Premium wyraźnie podnosi dzienne limity analiz AI i wpisów głosowych. W planie posiłków odblokowuje plany na dziś i na 7 dni, więcej zamian, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni i automatyczne planowanie. Do tego naprawa przerwanej serii, statystyki miesięczne i motywy kolorystyczne. Wybierz plan, który Ci pasuje.</p>
       </div>
       <div class="pricing-grid">
         <article class="price-card reveal">
@@ -1580,7 +1580,7 @@ oaiq(
           <a class="plan-cta ghost" href="#pobierz">Kupuję raz na zawsze</a>
         </article>
       </div>
-      <p class="pricing-note"><strong>Darmowe konto</strong> daje 3 analizy AI i 1 wpis głosowy dziennie oraz plan posiłków na jutro raz na 7 dni, <strong>Premium do 50 dziennie</strong> w ramach uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Szczegóły w <a href="/regulamin">regulaminie</a>.</p>
+      <p class="pricing-note"><strong>Darmowe konto</strong> ma dzienne limity analiz AI i wpisów głosowych oraz plan posiłków odnawiany co jakiś czas, <strong>Premium wyraźnie je podnosi</strong> w ramach zasady uczciwego korzystania, a skanowanie kodów kreskowych jest <strong>zawsze bez limitu</strong> - również bez Premium. Aktualne limity pokazuje aplikacja, a zasadę uczciwego korzystania opisuje <a href="/regulamin">regulamin</a>.</p>
     </div>
   </section>
 
@@ -1598,7 +1598,7 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Jak działa dodawanie posiłków głosem?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Dotykasz mikrofonu i mówisz, co zjadłeś, np. „dwie kanapki z serem i kawa z mlekiem". AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie wysyłamy do OpenAI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Darmowe konto ma 1 wpis głosowy dziennie, Premium do 50.</div>
+          <div class="faq-body">Dotykasz mikrofonu i mówisz, co zjadłeś, np. „dwie kanapki z serem i kawa z mlekiem". AI zamienia to na posiłek z kaloriami i makroskładnikami, a w tle dorysowuje poglądową ilustrację dania. Nagranie trafia do naszego dostawcy usług AI tylko po to, żeby zamienić mowę na tekst, i nie zapisujemy go na naszych serwerach. Dodawanie posiłków głosem ma dzienny limit - na darmowym koncie mniejszy, w Premium wyraźnie większy. Na darmowym koncie widzisz w aplikacji, ile wpisów zostało na dziś.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Jak działa plan posiłków?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1606,15 +1606,15 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Skąd plan posiłków zna kalorie i makro?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Nie od AI. Model AI proponuje dania złożone ze składników z naszego katalogu (270 składników) i podaje ich gramatury, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych tych składników. Nowy plan zapisujemy dopiero wtedy, gdy zaplanowane posiłki trafiają w Twój cel kalorii z dokładnością ok. 5%, a białka ok. 10%. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej.</div>
+          <div class="faq-body">Nie od AI. Model AI proponuje dania i ich porcje, a kalorie, białko, węglowodany i tłuszcze wylicza kod z wartości odżywczych składników - to nie są liczby zmyślone przez model. Nowy plan zapisujemy dopiero wtedy, gdy sprawdzimy, że zaplanowane posiłki trafiają w Twój cel kalorii i białka. Zamienione posiłki i dopasowana reszta dnia też są liczone ze składników, ale mogą odbiegać od celu nieco bardziej.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czy plan posiłków uwzględni moje alergie i dietę?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Składniki, które się z nimi kłócą, odrzucamy, zanim AI zacznie układać plan, a gotowe przepisy sprawdzamy jeszcze raz przed zapisaniem. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy modelowi AI (OpenAI), który dobiera dania - szczegóły opisuje <a href="/polityka-prywatnosci">polityka prywatności</a>. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów.</div>
+          <div class="faq-body">Tak. Wybierasz dietę (np. wegetariańską lub wegańską), alergeny z listy 14 alergenów UE i produkty, których nie lubisz - także własnymi słowami. Pilnujemy tych wykluczeń, układając plan - przepisów z wykluczonymi składnikami Ci nie proponujemy. Posiłki, które sam dodasz do planu z ulubionych, nie przechodzą tej kontroli. Preferencje zapisujemy na Twoim koncie i przekazujemy naszemu dostawcy usług AI, który dobiera dania - szczegóły opisuje <a href="/polityka-prywatnosci">polityka prywatności</a>. Plan nie jest planem medycznym ani dietą leczniczą, więc przy alergii zawsze czytaj etykiety produktów.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Co w planie posiłków jest za darmo, a co w Premium?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Za darmo ułożysz plan na jutro raz na 7 dni, z 1 zamianą posiłku w planie i listą zakupów na ten dzień. Przepisy i „Zjadłem" działają w obu wersjach. <strong>Premium</strong> daje plany na dziś, jutro i 7 dni, zamiany posiłków w ramach dziennych limitów, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni oraz automatyczne planowanie.</div>
+          <div class="faq-body">Za darmo ułożysz plan na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i „Zjadłem" działają w obu wersjach. <strong>Premium</strong> daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni oraz automatyczne planowanie.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czym są Streaks i odznaki?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1626,11 +1626,11 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Co się stanie, gdy wykorzystam darmowy limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Darmowe konto ma 3 analizy AI i 1 wpis głosowy dziennie - limity odnawiają się każdego dnia. Po ich wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit: na darmowym koncie ułożysz plan na jutro raz na 7 dni. EatSee Premium podnosi limity do 50 analiz AI i 50 wpisów głosowych dziennie.</div>
+          <div class="faq-body">Nic nie przepada - limity analiz AI i wpisów głosowych odnawiają się każdego dnia, a ile zostało na dziś, widzisz w aplikacji. Po ich wykorzystaniu nadal możesz bez ograniczeń skanować kody kreskowe i dodawać posiłki z ulubionych. Plan posiłków ma osobny limit, który na darmowym koncie odnawia się rzadziej. EatSee Premium wyraźnie podnosi dzienne limity analiz AI i wpisów głosowych.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czy Premium ma jakiś limit analiz AI?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">W ramach zasady uczciwego korzystania Premium daje <strong>do 50 analiz AI dziennie</strong> - to wielokrotnie więcej niż typowe użycie, a limit chroni usługę przed nadużyciami. Skanowanie kodów kreskowych, ręczne dodawanie posiłków i ulubione są zawsze bez limitu. Szczegóły znajdziesz w <a href="/regulamin">regulaminie</a>.</div>
+          <div class="faq-body">Tak, i mówimy o tym wprost. Funkcje oparte na AI mają <strong>dzienne limity uczciwego korzystania</strong>, a Premium wyraźnie je podnosi - do poziomu wielokrotnie wyższego niż typowe użycie, który chroni usługę przed nadużyciami. Aktualne wartości zobaczysz w aplikacji, jeszcze przed zakupem. Skanowanie kodów kreskowych, ręczne dodawanie posiłków i ulubione są zawsze bez limitu. Zasadę uczciwego korzystania opisuje <a href="/regulamin">regulamin</a>.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czy skanowanie kodów kreskowych też jest limitowane?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
