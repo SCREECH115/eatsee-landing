@@ -22,12 +22,14 @@
 <link rel="icon" type="image/png" href="img/logo-128.png">
 <link rel="apple-touch-icon" href="img/logo.png">
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18369541079"></script>
-<script>!function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");oaiq("init",{pixelId:"3ZmxkSWeZiEWJfwR73PcpS",debug:true});
-oaiq(
-  "measure",
-  "page_viewed",
-  { type: "contents" }
-);</script>
+<script>
+  function eatseeLoadOpenAiPixel() {
+    if (window.oaiq) { return; }
+    !function(w,d,s,u){if(w.oaiq)return;var q=function(){q.q.push(arguments)};q.q=[];w.oaiq=q;var j=d.createElement(s);j.async=1;j.src=u;var f=d.getElementsByTagName(s)[0];f.parentNode.insertBefore(j,f)}(window,document,"script","https://bzrcdn.openai.com/sdk/oaiq.min.js");
+    oaiq("init", { pixelId: "3ZmxkSWeZiEWJfwR73PcpS", debug: false });
+    oaiq("measure", "page_viewed", { type: "contents" });
+  }
+</script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
@@ -44,6 +46,7 @@ oaiq(
   });
   gtag('set', 'url_passthrough', true);
   gtag('set', 'ads_data_redaction', !consentGranted);
+  if (consentGranted) { eatseeLoadOpenAiPixel(); }
   gtag('js', new Date());
 
   gtag('config', 'AW-18369541079');
@@ -125,7 +128,7 @@ oaiq(
       "name": "Jak działa plan posiłków?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na jutro albo, w Premium, także na dziś i na 7 dni, a AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. Przycisk Zjadłem dodaje posiłek do dziennika, a Zamień pokazuje do 3 innych propozycji."
+        "text": "W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na dziś albo na jutro, a w Premium także na 7 dni, i AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. Przycisk Zjadłem dodaje posiłek do dziennika, a Zamień pokazuje do 3 innych propozycji."
       }
     },
     {
@@ -149,7 +152,7 @@ oaiq(
       "name": "Co w planie posiłków jest za darmo, a co w Premium?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Za darmo ułożysz plan na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i przycisk Zjadłem działają w obu wersjach. Premium daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, dopasowanie reszty dnia, listy zakupów na 3 i 7 dni oraz automatyczne planowanie."
+        "text": "Za darmo pierwszy plan ułożysz na dziś albo na jutro, a kolejne na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i przycisk Zjadłem działają w obu wersjach. Premium daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, dopasowanie reszty dnia, listy zakupów na 3 i 7 dni oraz automatyczne planowanie."
       }
     },
     {
@@ -1439,7 +1442,7 @@ oaiq(
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4M7.5 14h3M7.5 17.2h6"/></svg>
           </div>
           <h3>Dzień posiłków pod Twój cel</h3>
-          <p>Posiłki o Twoich porach, z przepisami krok po kroku i porcjami. Plan na jutro albo, w Premium, na dziś i na cały tydzień.</p>
+          <p>Posiłki o Twoich porach i w Twoim stylu jedzenia - zbilansowanym, śródziemnomorskim, low carb, keto albo bez glutenu i laktozy - z przepisami krok po kroku i porcjami. Plan na dziś albo na jutro, a w Premium także na cały tydzień.</p>
           <div class="b-mock b-plan" aria-hidden="true">
             <span class="p-head"><b>Dziś</b><em>Planowany bilans 1800 / 1850 kcal</em></span>
             <span class="b-mock-chips">
@@ -1523,7 +1526,7 @@ oaiq(
         <div class="plan-tier reveal">
           <span class="plan-pill green">Za darmo</span>
           <ul>
-            <li>Plan na jutro, odnawiany co jakiś czas</li>
+            <li>Plan na dziś lub jutro, potem na jutro, odnawiany co jakiś czas</li>
             <li>Zamiana posiłku w ułożonym planie</li>
             <li>Lista zakupów na 1 dzień</li>
             <li>Przepisy krok po kroku i „Zjadłem"</li>
@@ -1602,7 +1605,7 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Jak działa plan posiłków?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na jutro albo, w Premium, także na dziś i na 7 dni, a AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. „Zjadłem" dodaje posiłek do dziennika, a „Zamień" pokazuje do 3 innych propozycji.</div>
+          <div class="faq-body">W zakładce Plan odpowiadasz na kilka krótkich pytań: pory posiłków, dieta, alergie, czego nie lubisz, ile masz czasu i jaki masz sprzęt. Cel kalorii i białka bierzemy z Twojego profilu. Potem wybierasz plan na dziś albo na jutro, a w Premium także na 7 dni, i AI dobiera dania. W tym czasie możesz zamknąć ekran - plan zapisze się sam. Dostajesz przepisy krok po kroku z porcjami i listę zakupów. „Zjadłem" dodaje posiłek do dziennika, a „Zamień" pokazuje do 3 innych propozycji.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Skąd plan posiłków zna kalorie i makro?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1614,7 +1617,7 @@ oaiq(
         </details>
         <details class="faq-item reveal">
           <summary>Co w planie posiłków jest za darmo, a co w Premium?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
-          <div class="faq-body">Za darmo ułożysz plan na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i „Zjadłem" działają w obu wersjach. <strong>Premium</strong> daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni oraz automatyczne planowanie.</div>
+          <div class="faq-body">Za darmo pierwszy plan ułożysz na dziś albo na jutro, a kolejne na jutro - ta możliwość odnawia się co jakiś czas, a ile Ci zostało, pokazuje aplikacja. W darmowym planie masz zamianę posiłku i listę zakupów na ten dzień, a przepisy i „Zjadłem" działają w obu wersjach. <strong>Premium</strong> daje plany na dziś, jutro i 7 dni, więcej zamian posiłków, „Dopasuj resztę dnia", listy zakupów na 3 i 7 dni oraz automatyczne planowanie.</div>
         </details>
         <details class="faq-item reveal">
           <summary>Czym są Streaks i odznaki?<span class="chev" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6"/></svg></span></summary>
@@ -1891,6 +1894,7 @@ oaiq(
         analytics_storage: state
       });
       gtag('set', 'ads_data_redaction', state !== 'granted');
+      if (state === 'granted') { eatseeLoadOpenAiPixel(); }
       banner.classList.remove('visible');
       hideTimer = setTimeout(function () { banner.hidden = true; }, 300);
     }
